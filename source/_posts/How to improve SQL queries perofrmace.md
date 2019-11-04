@@ -1,13 +1,16 @@
 ---
-title: NaomiBlog
+title: How to improve SQL queries performance
 date: 2019-11-01 00:39:27
-tags:
+categories: SQL
+tags: SQL
 ---
 
 # How to improve SQL queries performance
 
 ## 1. Only Retrieve The Data You Need
 The mindset of "the more data, the better" isn't the correct way when you're writing SQL query. You SQL performance might suffer from the fact that your query is trying to pull to too much data. So that's why it's generally a good idea to look out for the **SELECT** statement, the **DISTINCT** and **UNION** clause and the **LIKE** operator
+
+<!-- more -->
 
 #### The SELECT Statement
 The first thing you can check when you have written your query is whether the **SELECT** statement is as compact as possible. Do not get used to ```select *``` because in the most cases, you don't need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It's better for you to specify the columns you want. 

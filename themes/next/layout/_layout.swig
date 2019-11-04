@@ -90,3 +90,6 @@
   {% include '_third-party/exturl.swig' %}
 </body>
 </html>
+<!-- Show little red heart when clicking -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
