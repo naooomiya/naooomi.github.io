@@ -1,17 +1,23 @@
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+
+<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div class="copyright">{#
 #}{% set current = date(Date.now(), "YYYY") %}{#
 #}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} &mdash; {% endif %}{#
 #}<span itemprop="copyrightYear">{{ current }}</span>
   <span class="with-love">
-    <i class="fa fa-dog"></i>
+    <i class="fas fa-dog"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
 
   {% if theme.post_wordcount.totalcount %}
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
+      <i class="fas fa-chart-area"></i>
     </span>
     {% if theme.post_wordcount.item_text %}
       <span class="post-meta-item-text">{{ __('post.totalcount') }}&#58;</span>
@@ -50,12 +56,12 @@
 {% endif %}
 
 <div class="powered-by">
-<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-  visitors : <span id="busuanzi_value_site_uv"></span>
-</span>
+  <i class="fas fa-paw"></i>
+  <span id="busuanzi_container_site_uv">visitors : <span id="busuanzi_value_site_uv"></span> | </span>
 </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">total words : {{ totalcount(site) }}</span>
+    <i class="fas fa-keyboard"></i>
+    <span class="post-count">total words : {{ totalcount(site) }}</span>
 </div>
