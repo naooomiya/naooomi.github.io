@@ -130,7 +130,7 @@ social:
   LinkedIn: https://www.linkedin.com/in/naomi-hanwu/ || linkedin
   Facebook: https://www.facebook.com/profile.php?id=100006848162626 || facebook-square
   Instagram: https://www.instagram.com/__naoooomi__/ || instagram
-  Snapchat: https://www.snapchat.com/add/naooomi.wuuu || snapchat
+  Snapchat: https://www.snapchat.com/add/naooomi.wuuu || hearbeat
 
 social_icons:
   enable: true
@@ -185,10 +185,10 @@ sidebar:
   offset: 12
 
   # Back to top in sidebar (only for Pisces | Gemini).
-  b2t: false
+  b2t: true
 
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
@@ -546,15 +546,15 @@ busuanzi_count:
   enable: false
   # custom uv span for the whole site
   site_uv: true
-  site_uv_header: <i class="fa fa-user"></i>
+  site_uv_header: <i class="fas fa-paw"></i>
   site_uv_footer:
   # custom pv span for the whole site
-  site_pv: true
-  site_pv_header: <i class="fa fa-eye"></i>
+  site_pv: false
+  site_pv_header: <i class="fas fa-paw"></i>
   site_pv_footer:
   # custom pv span for one page only
-  page_pv: true
-  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv: false
+  page_pv_header: <i class="fas fa-paw"></i>
   page_pv_footer:
 
 
@@ -797,6 +797,18 @@ vendors:
   # https://github.com/revir/need-more-share2
   needMoreShare2:
 
+
+# Custom Settings:
+# Codeblock
+codeblock:
+  # Manual define the border radius in codeblock
+  # Leave it empty for the default 1
+  border_radius:
+  # Add copy button on codeblock
+  copy_button:
+    enable: true
+    # Show text copy result
+    show_result: true
 
 # Assets
 css: css
