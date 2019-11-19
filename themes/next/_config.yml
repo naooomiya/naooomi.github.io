@@ -130,7 +130,7 @@ social:
   LinkedIn: https://www.linkedin.com/in/naomi-hanwu/ || linkedin
   Facebook: https://www.facebook.com/profile.php?id=100006848162626 || facebook-square
   Instagram: https://www.instagram.com/__naoooomi__/ || instagram
-  Snapchat: https://www.snapchat.com/add/naooomi.wuuu || hearbeat
+  Snapchat: https://www.snapchat.com/add/naooomi.wuuu || heartbeat
 
 social_icons:
   enable: true
@@ -225,7 +225,7 @@ post_meta:
 post_wordcount:
   item_text: true
   wordcount: true
-  min2read: true
+  min2read: false
   totalcount: true
   separated_meta: true
 

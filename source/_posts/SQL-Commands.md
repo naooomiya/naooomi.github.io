@@ -17,7 +17,7 @@ These SQL commands are mainly categorized into four categories as:
 
 Though many resources claim there to be another category of SQL clauses TCL - Transaction Control Language.
 
-![Types of SQL Commands](https://i.imgur.com/7L4MHpG.png)
+![Types of SQL Commands](https://i.imgur.com/uZg5Qre.png)
 
 ### 1. DDL(Data Definition Language): 
 DDL or Data Definition Language actually consists of the SQL commands that can be used to define the database schema. It simpy deals with descriptions of the database schema and is used to create and modify the structure of database objects in the database.
