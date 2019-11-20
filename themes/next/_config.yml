@@ -255,13 +255,12 @@ post_meta:
   categories: true
 
 # Post wordcount display settings
-# Dependencies: https://github.com/theme-next/hexo-symbols-count-time
-symbols_count_time:
-  separated_meta: true
-  item_text_post: true
-  item_text_total: false
-  awl: 4
-  wpm: 275
+# Dependencies: https://github.com/willin/hexo-wordcount
+post_wordcount:
+  item_text: true
+  wordcount: true
+  min2read: false
+  totalcount: true
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
