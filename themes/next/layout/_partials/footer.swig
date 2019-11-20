@@ -1,68 +1,73 @@
-<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
-<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
-<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+{%- if theme.footer.beian.enable %}
+  <div class="beian">
+    {{- next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}
+    {%- if theme.footer.beian.gongan_icon_url %}
+      <img src="{{ theme.footer.beian.gongan_icon_url }}" style="display: inline-block;">
+    {%- endif %}
+    {%- if theme.footer.beian.gongan_id and theme.footer.beian.gongan_num %}
+      {{- next_url('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=' + theme.footer.beian.gongan_id, theme.footer.beian.gongan_num + ' ') }}
+    {%- endif %}
+  </div>
+{%- endif %}
 
-<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<div class="copyright">{#
-#}{% set current = date(Date.now(), "YYYY") %}{#
-#}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} &mdash; {% endif %}{#
-#}<span itemprop="copyrightYear">{{ current }}</span>
+<div class="copyright">
+  {% set copyright_year = date(null, 'YYYY') %}
+  &copy; {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
+  <span itemprop="copyrightYear">{{ copyright_year }}</span>
   <span class="with-love">
-    <i class="fas fa-dog"></i>
+    <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
+  <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or author }}</span>
 
-  {% if theme.post_wordcount.totalcount %}
+  {%- if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
-      <i class="fas fa-chart-area"></i>
+      <i class="fa fa-area-chart"></i>
     </span>
-    {% if theme.post_wordcount.item_text %}
-      <span class="post-meta-item-text">{{ __('post.totalcount') }}&#58;</span>
-    {% endif %}
-    <span title="{{ __('post.totalcount') }}">{#
-    #}{{ totalcount(site, '0,0.0a') }}{#
-  #}</span>
-  {% endif %}
+    {%- if theme.symbols_count_time.item_text_total %}
+      <span class="post-meta-item-text">{{ __('symbols_count_time.count_total') + __('symbol.colon') }}</span>
+    {%- endif %}
+    <span title="{{ __('symbols_count_time.count_total') }}">{{ symbolsCountTotal(site) }}</span>
+  {%- endif %}
+
+  {%- if config.symbols_count_time.total_time %}
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    {%- if theme.symbols_count_time.item_text_total %}
+      <span class="post-meta-item-text">{{ __('symbols_count_time.time_total') }} &asymp;</span>
+    {%- endif %}
+    <span title="{{ __('symbols_count_time.time_total') }}">{{ symbolsTimeTotal(site, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
+  {%- endif %}
 </div>
 
-<!--
-{% if theme.footer.powered %}
-  <div class="powered-by">{#
-  #}{{ __('footer.powered', '<a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>') }}{#
-#}</div>
-{% endif %}
+{%- if theme.footer.powered.enable %}
+  <div class="powered-by">
+    {{- __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'})) }}
+    {%- if theme.footer.powered.version %} v{{ hexo_version }}{%- endif %}
+  </div>
+{%- endif %}
 
-{% if theme.footer.powered and theme.footer.theme.enable %}
+{%- if theme.footer.powered.enable and theme.footer.theme.enable %}
   <span class="post-meta-divider">|</span>
-{% endif %}
+{%- endif %}
 
-{% if theme.footer.theme.enable %}
-  <div class="theme-info">{#
-  #}{{ __('footer.theme') }} &mdash; {#
-  #}<a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">{#
-    #}NexT.{{ theme.scheme }}{#
-  #}</a>{% if theme.footer.theme.version %} v{{ theme.version }}{% endif %}{#
-#}</div>
-{% endif %}
--->
+{%- if theme.footer.theme.enable %}
+  <div class="theme-info">
+    {%- set next_site = 'https://theme-next.org' %}
+    {%- if theme.scheme !== 'Gemini' %}
+      {%- set next_site = 'https://' + theme.scheme.toLowerCase() + '.theme-next.org' %}
+    {%- endif %}
+    {{- __('footer.theme') }} – {{ next_url(next_site, 'NexT.' + theme.scheme, {class: 'theme-link'}) }}
+    {%- if theme.footer.theme.version %} v{{ next_version }}{%- endif %}
+  </div>
+{%- endif %}
 
-{% if theme.footer.custom_text %}
-  <div class="footer-custom">{#
-  #}{{ theme.footer.custom_text }}{#
-#}</div>
-{% endif %}
+{%- if theme.add_this_id %}
+  <div class="addthis_inline_share_toolbox">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid={{ theme.add_this_id }}" async="async"></script>
+  </div>
+{%- endif %}
 
-<div class="powered-by">
-  <i class="fas fa-paw"></i>
-  <span id="busuanzi_container_site_uv">visitors : <span id="busuanzi_value_site_uv"></span> | </span>
-</div>
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-    <i class="fas fa-keyboard"></i>
-    <span class="post-count">total words : {{ totalcount(site) }}</span>
-</div>
+{{- next_inject('footer') }}
