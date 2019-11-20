@@ -59,7 +59,7 @@ footer:
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/v4.7.0/icons/
     # `heart` is recommended with animation in red (#ff0000).
-    name: user
+    name: dog
     # If you want to animate the icon, set it to true.
     animated: false
     # Change the color of icon, using Hex Code.
@@ -108,8 +108,8 @@ creative_commons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-#scheme: Mist
+#scheme: Muse
+scheme: Mist
 #scheme: Pisces
 #scheme: Gemini
 
@@ -125,12 +125,12 @@ scheme: Muse
 # External url should start with http:// or https://
 menu:
   home: / || home
-  about: /about/ || smile-wink
-  tags: /tags/ || tags
+  about: /about/ || laugh-wink
   categories: /categories/ || th
+  tags: /tags/ || tags
   archives: /archives/ || archive
-  #schedule: /schedule/ || calendar
-  #sitemap: /sitemap.xml || sitemap
+  #schedule: /schedule/ || flushed
+  #sitemap: /sitemap.xml || laugh-wink
   #commonweal: /404/ || heartbeat
 
 # Enable / Disable menu icons / item badges.
@@ -261,6 +261,7 @@ post_wordcount:
   wordcount: true
   min2read: false
   totalcount: true
+  separated_meta: true
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -728,9 +729,9 @@ busuanzi_count:
   total_visitors: true
   total_visitors_icon: user
   total_views: true
-  total_views_icon: eye
+  total_views_icon: paw
   post_views: true
-  post_views_icon: eye
+  post_views_icon: paw
 
 
 # ---------------------------------------------------------------

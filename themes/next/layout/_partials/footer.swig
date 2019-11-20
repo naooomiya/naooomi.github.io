@@ -1,3 +1,11 @@
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+
+<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 {%- if theme.footer.beian.enable %}
   <div class="beian">
     {{- next_url('http://www.beian.miit.gov.cn', theme.footer.beian.icp + ' ') }}
@@ -42,6 +50,7 @@
   {%- endif %}
 </div>
 
+<!--
 {%- if theme.footer.powered.enable %}
   <div class="powered-by">
     {{- __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'})) }}
@@ -63,6 +72,7 @@
     {%- if theme.footer.theme.version %} v{{ next_version }}{%- endif %}
   </div>
 {%- endif %}
+-->
 
 {%- if theme.add_this_id %}
   <div class="addthis_inline_share_toolbox">
@@ -71,3 +81,5 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
+
+
