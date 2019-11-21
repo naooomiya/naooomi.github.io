@@ -23,15 +23,29 @@
   &copy; {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}
   <span itemprop="copyrightYear">{{ copyright_year }}</span>
   <span class="with-love">
-    <i class="fa fa-{{ theme.footer.icon.name }}"></i>
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright or author }}</span>
 
+<div class="powered-by">
+<span class="post-meta-divider"> | </span>
+<i class="fas fa-paw"></i></i>
+<span id="busuanzi_container_site_uv">Visitors : <span id="busuanzi_value_site_uv"></span></span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-meta-divider"> | </span>
+  <span class="post-count">Total Words : {{ totalcount(site) }}</span>
+</div>
+
+<!--   
   {%- if config.symbols_count_time.total_symbols %}
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
-    </span>
+    </span>    
+ 
     {%- if theme.symbols_count_time.item_text_total %}
       <span class="post-meta-item-text">{{ __('symbols_count_time.count_total') + __('symbol.colon') }}</span>
     {%- endif %}
@@ -48,6 +62,7 @@
     {%- endif %}
     <span title="{{ __('symbols_count_time.time_total') }}">{{ symbolsTimeTotal(site, theme.symbols_count_time.awl, theme.symbols_count_time.wpm, __('symbols_count_time.time_minutes')) }}</span>
   {%- endif %}
+-->
 </div>
 
 <!--
@@ -81,5 +96,3 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
-
-
