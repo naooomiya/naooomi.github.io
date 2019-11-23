@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>[LeetCode] 35. Search Insert Position</title>
+    <url>/category/LeetCode-35-Search-Insert-Position/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<p>You may assume no duplicates in the array.</p>
+<a id="more"></a>
+
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>Input: [1,3,5,6], 5<br>Output: 2</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h4><p>Input: [1,3,5,6], 2<br>Output: 1</p>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a>Example 3:</h4><p>Input: [1,3,5,6], 7<br>Output: 4</p>
+<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4:"></a>Example 4:</h4><p>Input: [1,3,5,6], 0<br>Output: 0</p>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nums[pivot] == target) <span class="keyword">return</span> pivot;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &gt; target) right = pivot - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &lt; target) left = pivot + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Binary Search</category>
+      </categories>
+      <tags>
+        <tag>Binary Search</tag>
+        <tag>LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL Commands</title>
+    <url>/category/SQL-Commands/</url>
+    <content><![CDATA[<p>Structured Query Language(SQL) as we all know is the database language by the use of wich we can perform certain operations on the existing database and also we can use this language to create a database. SQL uses certain commands like Create, Drop, Insert stc. to carry out the required tasks. </p>
+<a id="more"></a>
+
+<p>These SQL commands are mainly categorized into four categories as:</p>
+<ol>
+<li>DDL - Data Definition Language</li>
+<li>DQL - Data Query Language</li>
+<li>DML - Data Manipulation Language</li>
+<li>DCL - Data Control Language</li>
+</ol>
+<p>Though many resources claim there to be another category of SQL clauses TCL - Transaction Control Language.</p>
+<p><img src="https://i.imgur.com/uZg5Qre.png" alt="Types of SQL Commands"></p>
+<h3 id="1-DDL-Data-Definition-Language"><a href="#1-DDL-Data-Definition-Language" class="headerlink" title="1. DDL(Data Definition Language):"></a>1. DDL(Data Definition Language):</h3><p>DDL or Data Definition Language actually consists of the SQL commands that can be used to define the database schema. It simpy deals with descriptions of the database schema and is used to create and modify the structure of database objects in the database.</p>
+<p><strong>Examples of DDL commands:</strong></p>
+<ul>
+<li>CREATE - is used to create the database or its objects (like table, index, function, views, store procedure and triggers)</li>
+<li>DROP - is used to delete objects from the database</li>
+<li>ALTER - is used to alter the structure of the database</li>
+<li>TRANCATE - is used to remove all records from a table, including all spaces allocated for the records are removed</li>
+<li>COMMENT - is used to add comments to the data dictionary</li>
+<li>RENAME - is used to rename an object existing in the database</li>
+</ul>
+<h3 id="2-DQL-Data-Query-Language"><a href="#2-DQL-Data-Query-Language" class="headerlink" title="2. DQL (Data Query Language):"></a>2. DQL (Data Query Language):</h3><p>DQL statements are used for performing queries on the data within schema objects. The purpose of DQL Command is to get some schema relation based on the query passed to it.</p>
+<p><strong>Eample of DQL:</strong></p>
+<ul>
+<li>SELECT - is used to retrieve data from the database</li>
+</ul>
+<h3 id="3-DML-Data-Manipulation-Language"><a href="#3-DML-Data-Manipulation-Language" class="headerlink" title="3. DML(Data Manipulation Language):"></a>3. DML(Data Manipulation Language):</h3><p>The SQL commands that deals with the manipulation of data present in the database belong to DML or Data Manipulation Language and this includes most of the SQL statements.</p>
+<p><strong>Eamples of DML:</strong></p>
+<ul>
+<li>INSERT - is used to insert data into a table</li>
+<li>UPDATE - is used to update existing data within a table</li>
+<li>DELETE - is used to delete records from a database table</li>
+</ul>
+<h3 id="4-DCL-Data-Control-Language"><a href="#4-DCL-Data-Control-Language" class="headerlink" title="4. DCL(Data Control Language):"></a>4. DCL(Data Control Language):</h3><p>DCL included commands such as GRANT and REVOKE which mainly deals with the rights, permissions and other controls of the database system.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>GRANT - gives user’s access privileges to database</li>
+<li>REVOKE - withdraw user’s access privileges given by using the GRANT command</li>
+</ul>
+<h3 id="5-TCC-Transaction-Control-Commands-TCL-commands-deals-with-the-transaction-within-the-database"><a href="#5-TCC-Transaction-Control-Commands-TCL-commands-deals-with-the-transaction-within-the-database" class="headerlink" title="5. TCC(Transaction Control Commands):TCL commands deals with the transaction within the database."></a>5. TCC(Transaction Control Commands):TCL commands deals with the transaction within the database.</h3><p><strong>Examples of TCL commands:</strong></p>
+<ul>
+<li>COMMIT - commits a transaction</li>
+<li>ROLLBACK - rollbacks a transaction in case of anu error occurs</li>
+<li>SAVEPOINT - set a savepoint within a transaction</li>
+<li>SET TRANSACTION - specify characteristics for the transaction</li>
+</ul>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>[LeetCode] 4. Median of Two Sorted Arrays</title>
+    <url>/category/LeetCode-4-Median-of-Two-Sorted-Arrays/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
+<a id="more"></a>
+
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>nums1 = [1, 3]<br>nums2 = [2]</p>
+<p>The median is 2.0</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h4><p>nums1 = [1, 2]<br>nums2 = [3, 4]  </p>
+<p>The median is (2 + 3)/2 = 2.5</p>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Find the median of two sorted arrays:</p>
+<p>eg.<br>arr1 = [1, 3, 5]<br>arr2 = [2, 4, 6]</p>
+<p>[1, 2, 3, 4, 5, 6] (merge in a sorted order)</p>
+<p>median(arr1, arr2) = (3+4) / 2 = 3.5 </p>
+<p>There are some questions we need to consider. In this case, the problem definition doesn’t specify that the two arrays are the same length. If it’s not the same length, we need to do it in a clever way. Second, the arrays are arrays of integers and we’re going to return a double in this case because we’re doing an average.</p>
+<p>Normal way:<br>Merge two arrays into one sorted array and it will take linear time. The median will be the middle element(size is odd) or the average of middle two elements(size is even). </p>
+<p>Another example:<br>arr1 = [1, 2, 3, 4, 5, 6]<br>Median: 3.5</p>
+<p>arr2 = [0, 0, 0, 0, 10, 10]<br>Median: 0</p>
+<p>We can see that the median of the first array is bigger than the second array, that means that the first array must have more elements on the high side than the second array. So we can find that the median of the first arrays must be in the lesser half of the array. And for the second array, the median must be in the greater half of the array. Otherwise the medians would be equal. This means both arrays have the same spacing of the elements on either side of the median. And if the median is the same for both array, the median for both array stay the same.  </p>
+<p>[To Be Continue]</p>
+]]></content>
+      <categories>
+        <category>LeetCode Hard</category>
+        <category>Binary Search</category>
+      </categories>
+      <tags>
+        <tag>Binary Search</tag>
+        <tag>LeetCode(Hard)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[LeetCode] 349. Intersection of Two Arrays</title>
+    <url>/category/LeetCode-349-Intersection-of-Two-Arrays/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given two arrays, write a function to compute their intersection.</p>
+<a id="more"></a>
+
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2]</p>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>Example 2:<br>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [9,4]</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p>Each element in the result must be unique.<br>The result can be in any order.</p>
+<h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions:"></a>Solutions:</h3><p>Time: O(nlogn)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// loop num2 find if element in nums2 also in num1</span></span><br><span class="line">        <span class="comment">// if yes add to set</span></span><br><span class="line">        <span class="keyword">for</span> (Integer num : nums2)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">if</span> (binarySearch(nums1, num))</span><br><span class="line">           &#123;</span><br><span class="line">               set.add(num);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// convert HashSet to array</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[set.size()];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : set)</span><br><span class="line">        &#123;</span><br><span class="line">            result[i++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, pivot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (target &gt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                left = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                right = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Binary Search</category>
+      </categories>
+      <tags>
+        <tag>-Binary Search -LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How to improve SQL queries performance</title>
+    <url>/category/How%20to%20improve%20SQL%20queries%20perofrmace/</url>
+    <content><![CDATA[<h2 id="1-Only-Retrieve-The-Data-You-Need"><a href="#1-Only-Retrieve-The-Data-You-Need" class="headerlink" title="1. Only Retrieve The Data You Need"></a>1. Only Retrieve The Data You Need</h2><p>The mindset of “the more data, the better” isn’t the correct way when you’re writing SQL query. You SQL performance might suffer from the fact that your query is trying to pull to too much data. So that’s why it’s generally a good idea to look out for the <strong>SELECT</strong> statement, the <strong>DISTINCT</strong> and <strong>UNION</strong> clause and the <strong>LIKE</strong> operator</p>
+<a id="more"></a>
+
+<h4 id="The-SELECT-Statement"><a href="#The-SELECT-Statement" class="headerlink" title="The SELECT Statement"></a>The SELECT Statement</h4><p>The first thing you can check when you have written your query is whether the <strong>SELECT</strong> statement is as compact as possible. Do not get used to <code>select *</code> because in the most cases, you don’t need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It’s better for you to specify the columns you want. </p>
+<h4 id="The-DISTINCT-and-UNION-clause"><a href="#The-DISTINCT-and-UNION-clause" class="headerlink" title="The DISTINCT and UNION clause"></a>The DISTINCT and UNION clause</h4><p><strong>DISTINCT</strong> and <strong>UNION</strong> should be used only if it is necessary. <strong>DISTINCT</strong> and <strong>UNION</strong> operators cause sorting, which slows down the SQL execution. </p>
+<p>The <code>SELECT DISTINCT</code> statement is used to return only distinct(different) values. The execution time only increases if you add this clause to your query. <strong>DISTINCT</strong> works by grouping all fields in the query to create distinct results. To accomplish this goal however, a large amount of processing power is required. </p>
+<p>It’s therefore always a good idea to consider whether you need this <code>DISTINCT</code>.<br>Use <strong>UNION ALL</strong> instead of <strong>UNION</strong>, if possible, as it is much more efficient.  </p>
+<h4 id="The-LIKE-operator"><a href="#The-LIKE-operator" class="headerlink" title="The LIKE operator"></a>The LIKE operator</h4><p>The predicate <strong>LIKE</strong> <code>&#39;%abc&#39;</code> causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. </p>
+<h2 id="2-Limit-Your-Results"><a href="#2-Limit-Your-Results" class="headerlink" title="2. Limit Your Results"></a>2. Limit Your Results</h2><ul>
+<li>You can add <code>LIMIT</code> or <code>TOP</code> clauses to your query to set a maximum number of rows for the result set. </li>
+<li>Additionally, you can also add the <code>ROWNUM</code>clause, which is equivalent to using <code>LIMIT</code>in your query. See the examples below. </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM Users</span><br><span class="line">WHERE age = 25 AND ROWNUM &lt;= 5;</span><br><span class="line"></span><br><span class="line">SELECT * FROM Users LIMIT 5</span><br><span class="line">WHERE age = 25 AND;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Don’t-Make-Queries-More-Complex-Than-They-Need-To-Be"><a href="#3-Don’t-Make-Queries-More-Complex-Than-They-Need-To-Be" class="headerlink" title="3. Don’t Make Queries More Complex Than They Need To Be"></a>3. Don’t Make Queries More Complex Than They Need To Be</h2><p>Try to keep your query simple and efficient</p>
+<h2 id="4-Create-joins-with-INNER-JOIN-rather-than-WHERE"><a href="#4-Create-joins-with-INNER-JOIN-rather-than-WHERE" class="headerlink" title="4. Create joins with INNER JOIN rather than WHERE"></a>4. Create joins with INNER JOIN rather than WHERE</h2><p>I used to prefer to make joins with <strong>WHERE</strong> clause, such as the following:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT dwColumns.ID, dwColumns.Name, dwTables.ID, dwTables.Name</span><br><span class="line">FROM dwTables, dwColumns</span><br><span class="line">WHERE dwTables.ID = dwColumns.tableID</span><br></pre></td></tr></table></figure>
+
+<p>This type of join creates a Cartesian Join, also called a Cartesian Product or <strong>CROSS JOIN</strong>. In Cartesian Join, all possible combinations of the variables are creates. In this example, if we had 1,000 tables with 100 columns for each table, the query would first genrate 100,000 results, then filter for the 1,000 records where the table ID is correctly joined. This is an inefficient use of database resources. Cartesian Joins are especially problematic in large-scale databases, because a Cartesian Join of two large tables could create billions or trillions of results. </p>
+<p>To avoid creating a Cartesion Join, <strong>INNER JOIN</strong> should be used instead:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT dwTables.ID, dwTables.Name, dwTables.ID, dwTables.Name</span><br><span class="line">FROM dwTables</span><br><span class="line">    INNER JOIN dwColumns</span><br><span class="line">    ON dwTables.ID = dwColumns.tableID</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Avoid-using-wildcard-at-the-beginning-of-a-predicate"><a href="#5-Avoid-using-wildcard-at-the-beginning-of-a-predicate" class="headerlink" title="5. Avoid using wildcard(%) at the beginning of a predicate."></a>5. Avoid using wildcard(%) at the beginning of a predicate.</h2><p>The predicate LIKE ‘%abc’ causes full table scan. </p>
+<p>When a leading wildcard is used, especially in combination with an ending wildcard, the database is tasked with searching all records for a match anywhere within the selected fields. </p>
+<p>For example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM TABLE1 WHERE COL1 LIKE &apos;%abc&apos;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>SQL</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+</search>
