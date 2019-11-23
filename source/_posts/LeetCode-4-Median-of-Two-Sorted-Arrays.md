@@ -1,8 +1,12 @@
 ---
 title: '[LeetCode] 4. Median of Two Sorted Arrays'
 date: 2019-11-18 23:31:42
-tags: Binary Search
-categories: LeetCode
+tags: 
+    - Binary Search
+    - LeetCode(Hard)
+categories: 
+    - [LeetCode Hard]
+    - [Binary Search]
 ---
 
 
