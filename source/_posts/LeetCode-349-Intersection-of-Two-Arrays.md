@@ -2,8 +2,8 @@
 title: '[LeetCode] 349. Intersection of Two Arrays'
 date: 2019-11-17 13:21:10
 tags: 
-    -Binary Search
-    -LeetCode(Easy)
+    - [Binary Search]
+    - [LeetCode(Easy)]
 categories: 
     - [LeetCode Easy]
     - [Binary Search]
