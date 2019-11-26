@@ -1,6 +1,505 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Database Normalization Explained</title>
+    <url>/category/Database-Normalization-Explained/</url>
+    <content><![CDATA[<p><strong>Normalization</strong> is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.</p>
+<a id="more"></a>
+
+<h2 id="Anomalies-in-DBMS"><a href="#Anomalies-in-DBMS" class="headerlink" title="Anomalies in DBMS"></a>Anomalies in DBMS</h2><p>There are three types of anomalies that occur when the database is not normalized. These are <strong>Insertion</strong>, <strong>Update</strong> and <strong>Deletion</strong> anomaly. </p>
+<p><strong>Example :</strong></p>
+<p>Suppose a manufacturing company stores the employee details in a table named employee that has four attributes: emp_id for storing employee’s id, emp_name for storing employee’s name, emp_address for storing employee’s address and emp_dept for storing the department details in which the employee works. At some point of time the table looks like this: </p>
+<table>
+<thead>
+<tr>
+<th align="center">emp_id</th>
+<th align="center">emp_name</th>
+<th align="center">emp_address</th>
+<th align="center">emp_dept</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">101</td>
+<td align="center">Rick</td>
+<td align="center">AddressA</td>
+<td align="center">D001</td>
+</tr>
+<tr>
+<td align="center">101</td>
+<td align="center">Rick</td>
+<td align="center">AddressA</td>
+<td align="center">D002</td>
+</tr>
+<tr>
+<td align="center">123</td>
+<td align="center">Maggie</td>
+<td align="center">AddressB</td>
+<td align="center">D890</td>
+</tr>
+<tr>
+<td align="center">166</td>
+<td align="center">Glenn</td>
+<td align="center">AddressC</td>
+<td align="center">D900</td>
+</tr>
+<tr>
+<td align="center">166</td>
+<td align="center">Glenn</td>
+<td align="center">AddressC</td>
+<td align="center">D004</td>
+</tr>
+</tbody></table>
+<p>The above table is not normalized. Here are the problems we could face when a table is not normalized.</p>
+<ul>
+<li><p><strong>Update anomaly</strong></p>
+<p>In the above table we have two rows for employee Rick as he belongs to two departments of the company. If we want to update the address of Rick then we have to update the same in two rows or the data will become inconsistent. If somehow, the correct address gets updated in one department but not in other then as per the database, Rick would be having two different addresses, which is not correct and would lead to inconsistent data. </p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Insert anomaly</strong></p>
+<p>Suppose a new employee joins the company, who is under training and currently not assigned to any department then we would not be able to insert the data into the table if emp_dept field doesn’t allow nulls.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Delete anomaly</strong></p>
+<p>Suppose, if at a point of time the company closes the department D890 then deleting the rows that are having emp_dept as D890 would also delete the information of employee Maggie since she is assigned only to this department.  </p>
+</li>
+</ul>
+<hr>
+<h2 id="Database-Normal-Forms"><a href="#Database-Normal-Forms" class="headerlink" title="Database Normal Forms"></a>Database Normal Forms</h2><h3 id="1NF-First-Normal-Form-Rules"><a href="#1NF-First-Normal-Form-Rules" class="headerlink" title="1NF(First Normal Form) Rules"></a>1NF(First Normal Form) Rules</h3><ul>
+<li>A column of a table cannot hold multiple values. Each table cell should contain a single value (atomic value)</li>
+<li>Each record needs to be unique</li>
+</ul>
+<p>This is one table that is without normalization because the Movies and Category columns have multiple values :</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Address</th>
+<th align="center">Movies</th>
+<th align="center">Salutation</th>
+<th align="center">Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Deadpool, Spider-Man</td>
+<td align="center">Ms.</td>
+<td align="center">Action, Action</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Call Me by Your Name, La La Land</td>
+<td align="center">Mr.</td>
+<td align="center">Romance, Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Spider-Man</td>
+<td align="center">Mr.</td>
+<td align="center">Action</td>
+</tr>
+</tbody></table>
+<p>(Table 0)</p>
+<p>The above table in <strong>1NF</strong> will look like this : </p>
+<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example:"></a>1NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Address</th>
+<th align="center">Movies Rented</th>
+<th align="center">Salutation</th>
+<th align="center">Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Deadpool</td>
+<td align="center">Ms.</td>
+<td align="center">Action</td>
+</tr>
+<tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Spider-Man</td>
+<td align="center">Ms.</td>
+<td align="center">Action</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Call Me by Your Name</td>
+<td align="center">Mr.</td>
+<td align="center">Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">La La Land</td>
+<td align="center">Mr.</td>
+<td align="center">Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Spider-Man</td>
+<td align="center">Mr.</td>
+<td align="center">Action</td>
+</tr>
+</tbody></table>
+<p>(Table 1: In 1NF)</p>
+<p>A few things too understand first:</p>
+<h4 id="What-is-a-KEY"><a href="#What-is-a-KEY" class="headerlink" title="What is a KEY?"></a>What is a KEY?</h4><p>A <strong>KEY</strong> is a value used to identify a record in a table uniquely. A <strong>KEY</strong> could be a single column or combination of multiple columns.</p>
+<p>Note: Columns in a table that are NOT used to identify a record uniquely are called non-key columns</p>
+<h4 id="What-is-a-primary-Key"><a href="#What-is-a-primary-Key" class="headerlink" title="What is a primary Key?"></a>What is a primary Key?</h4><p>A primary is a single column value used to identify a database record uniquely.</p>
+<p>It has following attributes</p>
+<ul>
+<li>A primary key cannot be <strong>NULL</strong></li>
+<li>A primary key value must be <strong>unique</strong></li>
+<li>The primary key values should rarely be changed</li>
+<li>The primary key must be given a value when a new record is inserted</li>
+</ul>
+<h4 id="What-is-a-Composite-Key"><a href="#What-is-a-Composite-Key" class="headerlink" title="What is a Composite Key?"></a>What is a Composite Key?</h4><p>A <strong>composite key</strong> is a primary key composed of multiple columns used to identify a record uniquely</p>
+<p>Take the above table as an example, the Name column is not unique. Hence, we require both Name and Address to identify a record uniquely. That is a <strong>composite key</strong>. </p>
+<p>Now, move to <strong>Second Normal Form (2NF)</strong></p>
+<h3 id="2NF-Second-Normal-Form-Rules"><a href="#2NF-Second-Normal-Form-Rules" class="headerlink" title="2NF(Second Normal Form) Rules"></a>2NF(Second Normal Form) Rules</h3><ul>
+<li>Rule 1 - Follow 1NF</li>
+<li>Rule 2 - <strong>Single Column Primary Key</strong></li>
+</ul>
+<p>It’s clear that we cannot move forward to make simple database in 2nd Normalization form unless we partition the table above. </p>
+<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example:"></a>2NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<p>We have divided our 1NF table into two tables, Table 1 and Table 2. Table 1 contains member information. Table 2 contains information on movies rented. </p>
+<p>We have introduced a new column called <strong>Membership_ID</strong> which is the primary key for Table 1. Records can be uniquely identified in Table 1 using membership id. </p>
+<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong>:</p>
+<p>Foreign Key references the primary key of another Table! It helps connect your tables</p>
+<ul>
+<li>A foreign key can have a different name from its primary key</li>
+<li>It ensures rows in one table have corresponding rows in another</li>
+<li>Unlike the Primary Key, they do not have to be unique. Most often they aren’t</li>
+<li>Foreign keys can be null even though primary keys can not</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<ul>
+<li>Foreign Key references Primary Key</li>
+<li>Foreign Key can only have values present in primary key</li>
+<li>It could have a name other than that of Primary Key</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<h4 id="Why-need-a-foreign-key"><a href="#Why-need-a-foreign-key" class="headerlink" title="Why need a foreign key?"></a>Why need a foreign key?</h4><p>You will only be able to insert values into your foreign key that exist in the unique key in the parent table. That helps in referential integrity</p>
+<ol>
+<li><p>Insert a record in Table 2 where Membership ID = 101</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">101</td>
+<td align="center">Mission Impossible</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>But Membership ID 101 is not present in Table 1</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">FlatB, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p> (Table 1)</p>
+</li>
+<li><p>Database will throw an ERROR. This helps in <strong>referential integrity</strong></p>
+</li>
+</ol>
+<p>The above problem can be overcome by declaring membership ID from Table 2 as foreign key of membership ID from Table 1</p>
+<p>Now, if somebody tries insert a value in the Membership ID field that does not exist in the parent table, an error will be shown.</p>
+<h4 id="What-are-transitive-functional-dependencies"><a href="#What-are-transitive-functional-dependencies" class="headerlink" title="What are transitive functional dependencies?"></a>What are transitive functional dependencies?</h4><p>A <strong>transitive function dependency</strong> is when changing a non-key column, might cause any of the other non-key columns to change</p>
+<p>Consider the table 1. Changing the non-key column Name may change Salutation</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<p>Let’s move into <strong>3NF</strong></p>
+<h3 id="3NF-Third-Normal-Form-Rules"><a href="#3NF-Third-Normal-Form-Rules" class="headerlink" title="3NF(Third Normal Form) Rules"></a>3NF(Third Normal Form) Rules</h3><ul>
+<li>Rule 1 - Follow 2NF</li>
+<li>Rule 2 - Has <strong>no transitive functional dependencies</strong></li>
+</ul>
+<p>To move 2NF table into 3NF, we again need to divide the table</p>
+<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example:"></a>3NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation ID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Salutation ID</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Mrs.</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Dr.</td>
+</tr>
+</tbody></table>
+<p>(Table 3)</p>
+<p>We have again divided our tables and created a new table which stores Salutations. There are no transitive functional dependencies, and hence our table is in 3NF. In Table 3 Salutation ID is primary key, and in Table 1 Salutation ID is the foreign to primary key in Table 3. </p>
+<p>Now our little example is at a level that cannot further be <strong>decomposed</strong> to attain higher forms of normalization. Infact, it is already in higher normalization forms. Separate efforts for moving into next levels of normalizing data are normally needed in complex databases.</p>
+<h3 id="Boyce-Codd-Normal-Form-BCNF"><a href="#Boyce-Codd-Normal-Form-BCNF" class="headerlink" title="Boyce-Codd Normal Form(BCNF)"></a>Boyce-Codd Normal Form(BCNF)</h3><p>Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.</p>
+<p>Sometimes BCNF is also referred as 3.5 Normal Form.</p>
+<h3 id="4NF-Fourth-Normal-Form-Rules"><a href="#4NF-Fourth-Normal-Form-Rules" class="headerlink" title="4NF(Fourth Normal Form) Rules"></a>4NF(Fourth Normal Form) Rules</h3><p>If no database table instance contains two or more, independent and multivalued data describing the relevant entity, then it is in 4th NF.</p>
+<h3 id="5NF-Fifth-Normal-Form-Rules"><a href="#5NF-Fifth-Normal-Form-Rules" class="headerlink" title="5NF(Fifth Normal Form) Rules"></a>5NF(Fifth Normal Form) Rules</h3><p>A table is in 5th Normal Form only if it is in 4NF and it cannot be decomposed into any number of smaller tables without loss of data.</p>
+<h3 id="6NF-Sixth-Normal-Form-Rules"><a href="#6NF-Sixth-Normal-Form-Rules" class="headerlink" title="6NF(Sixth Normal Form) Rules"></a>6NF(Sixth Normal Form) Rules</h3><p>Normally, it wouldn’t be used. </p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
+<li>Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system</li>
+<li>Normalization helps produce database systems that are cost-effective and have better security modles</li>
+<li>Functional dependencies are a very important component of the normalize data process</li>
+<li>Most database systems are normalized database up to the third normal forms</li>
+<li>A primary key uniquely identifies record in a Table and cannot be null</li>
+<li>A foreign key helps connect table and references a primary key</li>
+</ul>
+]]></content>
+      <categories>
+        <category>SQL</category>
+        <category>Database</category>
+      </categories>
+      <tags>
+        <tag>Database Normalization</tag>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ASCII, ANSI and Unicode</title>
     <url>/category/ASCII-ANSI-and-Unicode/</url>
     <content><![CDATA[<h3 id="Character-Encoding"><a href="#Character-Encoding" class="headerlink" title="Character Encoding"></a>Character Encoding</h3><p>A character encoding tells the computer how to interpret raw zeroes and ones into real characters. It usually does this by pairing numbers with characters. Words and sentences in text are created from characters and these characters are grouped into a character set. There are many different types of character encodings floating arounds at present, but the ones we deal most frequently with are ASCII, <strong>8-bit</strong> encodings, and Unicode-based encodings.</p>
@@ -111,6 +610,9 @@
       <categories>
         <category>SQL</category>
       </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
   </entry>
   <entry>
     <title>[LeetCode] 4. Median of Two Sorted Arrays</title>
@@ -169,11 +671,11 @@
     <content><![CDATA[<h2 id="1-Only-Retrieve-The-Data-You-Need"><a href="#1-Only-Retrieve-The-Data-You-Need" class="headerlink" title="1. Only Retrieve The Data You Need"></a>1. Only Retrieve The Data You Need</h2><p>The mindset of “the more data, the better” isn’t the correct way when you’re writing SQL query. You SQL performance might suffer from the fact that your query is trying to pull to too much data. So that’s why it’s generally a good idea to look out for the <strong>SELECT</strong> statement, the <strong>DISTINCT</strong> and <strong>UNION</strong> clause and the <strong>LIKE</strong> operator</p>
 <a id="more"></a>
 
-<h4 id="The-SELECT-Statement"><a href="#The-SELECT-Statement" class="headerlink" title="The SELECT Statement"></a>The SELECT Statement</h4><p>The first thing you can check when you have written your query is whether the <strong>SELECT</strong> statement is as compact as possible. Do not get used to <code>select *</code> because in the most cases, you don’t need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It’s better for you to specify the columns you want. </p>
-<h4 id="The-DISTINCT-and-UNION-clause"><a href="#The-DISTINCT-and-UNION-clause" class="headerlink" title="The DISTINCT and UNION clause"></a>The DISTINCT and UNION clause</h4><p><strong>DISTINCT</strong> and <strong>UNION</strong> should be used only if it is necessary. <strong>DISTINCT</strong> and <strong>UNION</strong> operators cause sorting, which slows down the SQL execution. </p>
+<h3 id="The-SELECT-Statement"><a href="#The-SELECT-Statement" class="headerlink" title="The SELECT Statement"></a>The SELECT Statement</h3><p>The first thing you can check when you have written your query is whether the <strong>SELECT</strong> statement is as compact as possible. Do not get used to <code>select *</code> because in the most cases, you don’t need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It’s better for you to specify the columns you want. </p>
+<h3 id="The-DISTINCT-and-UNION-clause"><a href="#The-DISTINCT-and-UNION-clause" class="headerlink" title="The DISTINCT and UNION clause"></a>The DISTINCT and UNION clause</h3><p><strong>DISTINCT</strong> and <strong>UNION</strong> should be used only if it is necessary. <strong>DISTINCT</strong> and <strong>UNION</strong> operators cause sorting, which slows down the SQL execution. </p>
 <p>The <code>SELECT DISTINCT</code> statement is used to return only distinct(different) values. The execution time only increases if you add this clause to your query. <strong>DISTINCT</strong> works by grouping all fields in the query to create distinct results. To accomplish this goal however, a large amount of processing power is required. </p>
 <p>It’s therefore always a good idea to consider whether you need this <code>DISTINCT</code>.<br>Use <strong>UNION ALL</strong> instead of <strong>UNION</strong>, if possible, as it is much more efficient.  </p>
-<h4 id="The-LIKE-operator"><a href="#The-LIKE-operator" class="headerlink" title="The LIKE operator"></a>The LIKE operator</h4><p>The predicate <strong>LIKE</strong> <code>&#39;%abc&#39;</code> causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. </p>
+<h3 id="The-LIKE-operator"><a href="#The-LIKE-operator" class="headerlink" title="The LIKE operator"></a>The LIKE operator</h3><p>The predicate <strong>LIKE</strong> <code>&#39;%abc&#39;</code> causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. </p>
 <h2 id="2-Limit-Your-Results"><a href="#2-Limit-Your-Results" class="headerlink" title="2. Limit Your Results"></a>2. Limit Your Results</h2><ul>
 <li>You can add <code>LIMIT</code> or <code>TOP</code> clauses to your query to set a maximum number of rows for the result set. </li>
 <li>Additionally, you can also add the <code>ROWNUM</code>clause, which is equivalent to using <code>LIMIT</code>in your query. See the examples below. </li>

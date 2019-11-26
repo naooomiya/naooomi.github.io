@@ -56,7 +56,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="1. Only Retrieve The Data You NeedThe mindset of “the more data, the better” isn’t the correct way when you’re writing SQL query. You SQL performance might suffer from the fact that your query is tryi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-25T08:44:56.135Z">
+<meta property="og:updated_time" content="2019-11-26T10:32:44.239Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/How%20to%20improve%20SQL%20queries%20perofrmace/">
@@ -242,7 +242,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-25 21:44:56" itemprop="dateModified" datetime="2019-11-25T21:44:56+13:00">2019-11-25</time>
+                <time title="Modified: 2019-11-26 23:32:44" itemprop="dateModified" datetime="2019-11-26T23:32:44+13:00">2019-11-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,11 +282,11 @@
         <h2 id="1-Only-Retrieve-The-Data-You-Need"><a href="#1-Only-Retrieve-The-Data-You-Need" class="headerlink" title="1. Only Retrieve The Data You Need"></a>1. Only Retrieve The Data You Need</h2><p>The mindset of “the more data, the better” isn’t the correct way when you’re writing SQL query. You SQL performance might suffer from the fact that your query is trying to pull to too much data. So that’s why it’s generally a good idea to look out for the <strong>SELECT</strong> statement, the <strong>DISTINCT</strong> and <strong>UNION</strong> clause and the <strong>LIKE</strong> operator</p>
 <a id="more"></a>
 
-<h4 id="The-SELECT-Statement"><a href="#The-SELECT-Statement" class="headerlink" title="The SELECT Statement"></a>The SELECT Statement</h4><p>The first thing you can check when you have written your query is whether the <strong>SELECT</strong> statement is as compact as possible. Do not get used to <code>select *</code> because in the most cases, you don’t need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It’s better for you to specify the columns you want. </p>
-<h4 id="The-DISTINCT-and-UNION-clause"><a href="#The-DISTINCT-and-UNION-clause" class="headerlink" title="The DISTINCT and UNION clause"></a>The DISTINCT and UNION clause</h4><p><strong>DISTINCT</strong> and <strong>UNION</strong> should be used only if it is necessary. <strong>DISTINCT</strong> and <strong>UNION</strong> operators cause sorting, which slows down the SQL execution. </p>
+<h3 id="The-SELECT-Statement"><a href="#The-SELECT-Statement" class="headerlink" title="The SELECT Statement"></a>The SELECT Statement</h3><p>The first thing you can check when you have written your query is whether the <strong>SELECT</strong> statement is as compact as possible. Do not get used to <code>select *</code> because in the most cases, you don’t need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It’s better for you to specify the columns you want. </p>
+<h3 id="The-DISTINCT-and-UNION-clause"><a href="#The-DISTINCT-and-UNION-clause" class="headerlink" title="The DISTINCT and UNION clause"></a>The DISTINCT and UNION clause</h3><p><strong>DISTINCT</strong> and <strong>UNION</strong> should be used only if it is necessary. <strong>DISTINCT</strong> and <strong>UNION</strong> operators cause sorting, which slows down the SQL execution. </p>
 <p>The <code>SELECT DISTINCT</code> statement is used to return only distinct(different) values. The execution time only increases if you add this clause to your query. <strong>DISTINCT</strong> works by grouping all fields in the query to create distinct results. To accomplish this goal however, a large amount of processing power is required. </p>
 <p>It’s therefore always a good idea to consider whether you need this <code>DISTINCT</code>.<br>Use <strong>UNION ALL</strong> instead of <strong>UNION</strong>, if possible, as it is much more efficient.  </p>
-<h4 id="The-LIKE-operator"><a href="#The-LIKE-operator" class="headerlink" title="The LIKE operator"></a>The LIKE operator</h4><p>The predicate <strong>LIKE</strong> <code>&#39;%abc&#39;</code> causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. </p>
+<h3 id="The-LIKE-operator"><a href="#The-LIKE-operator" class="headerlink" title="The LIKE operator"></a>The LIKE operator</h3><p>The predicate <strong>LIKE</strong> <code>&#39;%abc&#39;</code> causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. </p>
 <h2 id="2-Limit-Your-Results"><a href="#2-Limit-Your-Results" class="headerlink" title="2. Limit Your Results"></a>2. Limit Your Results</h2><ul>
 <li>You can add <code>LIMIT</code> or <code>TOP</code> clauses to your query to set a maximum number of rows for the result set. </li>
 <li>Additionally, you can also add the <code>ROWNUM</code>clause, which is equivalent to using <code>LIMIT</code>in your query. See the examples below. </li>
@@ -377,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Only-Retrieve-The-Data-You-Need"><span class="nav-text">1. Only Retrieve The Data You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-SELECT-Statement"><span class="nav-text">The SELECT Statement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-DISTINCT-and-UNION-clause"><span class="nav-text">The DISTINCT and UNION clause</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-LIKE-operator"><span class="nav-text">The LIKE operator</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Limit-Your-Results"><span class="nav-text">2. Limit Your Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Don’t-Make-Queries-More-Complex-Than-They-Need-To-Be"><span class="nav-text">3. Don’t Make Queries More Complex Than They Need To Be</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Create-joins-with-INNER-JOIN-rather-than-WHERE"><span class="nav-text">4. Create joins with INNER JOIN rather than WHERE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Avoid-using-wildcard-at-the-beginning-of-a-predicate"><span class="nav-text">5. Avoid using wildcard(%) at the beginning of a predicate.</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Only-Retrieve-The-Data-You-Need"><span class="nav-text">1. Only Retrieve The Data You Need</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-SELECT-Statement"><span class="nav-text">The SELECT Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-DISTINCT-and-UNION-clause"><span class="nav-text">The DISTINCT and UNION clause</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-LIKE-operator"><span class="nav-text">The LIKE operator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Limit-Your-Results"><span class="nav-text">2. Limit Your Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Don’t-Make-Queries-More-Complex-Than-They-Need-To-Be"><span class="nav-text">3. Don’t Make Queries More Complex Than They Need To Be</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Create-joins-with-INNER-JOIN-rather-than-WHERE"><span class="nav-text">4. Create joins with INNER JOIN rather than WHERE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Avoid-using-wildcard-at-the-beginning-of-a-predicate"><span class="nav-text">5. Avoid using wildcard(%) at the beginning of a predicate.</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -393,20 +393,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -474,7 +474,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 2.2k</span>
+  <span class="post-count">Total Words : 3.7k</span>
 </div>
 
 <!--
@@ -482,12 +482,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">11k</span>
+    <span title="Symbols count total">18k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">10 mins.</span>
+    <span title="Reading time total">16 mins.</span>
 -->
 </div>
 

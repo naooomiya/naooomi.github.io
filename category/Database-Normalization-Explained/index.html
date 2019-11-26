@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="This is Naomi_W." type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Normalization is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.">
+<meta name="keywords" content="Database Normalization,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database Normalization Explained">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Database-Normalization-Explained&#x2F;index.html">
+<meta property="og:site_name" content="This is Naomi_W.">
+<meta property="og:description" content="Normalization is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-26T10:45:03.315Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://naooomi.github.io/category/Database-Normalization-Explained/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Database Normalization Explained | This is Naomi_W.</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+<a href="https://github.com/Naooomi" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">This is Naomi_W.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-laugh-wink"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Database-Normalization-Explained/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Database Normalization Explained
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-26 19:54:15 / Modified: 23:45:03" itemprop="dateCreated datePublished" datetime="2019-11-26T19:54:15+13:00">2019-11-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>6 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>Normalization</strong> is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.</p>
+<a id="more"></a>
+
+<h2 id="Anomalies-in-DBMS"><a href="#Anomalies-in-DBMS" class="headerlink" title="Anomalies in DBMS"></a>Anomalies in DBMS</h2><p>There are three types of anomalies that occur when the database is not normalized. These are <strong>Insertion</strong>, <strong>Update</strong> and <strong>Deletion</strong> anomaly. </p>
+<p><strong>Example :</strong></p>
+<p>Suppose a manufacturing company stores the employee details in a table named employee that has four attributes: emp_id for storing employee’s id, emp_name for storing employee’s name, emp_address for storing employee’s address and emp_dept for storing the department details in which the employee works. At some point of time the table looks like this: </p>
+<table>
+<thead>
+<tr>
+<th align="center">emp_id</th>
+<th align="center">emp_name</th>
+<th align="center">emp_address</th>
+<th align="center">emp_dept</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">101</td>
+<td align="center">Rick</td>
+<td align="center">AddressA</td>
+<td align="center">D001</td>
+</tr>
+<tr>
+<td align="center">101</td>
+<td align="center">Rick</td>
+<td align="center">AddressA</td>
+<td align="center">D002</td>
+</tr>
+<tr>
+<td align="center">123</td>
+<td align="center">Maggie</td>
+<td align="center">AddressB</td>
+<td align="center">D890</td>
+</tr>
+<tr>
+<td align="center">166</td>
+<td align="center">Glenn</td>
+<td align="center">AddressC</td>
+<td align="center">D900</td>
+</tr>
+<tr>
+<td align="center">166</td>
+<td align="center">Glenn</td>
+<td align="center">AddressC</td>
+<td align="center">D004</td>
+</tr>
+</tbody></table>
+<p>The above table is not normalized. Here are the problems we could face when a table is not normalized.</p>
+<ul>
+<li><p><strong>Update anomaly</strong></p>
+<p>In the above table we have two rows for employee Rick as he belongs to two departments of the company. If we want to update the address of Rick then we have to update the same in two rows or the data will become inconsistent. If somehow, the correct address gets updated in one department but not in other then as per the database, Rick would be having two different addresses, which is not correct and would lead to inconsistent data. </p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Insert anomaly</strong></p>
+<p>Suppose a new employee joins the company, who is under training and currently not assigned to any department then we would not be able to insert the data into the table if emp_dept field doesn’t allow nulls.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>Delete anomaly</strong></p>
+<p>Suppose, if at a point of time the company closes the department D890 then deleting the rows that are having emp_dept as D890 would also delete the information of employee Maggie since she is assigned only to this department.  </p>
+</li>
+</ul>
+<hr>
+<h2 id="Database-Normal-Forms"><a href="#Database-Normal-Forms" class="headerlink" title="Database Normal Forms"></a>Database Normal Forms</h2><h3 id="1NF-First-Normal-Form-Rules"><a href="#1NF-First-Normal-Form-Rules" class="headerlink" title="1NF(First Normal Form) Rules"></a>1NF(First Normal Form) Rules</h3><ul>
+<li>A column of a table cannot hold multiple values. Each table cell should contain a single value (atomic value)</li>
+<li>Each record needs to be unique</li>
+</ul>
+<p>This is one table that is without normalization because the Movies and Category columns have multiple values :</p>
+<table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Address</th>
+<th align="center">Movies</th>
+<th align="center">Salutation</th>
+<th align="center">Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Deadpool, Spider-Man</td>
+<td align="center">Ms.</td>
+<td align="center">Action, Action</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Call Me by Your Name, La La Land</td>
+<td align="center">Mr.</td>
+<td align="center">Romance, Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Spider-Man</td>
+<td align="center">Mr.</td>
+<td align="center">Action</td>
+</tr>
+</tbody></table>
+<p>(Table 0)</p>
+<p>The above table in <strong>1NF</strong> will look like this : </p>
+<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example:"></a>1NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Name</th>
+<th align="center">Address</th>
+<th align="center">Movies Rented</th>
+<th align="center">Salutation</th>
+<th align="center">Category</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Deadpool</td>
+<td align="center">Ms.</td>
+<td align="center">Action</td>
+</tr>
+<tr>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Spider-Man</td>
+<td align="center">Ms.</td>
+<td align="center">Action</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Call Me by Your Name</td>
+<td align="center">Mr.</td>
+<td align="center">Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">La La Land</td>
+<td align="center">Mr.</td>
+<td align="center">Romance</td>
+</tr>
+<tr>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Spider-Man</td>
+<td align="center">Mr.</td>
+<td align="center">Action</td>
+</tr>
+</tbody></table>
+<p>(Table 1: In 1NF)</p>
+<p>A few things too understand first:</p>
+<h4 id="What-is-a-KEY"><a href="#What-is-a-KEY" class="headerlink" title="What is a KEY?"></a>What is a KEY?</h4><p>A <strong>KEY</strong> is a value used to identify a record in a table uniquely. A <strong>KEY</strong> could be a single column or combination of multiple columns.</p>
+<p>Note: Columns in a table that are NOT used to identify a record uniquely are called non-key columns</p>
+<h4 id="What-is-a-primary-Key"><a href="#What-is-a-primary-Key" class="headerlink" title="What is a primary Key?"></a>What is a primary Key?</h4><p>A primary is a single column value used to identify a database record uniquely.</p>
+<p>It has following attributes</p>
+<ul>
+<li>A primary key cannot be <strong>NULL</strong></li>
+<li>A primary key value must be <strong>unique</strong></li>
+<li>The primary key values should rarely be changed</li>
+<li>The primary key must be given a value when a new record is inserted</li>
+</ul>
+<h4 id="What-is-a-Composite-Key"><a href="#What-is-a-Composite-Key" class="headerlink" title="What is a Composite Key?"></a>What is a Composite Key?</h4><p>A <strong>composite key</strong> is a primary key composed of multiple columns used to identify a record uniquely</p>
+<p>Take the above table as an example, the Name column is not unique. Hence, we require both Name and Address to identify a record uniquely. That is a <strong>composite key</strong>. </p>
+<p>Now, move to <strong>Second Normal Form (2NF)</strong></p>
+<h3 id="2NF-Second-Normal-Form-Rules"><a href="#2NF-Second-Normal-Form-Rules" class="headerlink" title="2NF(Second Normal Form) Rules"></a>2NF(Second Normal Form) Rules</h3><ul>
+<li>Rule 1 - Follow 1NF</li>
+<li>Rule 2 - <strong>Single Column Primary Key</strong></li>
+</ul>
+<p>It’s clear that we cannot move forward to make simple database in 2nd Normalization form unless we partition the table above. </p>
+<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example:"></a>2NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<p>We have divided our 1NF table into two tables, Table 1 and Table 2. Table 1 contains member information. Table 2 contains information on movies rented. </p>
+<p>We have introduced a new column called <strong>Membership_ID</strong> which is the primary key for Table 1. Records can be uniquely identified in Table 1 using membership id. </p>
+<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong>:</p>
+<p>Foreign Key references the primary key of another Table! It helps connect your tables</p>
+<ul>
+<li>A foreign key can have a different name from its primary key</li>
+<li>It ensures rows in one table have corresponding rows in another</li>
+<li>Unlike the Primary Key, they do not have to be unique. Most often they aren’t</li>
+<li>Foreign keys can be null even though primary keys can not</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<ul>
+<li>Foreign Key references Primary Key</li>
+<li>Foreign Key can only have values present in primary key</li>
+<li>It could have a name other than that of Primary Key</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<h4 id="Why-need-a-foreign-key"><a href="#Why-need-a-foreign-key" class="headerlink" title="Why need a foreign key?"></a>Why need a foreign key?</h4><p>You will only be able to insert values into your foreign key that exist in the unique key in the parent table. That helps in referential integrity</p>
+<ol>
+<li><p>Insert a record in Table 2 where Membership ID = 101</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">101</td>
+<td align="center">Mission Impossible</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>But Membership ID 101 is not present in Table 1</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">FlatB, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p> (Table 1)</p>
+</li>
+<li><p>Database will throw an ERROR. This helps in <strong>referential integrity</strong></p>
+</li>
+</ol>
+<p>The above problem can be overcome by declaring membership ID from Table 2 as foreign key of membership ID from Table 1</p>
+<p>Now, if somebody tries insert a value in the Membership ID field that does not exist in the parent table, an error will be shown.</p>
+<h4 id="What-are-transitive-functional-dependencies"><a href="#What-are-transitive-functional-dependencies" class="headerlink" title="What are transitive functional dependencies?"></a>What are transitive functional dependencies?</h4><p>A <strong>transitive function dependency</strong> is when changing a non-key column, might cause any of the other non-key columns to change</p>
+<p>Consider the table 1. Changing the non-key column Name may change Salutation</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">Mr.</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<p>Let’s move into <strong>3NF</strong></p>
+<h3 id="3NF-Third-Normal-Form-Rules"><a href="#3NF-Third-Normal-Form-Rules" class="headerlink" title="3NF(Third Normal Form) Rules"></a>3NF(Third Normal Form) Rules</h3><ul>
+<li>Rule 1 - Follow 2NF</li>
+<li>Rule 2 - Has <strong>no transitive functional dependencies</strong></li>
+</ul>
+<p>To move 2NF table into 3NF, we again need to divide the table</p>
+<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example:"></a>3NF Example:</h4><table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Name</th>
+<th align="center">Physical Address</th>
+<th align="center">Salutation ID</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Janet</td>
+<td align="center">Flat B, 6th Street</td>
+<td align="center">2</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Robert</td>
+<td align="center">3rd Street</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Robert</td>
+<td align="center">5th Avenue</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p>(Table 1)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Membership ID</th>
+<th align="center">Movies Rented</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Deadpool</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">Spider-Man</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Call Me by Your Name</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">La La Land</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Spider-Man</td>
+</tr>
+</tbody></table>
+<p>(Table 2)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Salutation ID</th>
+<th align="center">Salutation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Mr.</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">Ms.</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Mrs.</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Dr.</td>
+</tr>
+</tbody></table>
+<p>(Table 3)</p>
+<p>We have again divided our tables and created a new table which stores Salutations. There are no transitive functional dependencies, and hence our table is in 3NF. In Table 3 Salutation ID is primary key, and in Table 1 Salutation ID is the foreign to primary key in Table 3. </p>
+<p>Now our little example is at a level that cannot further be <strong>decomposed</strong> to attain higher forms of normalization. Infact, it is already in higher normalization forms. Separate efforts for moving into next levels of normalizing data are normally needed in complex databases.</p>
+<h3 id="Boyce-Codd-Normal-Form-BCNF"><a href="#Boyce-Codd-Normal-Form-BCNF" class="headerlink" title="Boyce-Codd Normal Form(BCNF)"></a>Boyce-Codd Normal Form(BCNF)</h3><p>Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.</p>
+<p>Sometimes BCNF is also referred as 3.5 Normal Form.</p>
+<h3 id="4NF-Fourth-Normal-Form-Rules"><a href="#4NF-Fourth-Normal-Form-Rules" class="headerlink" title="4NF(Fourth Normal Form) Rules"></a>4NF(Fourth Normal Form) Rules</h3><p>If no database table instance contains two or more, independent and multivalued data describing the relevant entity, then it is in 4th NF.</p>
+<h3 id="5NF-Fifth-Normal-Form-Rules"><a href="#5NF-Fifth-Normal-Form-Rules" class="headerlink" title="5NF(Fifth Normal Form) Rules"></a>5NF(Fifth Normal Form) Rules</h3><p>A table is in 5th Normal Form only if it is in 4NF and it cannot be decomposed into any number of smaller tables without loss of data.</p>
+<h3 id="6NF-Sixth-Normal-Form-Rules"><a href="#6NF-Sixth-Normal-Form-Rules" class="headerlink" title="6NF(Sixth Normal Form) Rules"></a>6NF(Sixth Normal Form) Rules</h3><p>Normally, it wouldn’t be used. </p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
+<li>Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system</li>
+<li>Normalization helps produce database systems that are cost-effective and have better security modles</li>
+<li>Functional dependencies are a very important component of the normalize data process</li>
+<li>Most database systems are normalized database up to the third normal forms</li>
+<li>A primary key uniquely identifies record in a Table and cannot be null</li>
+<li>A foreign key helps connect table and references a primary key</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End <i class="fas fa-coffee"></i> Thanks for your time-------------</div>
+    
+</div>
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Database-Normalization/" rel="tag"><i class="fa fa-tag"></i> Database Normalization</a>
+              <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/category/ASCII-ANSI-and-Unicode/" rel="next" title="ASCII, ANSI and Unicode">
+                  <i class="fa fa-chevron-left"></i> ASCII, ANSI and Unicode
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anomalies-in-DBMS"><span class="nav-text">Anomalies in DBMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Normal-Forms"><span class="nav-text">Database Normal Forms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1NF-First-Normal-Form-Rules"><span class="nav-text">1NF(First Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1NF-Example"><span class="nav-text">1NF Example:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-KEY"><span class="nav-text">What is a KEY?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-primary-Key"><span class="nav-text">What is a primary Key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-Composite-Key"><span class="nav-text">What is a Composite Key?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2NF-Second-Normal-Form-Rules"><span class="nav-text">2NF(Second Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2NF-Example"><span class="nav-text">2NF Example:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Database-Foreign-Key"><span class="nav-text">Database - Foreign Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-need-a-foreign-key"><span class="nav-text">Why need a foreign key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-are-transitive-functional-dependencies"><span class="nav-text">What are transitive functional dependencies?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3NF-Third-Normal-Form-Rules"><span class="nav-text">3NF(Third Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3NF-Example"><span class="nav-text">3NF Example:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boyce-Codd-Normal-Form-BCNF"><span class="nav-text">Boyce-Codd Normal Form(BCNF)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4NF-Fourth-Normal-Form-Rules"><span class="nav-text">4NF(Fourth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5NF-Fifth-Normal-Form-Rules"><span class="nav-text">5NF(Fifth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6NF-Sixth-Normal-Form-Rules"><span class="nav-text">6NF(Sixth Normal Form) Rules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Naomi_W"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Naomi_W</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Naooomi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Naooomi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-square"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/naomi-hanwu/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;naomi-hanwu&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006848162626" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id=100006848162626" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/__naoooomi__/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;__naoooomi__&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.snapchat.com/add/naooomi.wuuu" title="Snapchat → https:&#x2F;&#x2F;www.snapchat.com&#x2F;add&#x2F;naooomi.wuuu" rel="noopener" target="_blank"><i class="fa fa-fw fa-snapchat"></i>Snapchat</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+
+<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Naomi_W</span>
+
+<div class="powered-by">
+<span class="post-meta-divider"> | </span>
+<i class="fas fa-paw"></i></i>
+<span id="busuanzi_container_site_uv">Visitors : <span id="busuanzi_value_site_uv"></span></span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-meta-divider"> | </span>
+  <span class="post-count">Total Words : 3.7k</span>
+</div>
+
+<!--
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">18k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">16 mins.</span>
+-->
+</div>
+
+<!--
+-->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
