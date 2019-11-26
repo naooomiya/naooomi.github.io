@@ -10,11 +10,11 @@ The mindset of "the more data, the better" isn't the correct way when you're wri
 
 <!-- more -->
 
-#### The SELECT Statement
+### The SELECT Statement
 The first thing you can check when you have written your query is whether the **SELECT** statement is as compact as possible. Do not get used to ```select *``` because in the most cases, you don't need that and the unnecessary columns places extra loads on the database which will slown down the single SQL and the system. Besides, it can increase the consumption of extra I/O, memory and CPU as well. It's better for you to specify the columns you want. 
 
 
-#### The DISTINCT and UNION clause
+### The DISTINCT and UNION clause
 
 **DISTINCT** and **UNION** should be used only if it is necessary. **DISTINCT** and **UNION** operators cause sorting, which slows down the SQL execution. 
 
@@ -24,7 +24,7 @@ It's therefore always a good idea to consider whether you need this ```DISTINCT`
 Use **UNION ALL** instead of **UNION**, if possible, as it is much more efficient.  
 
 
-#### The LIKE operator
+### The LIKE operator
 
 The predicate **LIKE** ````'%abc'```` causes a full table scan. So try to avoid using wildcard(%) at the beginning of a predicate. 
 

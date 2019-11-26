@@ -1,7 +1,7 @@
 ---
 title: SQL Commands
 date: 2019-11-19 17:19:31
-tags:
+tags: SQL
 categories: SQL
 ---
 
