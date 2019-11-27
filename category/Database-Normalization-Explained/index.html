@@ -49,14 +49,14 @@
 </script>
 
   <meta name="description" content="Normalization is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.">
-<meta name="keywords" content="Database Normalization,SQL">
+<meta name="keywords" content="SQL,Database Normalization,1NF,2NF,3NF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Database Normalization Explained">
 <meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Database-Normalization-Explained&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="Normalization is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-26T10:45:03.315Z">
+<meta property="og:updated_time" content="2019-11-27T10:28:19.444Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/Database-Normalization-Explained/">
@@ -234,10 +234,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-11-26 19:54:15 / Modified: 23:45:03" itemprop="dateCreated datePublished" datetime="2019-11-26T19:54:15+13:00">2019-11-26</time>
+              <time title="Created: 2019-11-26 19:54:15" itemprop="dateCreated datePublished" datetime="2019-11-26T19:54:15+13:00">2019-11-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-27 23:28:19" itemprop="dateModified" datetime="2019-11-27T23:28:19+13:00">2019-11-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -250,7 +256,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/Database/" itemprop="url" rel="index">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
                     <span itemprop="name">Database</span>
                   </a>
                 </span>
@@ -381,7 +387,7 @@
 </tbody></table>
 <p>(Table 0)</p>
 <p>The above table in <strong>1NF</strong> will look like this : </p>
-<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example:"></a>1NF Example:</h4><table>
+<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example :"></a>1NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Name</th>
@@ -432,7 +438,7 @@
 <h4 id="What-is-a-KEY"><a href="#What-is-a-KEY" class="headerlink" title="What is a KEY?"></a>What is a KEY?</h4><p>A <strong>KEY</strong> is a value used to identify a record in a table uniquely. A <strong>KEY</strong> could be a single column or combination of multiple columns.</p>
 <p>Note: Columns in a table that are NOT used to identify a record uniquely are called non-key columns</p>
 <h4 id="What-is-a-primary-Key"><a href="#What-is-a-primary-Key" class="headerlink" title="What is a primary Key?"></a>What is a primary Key?</h4><p>A primary is a single column value used to identify a database record uniquely.</p>
-<p>It has following attributes</p>
+<p>It has following attributes : </p>
 <ul>
 <li>A primary key cannot be <strong>NULL</strong></li>
 <li>A primary key value must be <strong>unique</strong></li>
@@ -442,12 +448,13 @@
 <h4 id="What-is-a-Composite-Key"><a href="#What-is-a-Composite-Key" class="headerlink" title="What is a Composite Key?"></a>What is a Composite Key?</h4><p>A <strong>composite key</strong> is a primary key composed of multiple columns used to identify a record uniquely</p>
 <p>Take the above table as an example, the Name column is not unique. Hence, we require both Name and Address to identify a record uniquely. That is a <strong>composite key</strong>. </p>
 <p>Now, move to <strong>Second Normal Form (2NF)</strong></p>
+<hr>
 <h3 id="2NF-Second-Normal-Form-Rules"><a href="#2NF-Second-Normal-Form-Rules" class="headerlink" title="2NF(Second Normal Form) Rules"></a>2NF(Second Normal Form) Rules</h3><ul>
 <li>Rule 1 - Follow 1NF</li>
 <li>Rule 2 - <strong>Single Column Primary Key</strong></li>
 </ul>
 <p>It’s clear that we cannot move forward to make simple database in 2nd Normalization form unless we partition the table above. </p>
-<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example:"></a>2NF Example:</h4><table>
+<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example :"></a>2NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Membership ID</th>
@@ -507,7 +514,7 @@
 <p>(Table 2)</p>
 <p>We have divided our 1NF table into two tables, Table 1 and Table 2. Table 1 contains member information. Table 2 contains information on movies rented. </p>
 <p>We have introduced a new column called <strong>Membership_ID</strong> which is the primary key for Table 1. Records can be uniquely identified in Table 1 using membership id. </p>
-<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong>:</p>
+<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong> : </p>
 <p>Foreign Key references the primary key of another Table! It helps connect your tables</p>
 <ul>
 <li>A foreign key can have a different name from its primary key</li>
@@ -662,12 +669,13 @@
 </tbody></table>
 <p>(Table 1)</p>
 <p>Let’s move into <strong>3NF</strong></p>
+<hr>
 <h3 id="3NF-Third-Normal-Form-Rules"><a href="#3NF-Third-Normal-Form-Rules" class="headerlink" title="3NF(Third Normal Form) Rules"></a>3NF(Third Normal Form) Rules</h3><ul>
 <li>Rule 1 - Follow 2NF</li>
 <li>Rule 2 - Has <strong>no transitive functional dependencies</strong></li>
 </ul>
 <p>To move 2NF table into 3NF, we again need to divide the table</p>
-<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example:"></a>3NF Example:</h4><table>
+<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example :"></a>3NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Membership ID</th>
@@ -752,11 +760,16 @@
 <p>(Table 3)</p>
 <p>We have again divided our tables and created a new table which stores Salutations. There are no transitive functional dependencies, and hence our table is in 3NF. In Table 3 Salutation ID is primary key, and in Table 1 Salutation ID is the foreign to primary key in Table 3. </p>
 <p>Now our little example is at a level that cannot further be <strong>decomposed</strong> to attain higher forms of normalization. Infact, it is already in higher normalization forms. Separate efforts for moving into next levels of normalizing data are normally needed in complex databases.</p>
+<hr>
 <h3 id="Boyce-Codd-Normal-Form-BCNF"><a href="#Boyce-Codd-Normal-Form-BCNF" class="headerlink" title="Boyce-Codd Normal Form(BCNF)"></a>Boyce-Codd Normal Form(BCNF)</h3><p>Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.</p>
 <p>Sometimes BCNF is also referred as 3.5 Normal Form.</p>
+<hr>
 <h3 id="4NF-Fourth-Normal-Form-Rules"><a href="#4NF-Fourth-Normal-Form-Rules" class="headerlink" title="4NF(Fourth Normal Form) Rules"></a>4NF(Fourth Normal Form) Rules</h3><p>If no database table instance contains two or more, independent and multivalued data describing the relevant entity, then it is in 4th NF.</p>
+<hr>
 <h3 id="5NF-Fifth-Normal-Form-Rules"><a href="#5NF-Fifth-Normal-Form-Rules" class="headerlink" title="5NF(Fifth Normal Form) Rules"></a>5NF(Fifth Normal Form) Rules</h3><p>A table is in 5th Normal Form only if it is in 4NF and it cannot be decomposed into any number of smaller tables without loss of data.</p>
+<hr>
 <h3 id="6NF-Sixth-Normal-Form-Rules"><a href="#6NF-Sixth-Normal-Form-Rules" class="headerlink" title="6NF(Sixth Normal Form) Rules"></a>6NF(Sixth Normal Form) Rules</h3><p>Normally, it wouldn’t be used. </p>
+<hr>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
 <li>Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system</li>
 <li>Normalization helps produce database systems that are cost-effective and have better security modles</li>
@@ -784,8 +797,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Database-Normalization/" rel="tag"><i class="fa fa-tag"></i> Database Normalization</a>
               <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+              <a href="/tags/Database-Normalization/" rel="tag"><i class="fa fa-tag"></i> Database Normalization</a>
+              <a href="/tags/1NF/" rel="tag"><i class="fa fa-tag"></i> 1NF</a>
+              <a href="/tags/2NF/" rel="tag"><i class="fa fa-tag"></i> 2NF</a>
+              <a href="/tags/3NF/" rel="tag"><i class="fa fa-tag"></i> 3NF</a>
           </div>
 
         
@@ -838,7 +854,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anomalies-in-DBMS"><span class="nav-text">Anomalies in DBMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Normal-Forms"><span class="nav-text">Database Normal Forms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1NF-First-Normal-Form-Rules"><span class="nav-text">1NF(First Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1NF-Example"><span class="nav-text">1NF Example:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-KEY"><span class="nav-text">What is a KEY?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-primary-Key"><span class="nav-text">What is a primary Key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-Composite-Key"><span class="nav-text">What is a Composite Key?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2NF-Second-Normal-Form-Rules"><span class="nav-text">2NF(Second Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2NF-Example"><span class="nav-text">2NF Example:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Database-Foreign-Key"><span class="nav-text">Database - Foreign Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-need-a-foreign-key"><span class="nav-text">Why need a foreign key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-are-transitive-functional-dependencies"><span class="nav-text">What are transitive functional dependencies?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3NF-Third-Normal-Form-Rules"><span class="nav-text">3NF(Third Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3NF-Example"><span class="nav-text">3NF Example:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boyce-Codd-Normal-Form-BCNF"><span class="nav-text">Boyce-Codd Normal Form(BCNF)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4NF-Fourth-Normal-Form-Rules"><span class="nav-text">4NF(Fourth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5NF-Fifth-Normal-Form-Rules"><span class="nav-text">5NF(Fifth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6NF-Sixth-Normal-Form-Rules"><span class="nav-text">6NF(Sixth Normal Form) Rules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anomalies-in-DBMS"><span class="nav-text">Anomalies in DBMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Normal-Forms"><span class="nav-text">Database Normal Forms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1NF-First-Normal-Form-Rules"><span class="nav-text">1NF(First Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1NF-Example"><span class="nav-text">1NF Example :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-KEY"><span class="nav-text">What is a KEY?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-primary-Key"><span class="nav-text">What is a primary Key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-is-a-Composite-Key"><span class="nav-text">What is a Composite Key?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2NF-Second-Normal-Form-Rules"><span class="nav-text">2NF(Second Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2NF-Example"><span class="nav-text">2NF Example :</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Database-Foreign-Key"><span class="nav-text">Database - Foreign Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-need-a-foreign-key"><span class="nav-text">Why need a foreign key?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#What-are-transitive-functional-dependencies"><span class="nav-text">What are transitive functional dependencies?</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3NF-Third-Normal-Form-Rules"><span class="nav-text">3NF(Third Normal Form) Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3NF-Example"><span class="nav-text">3NF Example :</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boyce-Codd-Normal-Form-BCNF"><span class="nav-text">Boyce-Codd Normal Form(BCNF)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4NF-Fourth-Normal-Form-Rules"><span class="nav-text">4NF(Fourth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5NF-Fifth-Normal-Form-Rules"><span class="nav-text">5NF(Fifth Normal Form) Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6NF-Sixth-Normal-Form-Rules"><span class="nav-text">6NF(Sixth Normal Form) Rules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -867,7 +883,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

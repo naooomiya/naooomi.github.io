@@ -105,7 +105,7 @@
 </tbody></table>
 <p>(Table 0)</p>
 <p>The above table in <strong>1NF</strong> will look like this : </p>
-<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example:"></a>1NF Example:</h4><table>
+<h4 id="1NF-Example"><a href="#1NF-Example" class="headerlink" title="1NF Example :"></a>1NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Name</th>
@@ -156,7 +156,7 @@
 <h4 id="What-is-a-KEY"><a href="#What-is-a-KEY" class="headerlink" title="What is a KEY?"></a>What is a KEY?</h4><p>A <strong>KEY</strong> is a value used to identify a record in a table uniquely. A <strong>KEY</strong> could be a single column or combination of multiple columns.</p>
 <p>Note: Columns in a table that are NOT used to identify a record uniquely are called non-key columns</p>
 <h4 id="What-is-a-primary-Key"><a href="#What-is-a-primary-Key" class="headerlink" title="What is a primary Key?"></a>What is a primary Key?</h4><p>A primary is a single column value used to identify a database record uniquely.</p>
-<p>It has following attributes</p>
+<p>It has following attributes : </p>
 <ul>
 <li>A primary key cannot be <strong>NULL</strong></li>
 <li>A primary key value must be <strong>unique</strong></li>
@@ -166,12 +166,13 @@
 <h4 id="What-is-a-Composite-Key"><a href="#What-is-a-Composite-Key" class="headerlink" title="What is a Composite Key?"></a>What is a Composite Key?</h4><p>A <strong>composite key</strong> is a primary key composed of multiple columns used to identify a record uniquely</p>
 <p>Take the above table as an example, the Name column is not unique. Hence, we require both Name and Address to identify a record uniquely. That is a <strong>composite key</strong>. </p>
 <p>Now, move to <strong>Second Normal Form (2NF)</strong></p>
+<hr>
 <h3 id="2NF-Second-Normal-Form-Rules"><a href="#2NF-Second-Normal-Form-Rules" class="headerlink" title="2NF(Second Normal Form) Rules"></a>2NF(Second Normal Form) Rules</h3><ul>
 <li>Rule 1 - Follow 1NF</li>
 <li>Rule 2 - <strong>Single Column Primary Key</strong></li>
 </ul>
 <p>It’s clear that we cannot move forward to make simple database in 2nd Normalization form unless we partition the table above. </p>
-<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example:"></a>2NF Example:</h4><table>
+<h4 id="2NF-Example"><a href="#2NF-Example" class="headerlink" title="2NF Example :"></a>2NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Membership ID</th>
@@ -231,7 +232,7 @@
 <p>(Table 2)</p>
 <p>We have divided our 1NF table into two tables, Table 1 and Table 2. Table 1 contains member information. Table 2 contains information on movies rented. </p>
 <p>We have introduced a new column called <strong>Membership_ID</strong> which is the primary key for Table 1. Records can be uniquely identified in Table 1 using membership id. </p>
-<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong>:</p>
+<h4 id="Database-Foreign-Key"><a href="#Database-Foreign-Key" class="headerlink" title="Database - Foreign Key"></a>Database - Foreign Key</h4><p>In Table 2, Membership ID is the <strong>Foreign Key</strong> : </p>
 <p>Foreign Key references the primary key of another Table! It helps connect your tables</p>
 <ul>
 <li>A foreign key can have a different name from its primary key</li>
@@ -386,12 +387,13 @@
 </tbody></table>
 <p>(Table 1)</p>
 <p>Let’s move into <strong>3NF</strong></p>
+<hr>
 <h3 id="3NF-Third-Normal-Form-Rules"><a href="#3NF-Third-Normal-Form-Rules" class="headerlink" title="3NF(Third Normal Form) Rules"></a>3NF(Third Normal Form) Rules</h3><ul>
 <li>Rule 1 - Follow 2NF</li>
 <li>Rule 2 - Has <strong>no transitive functional dependencies</strong></li>
 </ul>
 <p>To move 2NF table into 3NF, we again need to divide the table</p>
-<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example:"></a>3NF Example:</h4><table>
+<h4 id="3NF-Example"><a href="#3NF-Example" class="headerlink" title="3NF Example :"></a>3NF Example :</h4><table>
 <thead>
 <tr>
 <th align="center">Membership ID</th>
@@ -476,11 +478,16 @@
 <p>(Table 3)</p>
 <p>We have again divided our tables and created a new table which stores Salutations. There are no transitive functional dependencies, and hence our table is in 3NF. In Table 3 Salutation ID is primary key, and in Table 1 Salutation ID is the foreign to primary key in Table 3. </p>
 <p>Now our little example is at a level that cannot further be <strong>decomposed</strong> to attain higher forms of normalization. Infact, it is already in higher normalization forms. Separate efforts for moving into next levels of normalizing data are normally needed in complex databases.</p>
+<hr>
 <h3 id="Boyce-Codd-Normal-Form-BCNF"><a href="#Boyce-Codd-Normal-Form-BCNF" class="headerlink" title="Boyce-Codd Normal Form(BCNF)"></a>Boyce-Codd Normal Form(BCNF)</h3><p>Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.</p>
 <p>Sometimes BCNF is also referred as 3.5 Normal Form.</p>
+<hr>
 <h3 id="4NF-Fourth-Normal-Form-Rules"><a href="#4NF-Fourth-Normal-Form-Rules" class="headerlink" title="4NF(Fourth Normal Form) Rules"></a>4NF(Fourth Normal Form) Rules</h3><p>If no database table instance contains two or more, independent and multivalued data describing the relevant entity, then it is in 4th NF.</p>
+<hr>
 <h3 id="5NF-Fifth-Normal-Form-Rules"><a href="#5NF-Fifth-Normal-Form-Rules" class="headerlink" title="5NF(Fifth Normal Form) Rules"></a>5NF(Fifth Normal Form) Rules</h3><p>A table is in 5th Normal Form only if it is in 4NF and it cannot be decomposed into any number of smaller tables without loss of data.</p>
+<hr>
 <h3 id="6NF-Sixth-Normal-Form-Rules"><a href="#6NF-Sixth-Normal-Form-Rules" class="headerlink" title="6NF(Sixth Normal Form) Rules"></a>6NF(Sixth Normal Form) Rules</h3><p>Normally, it wouldn’t be used. </p>
+<hr>
 <h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
 <li>Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system</li>
 <li>Normalization helps produce database systems that are cost-effective and have better security modles</li>
@@ -495,8 +502,11 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>Database Normalization</tag>
         <tag>SQL</tag>
+        <tag>Database Normalization</tag>
+        <tag>1NF</tag>
+        <tag>2NF</tag>
+        <tag>3NF</tag>
       </tags>
   </entry>
   <entry>
