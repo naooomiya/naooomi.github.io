@@ -65,7 +65,7 @@ This is one table that is without normalization because the Movies and Category 
 
 The above table in **1NF** will look like this : 
 
-#### 1NF Example: 
+#### 1NF Example : 
 
 | Name	 | Address            | Movies Rented	     | Salutation | Category |
 |:------:|:------------------:|:--------------------:|:----------:|:--------:|
@@ -87,7 +87,7 @@ Note: Columns in a table that are NOT used to identify a record uniquely are cal
 #### What is a primary Key?
 A primary is a single column value used to identify a database record uniquely.
 
-It has following attributes
+It has following attributes : 
 - A primary key cannot be **NULL**
 - A primary key value must be **unique**
 - The primary key values should rarely be changed
@@ -100,6 +100,8 @@ Take the above table as an example, the Name column is not unique. Hence, we req
 
 Now, move to **Second Normal Form (2NF)**
 
+---
+
 ### 2NF(Second Normal Form) Rules
 
 - Rule 1 - Follow 1NF
@@ -107,7 +109,7 @@ Now, move to **Second Normal Form (2NF)**
 
 It's clear that we cannot move forward to make simple database in 2nd Normalization form unless we partition the table above. 
 
-#### 2NF Example: 
+#### 2NF Example : 
 
 | Membership ID | Name   | Physical Address   | Salutation |
 |:-------------:|:------:|:------------------:|:----------:|
@@ -132,7 +134,7 @@ We have divided our 1NF table into two tables, Table 1 and Table 2. Table 1 cont
 We have introduced a new column called **Membership_ID** which is the primary key for Table 1. Records can be uniquely identified in Table 1 using membership id. 
 
 #### Database - Foreign Key
-In Table 2, Membership ID is the **Foreign Key**:
+In Table 2, Membership ID is the **Foreign Key** : 
 
 Foreign Key references the primary key of another Table! It helps connect your tables
 - A foreign key can have a different name from its primary key
@@ -203,13 +205,15 @@ Consider the table 1. Changing the non-key column Name may change Salutation
 
 Let's move into **3NF**
 
+---
+
 ### 3NF(Third Normal Form) Rules
 - Rule 1 - Follow 2NF
 - Rule 2 - Has **no transitive functional dependencies**
 
 To move 2NF table into 3NF, we again need to divide the table
 
-#### 3NF Example:
+#### 3NF Example :
 
 | Membership ID | Name   | Physical Address   | Salutation ID | 
 |:-------------:|:------:|:------------------:|:-------------:|
@@ -243,20 +247,29 @@ We have again divided our tables and created a new table which stores Salutation
 
 Now our little example is at a level that cannot further be **decomposed** to attain higher forms of normalization. Infact, it is already in higher normalization forms. Separate efforts for moving into next levels of normalizing data are normally needed in complex databases.
 
+---
+
 ### Boyce-Codd Normal Form(BCNF)
 Even when a database is in 3rd Normal Form, still there would be anomalies resulted if it has more than one Candidate Key.
 
 Sometimes BCNF is also referred as 3.5 Normal Form.
 
+---
+
 ### 4NF(Fourth Normal Form) Rules
 If no database table instance contains two or more, independent and multivalued data describing the relevant entity, then it is in 4th NF.
+
+---
 
 ### 5NF(Fifth Normal Form) Rules
 A table is in 5th Normal Form only if it is in 4NF and it cannot be decomposed into any number of smaller tables without loss of data.
 
+---
+
 ### 6NF(Sixth Normal Form) Rules
 Normally, it wouldn't be used. 
 
+---
 
 ## Summary
 - Database designing is critical to the successful implementation of a database management system that meets the data requirements of an enterprise system
