@@ -1,6 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[LeetCode] 760. Find Anagram Mappings</title>
+    <url>/category/LeetCode-760-Find-Anagram-Mappings/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two lists <strong>A</strong> and <strong>B</strong>, and <strong>B</strong> is an anagram of <strong>A</strong>. <strong>B</strong> is an anagram of <strong>A</strong> means <strong>B</strong> is made by randomizing the order of the elements in <strong>A</strong>.<br>We want to find an index mapping <strong>P</strong>, from <strong>A</strong> to <strong>B</strong>.<br><strong>A</strong> mapping <strong>P[i] = j</strong> means the ith element in <strong>A</strong> appears in <strong>B</strong> at index j.<br>These lists <strong>A</strong> and <strong>B</strong> may contain duplicates. If there are multiple answers, output any of them.</p>
+<a id="more"></a>
+
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, given</p>
+<blockquote>
+<p>A = [12, 28, 46, 32, 50]<br>B = [50, 12, 32, 46, 28]</p>
+</blockquote>
+<p>We should return</p>
+<blockquote>
+<p>[1, 4, 3, 2, 0]</p>
+</blockquote>
+<p>as <strong>P[0] = 1</strong> because the 0th element of <strong>A</strong> appears at <strong>B[1]</strong>, and <strong>P[1]</strong> = <strong>4</strong> because the 1st element of A appears at <strong>B[4]</strong>, and so on.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p><strong>A</strong>, <strong>B</strong> have equal lengths in range <strong>[1, 100]</strong>.<br><strong>A[i]</strong>, <strong>B[i]</strong> are integers in range <strong>[0, 10^5]</strong>.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong>P[i] = j</strong>, <strong>A[i] = B[j]</strong>. Traverse list <strong>A</strong>, map each value of <strong>A</strong> to its index in <strong>B</strong>.<br>And before that, we need to traverse <strong>B</strong>, and find a hash table that can map value of <strong>B</strong> to its index</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] anagramMappings(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">        <span class="comment">// key is the index value from B</span></span><br><span class="line">        <span class="comment">// value is the index from B</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; mapB = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; B.length; i++)</span><br><span class="line">            mapB.put(B[i], i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++)</span><br><span class="line">            result[j] = mapB.get(A[j]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p>Traverse list <strong>A</strong> and <strong>B</strong> : <strong>O(n)</strong></p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Use a hash table to store the mapping from value of <strong>B</strong> to its index: <strong>O(n)</strong></p>
+]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Hashing</category>
+      </categories>
+      <tags>
+        <tag>Hashing</tag>
+        <tag>LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hashing Data Structure | Part 1 (Introduction)</title>
+    <url>/category/Hashing-Data-Structure-Part-1-Introduction/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Hashing is an important Data Structure which is designed to use a special function called the <strong>Hash Function</strong> which is used to map a given value with a particular key for faster access of elements. The efficiency of mapping depends of the efficiency of the hash function used.</p>
+<a id="more"></a>
+
+<p><strong>Hashing</strong> - provides <strong>O(1)</strong> time on average for insert, search and delete<br><strong>Hashing Function</strong> - hash function maps a big number or string to a small integer that can be used as index in hash table</p>
+<p>Suppose we want to design a system for storing employee records keyed using phone numbers. And we want following queries to be performed efficiently:</p>
+<blockquote>
+<ul>
+<li>Insert a phone number and corresponding information</li>
+<li>Search a phone number and fetch the information</li>
+<li>Delete a phone number and related information</li>
+</ul>
+</blockquote>
+<p>We can think of using the following data structures to maintain information about different phone numbers. </p>
+<blockquote>
+<ol>
+<li>Array of phone numbers and records</li>
+<li>Linked list of phone numbers and records</li>
+<li>Balanced binary search tree with phone numbers as keys</li>
+<li>Direct Access Table</li>
+</ol>
+</blockquote>
+<p>For <strong>arrays and linked lists</strong>, we need to search a linear fashion, which can be costly in practice. If we use arrays and keep the data sorted, then a phone number can be search in <strong>O(logn)</strong> time using Binary Search, but insert and delete operations become costly as we have to maintain sorted order. </p>
+<p>With <strong>balanced binary search tree</strong>, we get moderate search, insert and delete times. All of these operations can be guaranteed to be in <strong>O(logn)</strong> time.</p>
+<p>Another solution that one can think of is to use a <strong>direct access table</strong> where we make a big array and use phone numbers as index in the array. An entry in arrays is NIL if phone number is not present, else the array entry stores pointer to records corresponding to phone number. Time complexity wise this solution is the best among all, we can do all operations in <strong>O(1)</strong>. For example to insert a phone number, we create a record with details of given phone number, use phone number as index and store the pointer to the created record in table.<br>This solution has many practical limitations. First problem with this solution is extra space required is huge. For example if phone number is n digits, we need <strong>O(m*10^n)</strong> space for table where <strong>m</strong> is size of a pointer to record. Another problem is an integer in a programming language may not store n digits.<br>Due to above limitations Direct Access Table cannot always be used. Hashing is the solution that can be used in almost all such situations and performs extremely well compared to above data structures like Array, Linked List, Balanced BST in practice. With hashing we get <strong>O(1)</strong> search time on average(under reasonable assumptions) and <strong>O(n)</strong> in worst case. </p>
+<p>Hashing is an improvement over Direct Access Table. The idea is to use hash function that converts a given phone number or any other key to a smaller number and uses the small number as index in a table called hash table. </p>
+<h3 id="Hash-Function"><a href="#Hash-Function" class="headerlink" title="Hash Function"></a>Hash Function</h3><p>A function that converts a given big phone number to a small practical integer value. The mapped integer value is used as an index in hash table. In simple terms, a hash function maps a big number or string to a small integer that can be used as index in hash table. </p>
+<p>A good hash function should have following properties:</p>
+<blockquote>
+<ol>
+<li>Efficiently computable</li>
+<li>Should uniformly distribute the keys(Each table position equally likely for each key)</li>
+</ol>
+</blockquote>
+<p>For example for phone numbers a bad hash function is to take first three digits. A better function is consider last three digits. Please note the this may not be the best hash function. There may be better ways.</p>
+<h3 id="Hash-Table"><a href="#Hash-Table" class="headerlink" title="Hash Table"></a>Hash Table</h3><p>An array that stores pointers to records corresponding to a given phone number. An entry in hash table is NIL if no existing phone number has hash function value equal to the index for the entry. </p>
+<h4 id="Collision-Handling"><a href="#Collision-Handling" class="headerlink" title="Collision Handling"></a>Collision Handling</h4><p>Since a hash function gets us a small number for a big key, there is possibility that two keys result in same value. The situation where a newly inserted key maps to an already occupied slot in hash table is called collision and must be handled using some collision handling technique. Following are the ways to handle collisions:</p>
+<blockquote>
+<p>• <strong>Chaining</strong> : The idea is to make each cell of hash table point to a <strong>linked list</strong> of records that have same hash function value. Chaining is simple, but requires additional memory outside the table.<br>• <strong>Open Addressing</strong> : In open addressing, all elements are stored in the hash table itself. Each table entry contains either a record or NIL. When searching for an element, we one by one examine table slots until the desired element is found or it is clear that the element is not in the table. </p>
+</blockquote>
+<ul>
+<li>Linear Probing</li>
+<li>Quadratic Probing</li>
+<li>Double Hashing</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+        <category>Hashing</category>
+      </categories>
+      <tags>
+        <tag>Data Stracture</tag>
+        <tag>Hashing</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Database Normalization Explained</title>
     <url>/category/Database-Normalization-Explained/</url>
     <content><![CDATA[<p><strong>Normalization</strong> is a database design technique which organizes tables in a manner that avoids data redundancy, insertion anomaly, update anomaly and deletion anomaly.</p>
@@ -502,8 +590,8 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>Database Normalization</tag>
+        <tag>SQL</tag>
         <tag>1NF</tag>
         <tag>2NF</tag>
         <tag>3NF</tag>
@@ -547,16 +635,16 @@
   <entry>
     <title>[LeetCode] 35. Search Insert Position</title>
     <url>/category/LeetCode-35-Search-Insert-Position/</url>
-    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
 <p>You may assume no duplicates in the array.</p>
 <a id="more"></a>
 
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>Input: [1,3,5,6], 5<br>Output: 2</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h4><p>Input: [1,3,5,6], 2<br>Output: 1</p>
-<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3:"></a>Example 3:</h4><p>Input: [1,3,5,6], 7<br>Output: 4</p>
-<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4:"></a>Example 4:</h4><p>Input: [1,3,5,6], 0<br>Output: 0</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [1,3,5,6], 5<br>Output: 2</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [1,3,5,6], 2<br>Output: 1</p>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h4><p>Input: [1,3,5,6], 7<br>Output: 4</p>
+<h4 id="Example-4"><a href="#Example-4" class="headerlink" title="Example 4"></a>Example 4</h4><p>Input: [1,3,5,6], 0<br>Output: 0</p>
 <hr>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nums[pivot] == target) <span class="keyword">return</span> pivot;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &gt; target) right = pivot - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &lt; target) left = pivot + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nums[pivot] == target) <span class="keyword">return</span> pivot;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &gt; target) right = pivot - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[pivot] &lt; target) left = pivot + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode Easy</category>
         <category>Binary Search</category>
@@ -581,7 +669,7 @@
 </ol>
 <p>Though many resources claim there to be another category of SQL clauses TCL - Transaction Control Language.</p>
 <p><img src="https://i.imgur.com/uZg5Qre.png" alt="Types of SQL Commands"></p>
-<h3 id="1-DDL-Data-Definition-Language"><a href="#1-DDL-Data-Definition-Language" class="headerlink" title="1. DDL(Data Definition Language):"></a>1. DDL(Data Definition Language):</h3><p>DDL or Data Definition Language actually consists of the SQL commands that can be used to define the database schema. It simpy deals with descriptions of the database schema and is used to create and modify the structure of database objects in the database.</p>
+<h3 id="1-DDL-Data-Definition-Language"><a href="#1-DDL-Data-Definition-Language" class="headerlink" title="1. DDL(Data Definition Language)"></a>1. DDL(Data Definition Language)</h3><p>DDL or Data Definition Language actually consists of the SQL commands that can be used to define the database schema. It simpy deals with descriptions of the database schema and is used to create and modify the structure of database objects in the database.</p>
 <p><strong>Examples of DDL commands:</strong></p>
 <ul>
 <li>CREATE - is used to create the database or its objects (like table, index, function, views, store procedure and triggers)</li>
@@ -591,25 +679,26 @@
 <li>COMMENT - is used to add comments to the data dictionary</li>
 <li>RENAME - is used to rename an object existing in the database</li>
 </ul>
-<h3 id="2-DQL-Data-Query-Language"><a href="#2-DQL-Data-Query-Language" class="headerlink" title="2. DQL (Data Query Language):"></a>2. DQL (Data Query Language):</h3><p>DQL statements are used for performing queries on the data within schema objects. The purpose of DQL Command is to get some schema relation based on the query passed to it.</p>
+<h3 id="2-DQL-Data-Query-Language"><a href="#2-DQL-Data-Query-Language" class="headerlink" title="2. DQL (Data Query Language)"></a>2. DQL (Data Query Language)</h3><p>DQL statements are used for performing queries on the data within schema objects. The purpose of DQL Command is to get some schema relation based on the query passed to it.</p>
 <p><strong>Eample of DQL:</strong></p>
 <ul>
 <li>SELECT - is used to retrieve data from the database</li>
 </ul>
-<h3 id="3-DML-Data-Manipulation-Language"><a href="#3-DML-Data-Manipulation-Language" class="headerlink" title="3. DML(Data Manipulation Language):"></a>3. DML(Data Manipulation Language):</h3><p>The SQL commands that deals with the manipulation of data present in the database belong to DML or Data Manipulation Language and this includes most of the SQL statements.</p>
+<h3 id="3-DML-Data-Manipulation-Language"><a href="#3-DML-Data-Manipulation-Language" class="headerlink" title="3. DML(Data Manipulation Language)"></a>3. DML(Data Manipulation Language)</h3><p>The SQL commands that deals with the manipulation of data present in the database belong to DML or Data Manipulation Language and this includes most of the SQL statements.</p>
 <p><strong>Eamples of DML:</strong></p>
 <ul>
 <li>INSERT - is used to insert data into a table</li>
 <li>UPDATE - is used to update existing data within a table</li>
 <li>DELETE - is used to delete records from a database table</li>
 </ul>
-<h3 id="4-DCL-Data-Control-Language"><a href="#4-DCL-Data-Control-Language" class="headerlink" title="4. DCL(Data Control Language):"></a>4. DCL(Data Control Language):</h3><p>DCL included commands such as GRANT and REVOKE which mainly deals with the rights, permissions and other controls of the database system.</p>
+<h3 id="4-DCL-Data-Control-Language"><a href="#4-DCL-Data-Control-Language" class="headerlink" title="4. DCL(Data Control Language)"></a>4. DCL(Data Control Language)</h3><p>DCL included commands such as GRANT and REVOKE which mainly deals with the rights, permissions and other controls of the database system.</p>
 <p><strong>Examples:</strong></p>
 <ul>
 <li>GRANT - gives user’s access privileges to database</li>
 <li>REVOKE - withdraw user’s access privileges given by using the GRANT command</li>
 </ul>
-<h3 id="5-TCC-Transaction-Control-Commands-TCL-commands-deals-with-the-transaction-within-the-database"><a href="#5-TCC-Transaction-Control-Commands-TCL-commands-deals-with-the-transaction-within-the-database" class="headerlink" title="5. TCC(Transaction Control Commands):TCL commands deals with the transaction within the database."></a>5. TCC(Transaction Control Commands):TCL commands deals with the transaction within the database.</h3><p><strong>Examples of TCL commands:</strong></p>
+<h3 id="5-TCC-Transaction-Control-Commands"><a href="#5-TCC-Transaction-Control-Commands" class="headerlink" title="5. TCC(Transaction Control Commands)"></a>5. TCC(Transaction Control Commands)</h3><p>TCL commands deals with the transaction within the database</p>
+<p><strong>Examples of TCL commands:</strong></p>
 <ul>
 <li>COMMIT - commits a transaction</li>
 <li>ROLLBACK - rollbacks a transaction in case of anu error occurs</li>
@@ -627,15 +716,15 @@
   <entry>
     <title>[LeetCode] 4. Median of Two Sorted Arrays</title>
     <url>/category/LeetCode-4-Median-of-Two-Sorted-Arrays/</url>
-    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
 <a id="more"></a>
 
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>nums1 = [1, 3]<br>nums2 = [2]</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>nums1 = [1, 3]<br>nums2 = [2]</p>
 <p>The median is 2.0</p>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2:"></a>Example 2:</h4><p>nums1 = [1, 2]<br>nums2 = [3, 4]  </p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>nums1 = [1, 2]<br>nums2 = [3, 4]  </p>
 <p>The median is (2 + 3)/2 = 2.5</p>
 <hr>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Find the median of two sorted arrays:</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Find the median of two sorted arrays:</p>
 <p>eg.<br>arr1 = [1, 3, 5]<br>arr2 = [2, 4, 6]</p>
 <p>[1, 2, 3, 4, 5, 6] (merge in a sorted order)</p>
 <p>median(arr1, arr2) = (3+4) / 2 = 3.5 </p>
@@ -658,13 +747,13 @@
   <entry>
     <title>[LeetCode] 349. Intersection of Two Arrays</title>
     <url>/category/LeetCode-349-Intersection-of-Two-Arrays/</url>
-    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given two arrays, write a function to compute their intersection.</p>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two arrays, write a function to compute their intersection.</p>
 <a id="more"></a>
 
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1:"></a>Example 1:</h4><p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2]</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>Example 2:<br>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [9,4]</p>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p>Each element in the result must be unique.<br>The result can be in any order.</p>
-<h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions:"></a>Solutions:</h3><p>Time: O(nlogn)</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2]</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [9,4]</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>Each element in the result must be unique.<br>The result can be in any order.</p>
+<h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h3><p>Time: O(nlogn)</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// loop num2 find if element in nums2 also in num1</span></span><br><span class="line">        <span class="comment">// if yes add to set</span></span><br><span class="line">        <span class="keyword">for</span> (Integer num : nums2)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">if</span> (binarySearch(nums1, num))</span><br><span class="line">           &#123;</span><br><span class="line">               set.add(num);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// convert HashSet to array</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[set.size()];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : set)</span><br><span class="line">        &#123;</span><br><span class="line">            result[i++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, pivot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (target &gt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                left = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                right = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode Easy</category>

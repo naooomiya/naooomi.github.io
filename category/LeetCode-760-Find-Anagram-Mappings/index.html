@@ -48,14 +48,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="This is Naomi_W.">
-<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="DescriptionGiven two lists A and B, and B is an anagram of A. B is an anagram of A means B is made by randomizing the order of the elements in A.We want to find an index mapping P, from A to B.A mappi">
+<meta name="keywords" content="Hashing,LeetCode(Easy)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[LeetCode] 760. Find Anagram Mappings">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;LeetCode-760-Find-Anagram-Mappings&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
+<meta property="og:description" content="DescriptionGiven two lists A and B, and B is an anagram of A. B is an anagram of A means B is made by randomizing the order of the elements in A.We want to find an index mapping P, from A to B.A mappi">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-30T10:37:04.197Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://naooomi.github.io/archives/2019/">
+<link rel="canonical" href="https://naooomi.github.io/category/LeetCode-760-Find-Anagram-Mappings/">
 
 
 <script id="page-configurations">
@@ -63,13 +67,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>Archive | This is Naomi_W.</title>
+  <title>[LeetCode] 760. Find Anagram Mappings | This is Naomi_W.</title>
   
 
 
@@ -203,209 +207,141 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 9 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/LeetCode-760-Find-Anagram-Mappings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [LeetCode] 760. Find Anagram Mappings
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-11-30 23:28:04 / Modified: 23:37:04" itemprop="dateCreated datePublished" datetime="2019-11-30T23:28:04+13:00">2019-11-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode-Easy/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode Easy</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hashing/" itemprop="url" rel="index">
+                    <span itemprop="name">Hashing</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
+        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two lists <strong>A</strong> and <strong>B</strong>, and <strong>B</strong> is an anagram of <strong>A</strong>. <strong>B</strong> is an anagram of <strong>A</strong> means <strong>B</strong> is made by randomizing the order of the elements in <strong>A</strong>.<br>We want to find an index mapping <strong>P</strong>, from <strong>A</strong> to <strong>B</strong>.<br><strong>A</strong> mapping <strong>P[i] = j</strong> means the ith element in <strong>A</strong> appears in <strong>B</strong> at index j.<br>These lists <strong>A</strong> and <strong>B</strong> may contain duplicates. If there are multiple answers, output any of them.</p>
+<a id="more"></a>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, given</p>
+<blockquote>
+<p>A = [12, 28, 46, 32, 50]<br>B = [50, 12, 32, 46, 28]</p>
+</blockquote>
+<p>We should return</p>
+<blockquote>
+<p>[1, 4, 3, 2, 0]</p>
+</blockquote>
+<p>as <strong>P[0] = 1</strong> because the 0th element of <strong>A</strong> appears at <strong>B[1]</strong>, and <strong>P[1]</strong> = <strong>4</strong> because the 1st element of A appears at <strong>B[4]</strong>, and so on.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p><strong>A</strong>, <strong>B</strong> have equal lengths in range <strong>[1, 100]</strong>.<br><strong>A[i]</strong>, <strong>B[i]</strong> are integers in range <strong>[0, 10^5]</strong>.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong>P[i] = j</strong>, <strong>A[i] = B[j]</strong>. Traverse list <strong>A</strong>, map each value of <strong>A</strong> to its index in <strong>B</strong>.<br>And before that, we need to traverse <strong>B</strong>, and find a hash table that can map value of <strong>B</strong> to its index</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] anagramMappings(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">        <span class="comment">// key is the index value from B</span></span><br><span class="line">        <span class="comment">// value is the index from B</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; mapB = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; B.length; i++)</span><br><span class="line">            mapB.put(B[i], i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++)</span><br><span class="line">            result[j] = mapB.get(A[j]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-30T23:28:04+13:00"
-              content="2019-11-30">
-          11-30
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/LeetCode-760-Find-Anagram-Mappings/" itemprop="url">
-            <span itemprop="name">[LeetCode] 760. Find Anagram Mappings</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-29T16:50:01+13:00"
-              content="2019-11-29">
-          11-29
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/Hashing-Data-Structure-Part-1-Introduction/" itemprop="url">
-            <span itemprop="name">Hashing Data Structure | Part 1 (Introduction)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-26T19:54:15+13:00"
-              content="2019-11-26">
-          11-26
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/Database-Normalization-Explained/" itemprop="url">
-            <span itemprop="name">Database Normalization Explained</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-25T17:48:33+13:00"
-              content="2019-11-25">
-          11-25
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/ASCII-ANSI-and-Unicode/" itemprop="url">
-            <span itemprop="name">ASCII, ANSI and Unicode</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-23T17:48:22+13:00"
-              content="2019-11-23">
-          11-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/LeetCode-35-Search-Insert-Position/" itemprop="url">
-            <span itemprop="name">[LeetCode] 35. Search Insert Position</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-19T17:19:31+13:00"
-              content="2019-11-19">
-          11-19
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/SQL-Commands/" itemprop="url">
-            <span itemprop="name">SQL Commands</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-18T23:31:42+13:00"
-              content="2019-11-18">
-          11-18
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/LeetCode-4-Median-of-Two-Sorted-Arrays/" itemprop="url">
-            <span itemprop="name">[LeetCode] 4. Median of Two Sorted Arrays</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-17T13:21:10+13:00"
-              content="2019-11-17">
-          11-17
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/LeetCode-349-Intersection-of-Two-Arrays/" itemprop="url">
-            <span itemprop="name">[LeetCode] 349. Intersection of Two Arrays</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-01T00:39:27+13:00"
-              content="2019-11-01">
-          11-01
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/How%20to%20improve%20SQL%20queries%20perofrmace/" itemprop="url">
-            <span itemprop="name">How to improve SQL queries performance</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p>Traverse list <strong>A</strong> and <strong>B</strong> : <strong>O(n)</strong></p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Use a hash table to store the mapping from value of <strong>B</strong> to its index: <strong>O(n)</strong></p>
 
     </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End <i class="fas fa-coffee"></i> Thanks for your time-------------</div>
+    
+</div>
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hashing/" rel="tag"><i class="fa fa-tag"></i> Hashing</a>
+              <a href="/tags/LeetCode-Easy/" rel="tag"><i class="fa fa-tag"></i> LeetCode(Easy)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/category/Hashing-Data-Structure-Part-1-Introduction/" rel="next" title="Hashing Data Structure | Part 1 (Introduction)">
+                  <i class="fa fa-chevron-left"></i> Hashing Data Structure | Part 1 (Introduction)
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -434,6 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note"><span class="nav-text">Note:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Complexity"><span class="nav-text">Time Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Complexity"><span class="nav-text">Space Complexity</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
