@@ -47,14 +47,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="This is Naomi_W.">
-<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;tags&#x2F;LeetCode-Hard&#x2F;index.html">
+  <meta name="description" content="DescriptionIn a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times. Return the element repeated N times.">
+<meta name="keywords" content="Hashing,LeetCode(Easy)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[LeetCode] 961. N-Repeated Element in Size 2N Array">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;LeetCode-961-N-Repeated-Element-in-Size-2N-Array&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
+<meta property="og:description" content="DescriptionIn a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times. Return the element repeated N times.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-01T10:02:01.093Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://naooomi.github.io/tags/LeetCode-Hard/">
+<link rel="canonical" href="https://naooomi.github.io/category/LeetCode-961-N-Repeated-Element-in-Size-2N-Array/">
 
 
 <script id="page-configurations">
@@ -62,13 +66,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Tag: LeetCode(Hard) | This is Naomi_W.</title>
+  <title>[LeetCode] 961. N-Repeated Element in Size 2N Array | This is Naomi_W.</title>
   
 
 
@@ -202,50 +206,142 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">LeetCode(Hard)
-          <small>Tag</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/LeetCode-961-N-Repeated-Element-in-Size-2N-Array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          [LeetCode] 961. N-Repeated Element in Size 2N Array
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-01 22:54:02 / Modified: 23:02:01" itemprop="dateCreated datePublished" datetime="2019-12-01T22:54:02+13:00">2019-12-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LeetCode-Easy/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode Easy</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hashing/" itemprop="url" rel="index">
+                    <span itemprop="name">Hashing</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>654</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>In a array A of size <strong>2N</strong>, there are <strong>N+1</strong> unique elements, and exactly one of these elements is repeated <strong>N</strong> times.</p>
+<p>Return the element repeated <strong>N</strong> times.</p>
+<a id="more"></a>
+
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [1,2,3,3]<br>Output: 3</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [2,1,2,5,3,2]<br>Output: 2</p>
+<h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h4><p>Input: [5,1,5,2,5,3,5,4]<br>Output: 5</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><ol>
+<li>4 &lt;= <strong>A.length</strong> &lt;= 10000</li>
+<li>0 &lt;= <strong>A[i]</strong> &lt; 10000</li>
+<li><strong>A.length</strong> is even</li>
+</ol>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; count = <span class="keyword">new</span> HashMap();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x : A)</span><br><span class="line">        &#123;</span><br><span class="line">            count.put(x, count.getOrDefault(x, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : count.keySet())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(i) &gt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><strong>O(N)</strong>, where N is the length of A</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Space Complexity: <strong>O(N)</strong></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-18T23:31:42+13:00"
-              content="2019-11-18">
-          11-18
-        </time>
-      </div>
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End <i class="fas fa-coffee"></i> Thanks for your time-------------</div>
+    
+</div>
+  
+</div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/category/LeetCode-4-Median-of-Two-Sorted-Arrays/" itemprop="url">
-            <span itemprop="name">[LeetCode] 4. Median of Two Sorted Arrays</span>
-          </a>
-      </h2>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hashing/" rel="tag"><i class="fa fa-tag"></i> Hashing</a>
+              <a href="/tags/LeetCode-Easy/" rel="tag"><i class="fa fa-tag"></i> LeetCode(Easy)</a>
+          </div>
 
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/category/LeetCode-760-Find-Anagram-Mappings/" rel="next" title="[LeetCode] 760. Find Anagram Mappings">
+                  <i class="fa fa-chevron-left"></i> [LeetCode] 760. Find Anagram Mappings
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/category/LeetCode-1207-Unique-Number-of-Occurrences/" rel="prev" title="[LeetCode] 1207. Unique Number of Occurrences">
+                  [LeetCode] 1207. Unique Number of Occurrences <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -274,6 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-2"><span class="nav-text">Example 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-3"><span class="nav-text">Example 3</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Complexity"><span class="nav-text">Time Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Complexity"><span class="nav-text">Space Complexity</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
