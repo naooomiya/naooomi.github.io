@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="DescriptionGiven two lists A and B, and B is an anagram of A. B is an anagram of A means B is made by randomizing the order of the elements in A.We want to find an index mapping P, from A to B.A mappi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-30T10:37:04.197Z">
+<meta property="og:updated_time" content="2019-12-02T09:53:54.121Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/LeetCode-760-Find-Anagram-Mappings/">
@@ -233,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-11-30 23:28:04 / Modified: 23:37:04" itemprop="dateCreated datePublished" datetime="2019-11-30T23:28:04+13:00">2019-11-30</time>
+              <time title="Created: 2019-11-30 23:28:04" itemprop="dateCreated datePublished" datetime="2019-11-30T23:28:04+13:00">2019-11-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-02 22:53:54" itemprop="dateModified" datetime="2019-12-02T22:53:54+13:00">2019-12-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -281,6 +287,7 @@
         <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two lists <strong>A</strong> and <strong>B</strong>, and <strong>B</strong> is an anagram of <strong>A</strong>. <strong>B</strong> is an anagram of <strong>A</strong> means <strong>B</strong> is made by randomizing the order of the elements in <strong>A</strong>.<br>We want to find an index mapping <strong>P</strong>, from <strong>A</strong> to <strong>B</strong>.<br><strong>A</strong> mapping <strong>P[i] = j</strong> means the ith element in <strong>A</strong> appears in <strong>B</strong> at index j.<br>These lists <strong>A</strong> and <strong>B</strong> may contain duplicates. If there are multiple answers, output any of them.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, given</p>
 <blockquote>
 <p>A = [12, 28, 46, 32, 50]<br>B = [50, 12, 32, 46, 28]</p>
@@ -291,6 +298,7 @@
 </blockquote>
 <p>as <strong>P[0] = 1</strong> because the 0th element of <strong>A</strong> appears at <strong>B[1]</strong>, and <strong>P[1]</strong> = <strong>4</strong> because the 1st element of A appears at <strong>B[4]</strong>, and so on.</p>
 <h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p><strong>A</strong>, <strong>B</strong> have equal lengths in range <strong>[1, 100]</strong>.<br><strong>A[i]</strong>, <strong>B[i]</strong> are integers in range <strong>[0, 10^5]</strong>.</p>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong>P[i] = j</strong>, <strong>A[i] = B[j]</strong>. Traverse list <strong>A</strong>, map each value of <strong>A</strong> to its index in <strong>B</strong>.<br>And before that, we need to traverse <strong>B</strong>, and find a hash table that can map value of <strong>B</strong> to its index</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] anagramMappings(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">        <span class="comment">// key is the index value from B</span></span><br><span class="line">        <span class="comment">// value is the index from B</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; mapB = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; B.length; i++)</span><br><span class="line">            mapB.put(B[i], i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++)</span><br><span class="line">            result[j] = mapB.get(A[j]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -388,7 +396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -464,7 +472,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 5.1k</span>
+  <span class="post-count">Total Words : 5.6k</span>
 </div>
 
 <!--
@@ -472,12 +480,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">24k</span>
+    <span title="Symbols count total">27k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22 mins.</span>
+    <span title="Reading time total">24 mins.</span>
 -->
 </div>
 

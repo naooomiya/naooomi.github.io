@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="DescriptionGiven an array of integers arr, write a function that returns true if and only if the number of occurrences of each value in the array is unique.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-01T10:20:03.755Z">
+<meta property="og:updated_time" content="2019-12-02T09:54:16.286Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/LeetCode-1207-Unique-Number-of-Occurrences/">
@@ -233,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-01 22:58:54 / Modified: 23:20:03" itemprop="dateCreated datePublished" datetime="2019-12-01T22:58:54+13:00">2019-12-01</time>
+              <time title="Created: 2019-12-01 22:58:54" itemprop="dateCreated datePublished" datetime="2019-12-01T22:58:54+13:00">2019-12-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-02 22:54:16" itemprop="dateModified" datetime="2019-12-02T22:54:16+13:00">2019-12-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -281,6 +287,7 @@
         <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <strong>arr</strong>, write a function that returns true if and only if the number of occurrences of each value in the array is unique.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: arr = [1,2,2,1,1,3]<br>Output: true</p>
 <p>Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: arr = [1,2]<br>Output: false</p>
@@ -289,6 +296,7 @@
 <li>1 &lt;= arr.length &lt;= 1000</li>
 <li>-1000 &lt;= arr[i] &lt;= 1000</li>
 </ul>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">uniqueOccurrences</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            map.put(arr[i], map.getOrDefault(arr[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = map.size();</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet(map.values());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> set.size() &lt; count ? <span class="keyword">false</span> : <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
@@ -324,6 +332,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/category/LeetCode-811-Subdomain-Visit-Count/" rel="prev" title="[LeetCode] 811. Subdomain Visit Count">
+                  [LeetCode] 811. Subdomain Visit Count <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -378,7 +389,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -454,7 +465,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 5.1k</span>
+  <span class="post-count">Total Words : 5.6k</span>
 </div>
 
 <!--
@@ -462,12 +473,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">24k</span>
+    <span title="Symbols count total">27k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22 mins.</span>
+    <span title="Reading time total">24 mins.</span>
 -->
 </div>
 

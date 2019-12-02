@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="DescriptionGiven two arrays, write a function to compute their intersection.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T23:34:13.107Z">
+<meta property="og:updated_time" content="2019-12-02T09:53:35.930Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/LeetCode-349-Intersection-of-Two-Arrays/">
@@ -241,7 +241,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-30 12:34:13" itemprop="dateModified" datetime="2019-11-30T12:34:13+13:00">2019-11-30</time>
+                <time title="Modified: 2019-12-02 22:53:35" itemprop="dateModified" datetime="2019-12-02T22:53:35+13:00">2019-12-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,10 +286,11 @@
       
         <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two arrays, write a function to compute their intersection.</p>
 <a id="more"></a>
-
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2]</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [9,4]</p>
 <h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>Each element in the result must be unique.<br>The result can be in any order.</p>
+<hr>
 <h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h3><p>Time: O(nlogn)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// loop num2 find if element in nums2 also in num1</span></span><br><span class="line">        <span class="comment">// if yes add to set</span></span><br><span class="line">        <span class="keyword">for</span> (Integer num : nums2)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">if</span> (binarySearch(nums1, num))</span><br><span class="line">           &#123;</span><br><span class="line">               set.add(num);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// convert HashSet to array</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[set.size()];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : set)</span><br><span class="line">        &#123;</span><br><span class="line">            result[i++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, pivot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (target &gt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                left = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                right = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
@@ -383,7 +384,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -459,7 +460,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 5.1k</span>
+  <span class="post-count">Total Words : 5.6k</span>
 </div>
 
 <!--
@@ -467,12 +468,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">24k</span>
+    <span title="Symbols count total">27k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22 mins.</span>
+    <span title="Reading time total">24 mins.</span>
 -->
 </div>
 

@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[LeetCode] 811. Subdomain Visit Count</title>
+    <url>/category/LeetCode-811-Subdomain-Visit-Count/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>A website domain like <strong>“discuss.leetcode.com”</strong> consists of various subdomains. At the top level, we have <strong>“com”</strong>, at the next level, we have <strong>“leetcode.com”</strong>, and at the lowest level, <strong>“discuss.leetcode.com”</strong>. When we visit a domain like <strong>“discuss.leetcode.com”</strong>, we will also visit the parent domains <strong>“leetcode.com”</strong> and <strong>“com”</strong> implicitly.</p>
+<a id="more"></a>
+
+<p>Now, call a <strong>“count-paired domain”</strong> to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
+<p>We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
+<hr>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><blockquote>
+<p>Input:<br>[“9001 discuss.leetcode.com”]<br>Output:<br>[“9001 discuss.leetcode.com”, “9001 leetcode.com”, “9001 com”]<br>Explanation:<br>We only have one website domain: “discuss.leetcode.com”. As discussed above, the subdomain “leetcode.com” and “com” will also be visited. So they will all be visited 9001 times.</p>
+</blockquote>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><blockquote>
+<p>Input:<br>[“900 google.mail.com”, “50 yahoo.com”, “1 intel.mail.com”, “5 wiki.org”]<br>Output:<br>[“901 mail.com”,”50 yahoo.com”,”900 google.mail.com”,”5 wiki.org”,”5 org”,”1 intel.mail.com”,”951 com”]<br>Explanation:<br>We will visit “google.mail.com” 900 times, “yahoo.com” 50 times, “intel.mail.com” once and “wiki.org” 5 times. For the subdomains, we will visit “mail.com” 900 + 1 = 901 times, “com” 900 + 50 + 1 = 951 times, and “org” 5 times.</p>
+</blockquote>
+<h4 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h4><ul>
+<li>The length of cpdomains will not exceed 100. </li>
+<li>The length of each domain name will not exceed 100.</li>
+<li>Each address will have either 1 or 2 “.” characters.</li>
+<li>The input count in any count-paired domain will not exceed 10000.</li>
+<li>The answer output can be returned in any order.</li>
+</ul>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">subdomainVisits</span><span class="params">(String[] cpdomains)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        Map&lt;String, Integer&gt; counts = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String domain : cpdomains)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// \\s+ matches sequence of one or more whitespace characters</span></span><br><span class="line">            String[] info = domain.split(<span class="string">"\\s+"</span>);</span><br><span class="line">            String[] subdomains = info[<span class="number">1</span>].split(<span class="string">"\\."</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> count = Integer.valueOf(info[<span class="number">0</span>]);</span><br><span class="line">            String current = <span class="string">""</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = subdomains.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">            &#123;</span><br><span class="line">                current = subdomains[i] + (i &lt; subdomains.length - <span class="number">1</span> ? <span class="string">"."</span> : <span class="string">""</span>) + current;</span><br><span class="line">                counts.put(current, counts.getOrDefault(current, <span class="number">0</span>) + count);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String key : counts.keySet())</span><br><span class="line">            result.add(counts.get(key) + <span class="string">" "</span> + key);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><strong>O(n)</strong>, where n is the length of cpdomains, and assuming the length of cpdomains[i] is fixed</p>
+<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><strong>O(n)</strong>, the space used in our count</p>
+]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Hashing</category>
+      </categories>
+      <tags>
+        <tag>Hashing</tag>
+        <tag>LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[LeetCode] 1207. Unique Number of Occurrences</title>
     <url>/category/LeetCode-1207-Unique-Number-of-Occurrences/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <strong>arr</strong>, write a function that returns true if and only if the number of occurrences of each value in the array is unique.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: arr = [1,2,2,1,1,3]<br>Output: true</p>
 <p>Explanation: The value 1 has 3 occurrences, 2 has 2 and 3 has 1. No two values have the same number of occurrences.</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: arr = [1,2]<br>Output: false</p>
@@ -14,6 +53,7 @@
 <li>1 &lt;= arr.length &lt;= 1000</li>
 <li>-1000 &lt;= arr[i] &lt;= 1000</li>
 </ul>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">uniqueOccurrences</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            map.put(arr[i], map.getOrDefault(arr[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = map.size();</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet(map.values());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> set.size() &lt; count ? <span class="keyword">false</span> : <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>LeetCode Easy</category>
@@ -31,6 +71,7 @@
 <p>Return the element repeated <strong>N</strong> times.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [1,2,3,3]<br>Output: 3</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [2,1,2,5,3,2]<br>Output: 2</p>
 <h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h4><p>Input: [5,1,5,2,5,3,5,4]<br>Output: 5</p>
@@ -39,6 +80,7 @@
 <li>0 &lt;= <strong>A[i]</strong> &lt; 10000</li>
 <li><strong>A.length</strong> is even</li>
 </ol>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; count = <span class="keyword">new</span> HashMap();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x : A)</span><br><span class="line">        &#123;</span><br><span class="line">            count.put(x, count.getOrDefault(x, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : count.keySet())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(i) &gt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><strong>O(N)</strong>, where N is the length of A</p>
@@ -59,6 +101,7 @@
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two lists <strong>A</strong> and <strong>B</strong>, and <strong>B</strong> is an anagram of <strong>A</strong>. <strong>B</strong> is an anagram of <strong>A</strong> means <strong>B</strong> is made by randomizing the order of the elements in <strong>A</strong>.<br>We want to find an index mapping <strong>P</strong>, from <strong>A</strong> to <strong>B</strong>.<br><strong>A</strong> mapping <strong>P[i] = j</strong> means the ith element in <strong>A</strong> appears in <strong>B</strong> at index j.<br>These lists <strong>A</strong> and <strong>B</strong> may contain duplicates. If there are multiple answers, output any of them.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>For example, given</p>
 <blockquote>
 <p>A = [12, 28, 46, 32, 50]<br>B = [50, 12, 32, 46, 28]</p>
@@ -69,6 +112,7 @@
 </blockquote>
 <p>as <strong>P[0] = 1</strong> because the 0th element of <strong>A</strong> appears at <strong>B[1]</strong>, and <strong>P[1]</strong> = <strong>4</strong> because the 1st element of A appears at <strong>B[4]</strong>, and so on.</p>
 <h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><p><strong>A</strong>, <strong>B</strong> have equal lengths in range <strong>[1, 100]</strong>.<br><strong>A[i]</strong>, <strong>B[i]</strong> are integers in range <strong>[0, 10^5]</strong>.</p>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p><strong>P[i] = j</strong>, <strong>A[i] = B[j]</strong>. Traverse list <strong>A</strong>, map each value of <strong>A</strong> to its index in <strong>B</strong>.<br>And before that, we need to traverse <strong>B</strong>, and find a hash table that can map value of <strong>B</strong> to its index</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] anagramMappings(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">        <span class="comment">// key is the index value from B</span></span><br><span class="line">        <span class="comment">// value is the index from B</span></span><br><span class="line">        Map&lt;Integer, Integer&gt; mapB = <span class="keyword">new</span> HashMap();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; B.length; i++)</span><br><span class="line">            mapB.put(B[i], i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[A.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; A.length; j++)</span><br><span class="line">            result[j] = mapB.get(A[j]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -695,6 +739,7 @@
 <p>You may assume no duplicates in the array.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [1,3,5,6], 5<br>Output: 2</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [1,3,5,6], 2<br>Output: 1</p>
 <h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h4><p>Input: [1,3,5,6], 7<br>Output: 4</p>
@@ -774,7 +819,7 @@
     <url>/category/LeetCode-4-Median-of-Two-Sorted-Arrays/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>There are two sorted arrays <strong>nums1</strong> and <strong>nums2</strong> of size m and n respectively.<br>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).<br>You may assume <strong>nums1</strong> and <strong>nums2</strong> cannot be both empty.</p>
 <a id="more"></a>
-
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>nums1 = [1, 3]<br>nums2 = [2]</p>
 <p>The median is 2.0</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>nums1 = [1, 2]<br>nums2 = [3, 4]  </p>
@@ -805,10 +850,11 @@
     <url>/category/LeetCode-349-Intersection-of-Two-Arrays/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given two arrays, write a function to compute their intersection.</p>
 <a id="more"></a>
-
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: nums1 = [1,2,2,1], nums2 = [2,2]<br>Output: [2]</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]<br>Output: [9,4]</p>
 <h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>Each element in the result must be unique.<br>The result can be in any order.</p>
+<hr>
 <h3 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h3><p>Time: O(nlogn)</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</span><br><span class="line">        HashSet&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        Arrays.sort(nums1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// loop num2 find if element in nums2 also in num1</span></span><br><span class="line">        <span class="comment">// if yes add to set</span></span><br><span class="line">        <span class="keyword">for</span> (Integer num : nums2)</span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">if</span> (binarySearch(nums1, num))</span><br><span class="line">           &#123;</span><br><span class="line">               set.add(num);</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// convert HashSet to array</span></span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[set.size()];</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : set)</span><br><span class="line">        &#123;</span><br><span class="line">            result[i++] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">binarySearch</span> <span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, pivot = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)</span><br><span class="line">        &#123;</span><br><span class="line">            pivot = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (target &gt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                left = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; nums[pivot])</span><br><span class="line">            &#123;</span><br><span class="line">                right = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>

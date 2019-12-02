@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="DescriptionIn a array A of size 2N, there are N+1 unique elements, and exactly one of these elements is repeated N times. Return the element repeated N times.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-01T10:02:01.093Z">
+<meta property="og:updated_time" content="2019-12-02T09:54:04.280Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/LeetCode-961-N-Repeated-Element-in-Size-2N-Array/">
@@ -233,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-01 22:54:02 / Modified: 23:02:01" itemprop="dateCreated datePublished" datetime="2019-12-01T22:54:02+13:00">2019-12-01</time>
+              <time title="Created: 2019-12-01 22:54:02" itemprop="dateCreated datePublished" datetime="2019-12-01T22:54:02+13:00">2019-12-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-02 22:54:04" itemprop="dateModified" datetime="2019-12-02T22:54:04+13:00">2019-12-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -282,6 +288,7 @@
 <p>Return the element repeated <strong>N</strong> times.</p>
 <a id="more"></a>
 
+<hr>
 <h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [1,2,3,3]<br>Output: 3</p>
 <h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [2,1,2,5,3,2]<br>Output: 2</p>
 <h4 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h4><p>Input: [5,1,5,2,5,3,5,4]<br>Output: 5</p>
@@ -290,6 +297,7 @@
 <li>0 &lt;= <strong>A[i]</strong> &lt; 10000</li>
 <li><strong>A.length</strong> is even</li>
 </ol>
+<hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">repeatedNTimes</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; count = <span class="keyword">new</span> HashMap();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> x : A)</span><br><span class="line">        &#123;</span><br><span class="line">            count.put(x, count.getOrDefault(x, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : count.keySet())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(i) &gt; <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><strong>O(N)</strong>, where N is the length of A</p>
@@ -386,7 +394,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -462,7 +470,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 5.1k</span>
+  <span class="post-count">Total Words : 5.6k</span>
 </div>
 
 <!--
@@ -470,12 +478,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">24k</span>
+    <span title="Symbols count total">27k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22 mins.</span>
+    <span title="Reading time total">24 mins.</span>
 -->
 </div>
 
