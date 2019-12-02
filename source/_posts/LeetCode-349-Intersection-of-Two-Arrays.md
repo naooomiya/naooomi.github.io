@@ -14,6 +14,7 @@ categories:
 Given two arrays, write a function to compute their intersection.
 
 <!-- more -->
+---
 
 #### Example 1
 Input: nums1 = [1,2,2,1], nums2 = [2,2]
@@ -26,7 +27,9 @@ Output: [9,4]
 #### Note
 Each element in the result must be unique.
 The result can be in any order.
- 
+
+---
+
 ### Solutions
 Time: O(nlogn)
 

@@ -17,6 +17,8 @@ You may assume no duplicates in the array.
 
 <!-- more -->
 
+---
+
 #### Example 1
 Input: [1,3,5,6], 5
 Output: 2

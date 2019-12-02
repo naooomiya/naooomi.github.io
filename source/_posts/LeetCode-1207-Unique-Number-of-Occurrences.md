@@ -15,6 +15,8 @@ Given an array of integers **arr**, write a function that returns true if and on
 
 <!-- more -->
 
+---
+
 #### Example 1
 Input: arr = [1,2,2,1,1,3]
 Output: true
@@ -32,6 +34,8 @@ Output: true
 #### Constraints
 - 1 <= arr.length <= 1000
 - -1000 <= arr[i] <= 1000
+
+---
 
 ### Solution
 

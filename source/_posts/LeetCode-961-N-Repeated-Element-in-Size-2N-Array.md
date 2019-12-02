@@ -17,6 +17,8 @@ Return the element repeated **N** times.
 
 <!-- more -->
 
+---
+
 #### Example 1
 Input: [1,2,3,3]
 Output: 3
@@ -33,6 +35,8 @@ Output: 5
 1. 4 <= **A.length** <= 10000
 2. 0 <= **A[i]** < 10000
 3. **A.length** is even
+
+---
 
 ### Solution
 

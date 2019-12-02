@@ -18,6 +18,8 @@ These lists **A** and **B** may contain duplicates. If there are multiple answer
 
 <!-- more -->
 
+---
+
 #### Example
 For example, given
 
@@ -32,6 +34,8 @@ as **P[0] = 1** because the 0th element of **A** appears at **B[1]**, and **P[1]
 #### Note:
 **A**, **B** have equal lengths in range **[1, 100]**.
 **A[i]**, **B[i]** are integers in range **[0, 10^5]**.
+
+---
 
 ### Solution
 **P[i] = j**, **A[i] = B[j]**. Traverse list **A**, map each value of **A** to its index in **B**. 
