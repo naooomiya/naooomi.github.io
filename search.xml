@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[LeetCode] 1160. Find Words That Can be Formed by Characters</title>
+    <url>/category/LeetCode-1160-Find-Words-That-Can-be-Formed-by-Characters/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>You are given an array of strings words and a string chars.<br>A string is good if it can be formed by characters from chars (each character can only be used once).<br>Return the sum of lengths of all good strings in words.</p>
+<a id="more"></a>
+
+<hr>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: words = [“cat”,”bt”,”hat”,”tree”], chars = “atach”<br>Output: 6</p>
+<blockquote>
+<p>Explanation<br>The strings that can be formed are “cat” and “hat” so the answer is 3 + 3 = 6.</p>
+</blockquote>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: words = [“hello”,”world”,”leetcode”], chars = “welldonehoneyr”</p>
+<p>Output: 10</p>
+<blockquote>
+<p>Explanation<br>The strings that can be formed are “hello” and “world” so the answer is 5 + 5 = 10.</p>
+</blockquote>
+<hr>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
+<li>1 &lt;= words.length &lt;= 1000</li>
+<li>1 &lt;= words[i].length, chars.length &lt;= 100</li>
+<li>All strings contain lowercase English letters only.</li>
+</ul>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countCharacters</span><span class="params">(String[] words, String chars)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : chars.toCharArray())</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// for each word</span></span><br><span class="line">        <span class="keyword">for</span> (String word : words)</span><br><span class="line">        &#123;</span><br><span class="line">            Map&lt;Character, Integer&gt; wordMap = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray())</span><br><span class="line">                wordMap.put(c, wordMap.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">boolean</span> invalidWord = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (Character key : wordMap.keySet())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (!map.containsKey(key) || map.get(key) &lt; wordMap.get(key))</span><br><span class="line">                    invalidWord = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!invalidWord)</span><br><span class="line">            &#123;</span><br><span class="line">                count = count + word.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Hashing</category>
+      </categories>
+      <tags>
+        <tag>Hashing</tag>
+        <tag>LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>[LeetCode] 811. Subdomain Visit Count</title>
     <url>/category/LeetCode-811-Subdomain-Visit-Count/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>A website domain like <strong>“discuss.leetcode.com”</strong> consists of various subdomains. At the top level, we have <strong>“com”</strong>, at the next level, we have <strong>“leetcode.com”</strong>, and at the lowest level, <strong>“discuss.leetcode.com”</strong>. When we visit a domain like <strong>“discuss.leetcode.com”</strong>, we will also visit the parent domains <strong>“leetcode.com”</strong> and <strong>“com”</strong> implicitly.</p>
