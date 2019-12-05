@@ -47,18 +47,18 @@
   };
 </script>
 
-  <meta name="description" content="DescriptionA website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.le">
-<meta name="keywords" content="Hashing,LeetCode(Easy)">
+  <meta name="description" content="Open AddressingLike separate chaining, open addressing is a method for handling collisions. In Open Addressing, all elements are stored in the hash table itself. So at any point, size of the table mus">
+<meta name="keywords" content="Data Stracture,Hashing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode] 811. Subdomain Visit Count">
-<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;LeetCode-811-Subdomain-Visit-Count&#x2F;index.html">
+<meta property="og:title" content="Hashing Data Structure | Part 3 (Open Addressing)">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Hashing-Data-Structure-Part-3-Open-Addressing&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
-<meta property="og:description" content="DescriptionA website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.le">
+<meta property="og:description" content="Open AddressingLike separate chaining, open addressing is a method for handling collisions. In Open Addressing, all elements are stored in the hash table itself. So at any point, size of the table mus">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-02T09:57:36.241Z">
+<meta property="og:updated_time" content="2019-12-05T10:50:27.825Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://naooomi.github.io/category/LeetCode-811-Subdomain-Visit-Count/">
+<link rel="canonical" href="https://naooomi.github.io/category/Hashing-Data-Structure-Part-3-Open-Addressing/">
 
 
 <script id="page-configurations">
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title>[LeetCode] 811. Subdomain Visit Count | This is Naomi_W.</title>
+  <title>Hashing Data Structure | Part 3 (Open Addressing) | This is Naomi_W.</title>
   
 
 
@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/LeetCode-811-Subdomain-Visit-Count/">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Hashing-Data-Structure-Part-3-Open-Addressing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -224,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [LeetCode] 811. Subdomain Visit Count
+          Hashing Data Structure | Part 3 (Open Addressing)
         </h1>
 
         <div class="post-meta">
@@ -235,7 +235,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2019-12-02 22:47:04 / Modified: 22:57:36" itemprop="dateCreated datePublished" datetime="2019-12-02T22:47:04+13:00">2019-12-02</time>
+              <time title="Created: 2019-12-05 23:14:44 / Modified: 23:50:27" itemprop="dateCreated datePublished" datetime="2019-12-05T23:14:44+13:00">2019-12-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,8 +243,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode-Easy/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode Easy</span>
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
                   </a>
                 </span>
                   , 
@@ -260,13 +260,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>2.4k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>2 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -278,31 +278,231 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>A website domain like <strong>“discuss.leetcode.com”</strong> consists of various subdomains. At the top level, we have <strong>“com”</strong>, at the next level, we have <strong>“leetcode.com”</strong>, and at the lowest level, <strong>“discuss.leetcode.com”</strong>. When we visit a domain like <strong>“discuss.leetcode.com”</strong>, we will also visit the parent domains <strong>“leetcode.com”</strong> and <strong>“com”</strong> implicitly.</p>
+        <h3 id="Open-Addressing"><a href="#Open-Addressing" class="headerlink" title="Open Addressing"></a>Open Addressing</h3><p>Like separate chaining, open addressing is a method for handling collisions. In Open Addressing, all elements are stored in the hash table itself. So at any point, size of the table must be greater than or equal to the total number of keys(Note that we can increase table size by copying old data if needed).</p>
 <a id="more"></a>
 
-<p>Now, call a <strong>“count-paired domain”</strong> to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p>
-<p>We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p>
-<hr>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><blockquote>
-<p>Input:<br>[“9001 discuss.leetcode.com”]<br>Output:<br>[“9001 discuss.leetcode.com”, “9001 leetcode.com”, “9001 com”]<br>Explanation:<br>We only have one website domain: “discuss.leetcode.com”. As discussed above, the subdomain “leetcode.com” and “com” will also be visited. So they will all be visited 9001 times.</p>
+<blockquote>
+<p><strong>Insert(k)</strong>: Keep probing until an empty slot is found. Once an empty slot is found, insert k.<br><strong>Search(k)</strong>: Keep probing until slot’s key doesn’t become equal to k or an empty slot is reached.<br><strong>Delete(k)</strong>: Delete operation is interesting. If we simply delete a key, then search may fail. So slots of deleted keys are marked specially as “deleted”.</p>
 </blockquote>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><blockquote>
-<p>Input:<br>[“900 google.mail.com”, “50 yahoo.com”, “1 intel.mail.com”, “5 wiki.org”]<br>Output:<br>[“901 mail.com”,”50 yahoo.com”,”900 google.mail.com”,”5 wiki.org”,”5 org”,”1 intel.mail.com”,”951 com”]<br>Explanation:<br>We will visit “google.mail.com” 900 times, “yahoo.com” 50 times, “intel.mail.com” once and “wiki.org” 5 times. For the subdomains, we will visit “mail.com” 900 + 1 = 901 times, “com” 900 + 50 + 1 = 951 times, and “org” 5 times.</p>
-</blockquote>
-<h4 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h4><ul>
-<li>The length of cpdomains will not exceed 100. </li>
-<li>The length of each domain name will not exceed 100.</li>
-<li>Each address will have either 1 or 2 “.” characters.</li>
-<li>The input count in any count-paired domain will not exceed 10000.</li>
-<li>The answer output can be returned in any order.</li>
+<p>Insert can insert an item in a deleted slot, but the search doesn’t stop at a deleted slot. </p>
+<h3 id="Open-Addressing-is-done-following-ways"><a href="#Open-Addressing-is-done-following-ways" class="headerlink" title="Open Addressing is done following ways"></a>Open Addressing is done following ways</h3><h4 id="A-Linear-Probing"><a href="#A-Linear-Probing" class="headerlink" title="A. Linear Probing:"></a>A. Linear Probing:</h4><p>In linear probing, we linearly probe for next slot. For example typical gap between two probes is 1 as taken in below example also. </p>
+<p>Let <strong>hash(x)</strong> be the slot index computed using hash function and S be the table size. </p>
+<p>If slot <strong>hash(x) % S</strong> is full, then we try <strong>(hash(x) + 1) % S</strong><br>If slot <strong>(hash(x) + 1) % S</strong> is also full, then we try <strong>(hash(x) + 2) % S</strong><br>……<br>……</p>
+<p>Let’s consider a simple  hash function as <strong>“key mod 7”</strong> and sequence of keys as 50, 700, 76, 85, 92, 73, 101</p>
+<table>
+<thead>
+<tr>
+<th align="center">index(0)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">index(1)</td>
+</tr>
+<tr>
+<td align="center">index(2)</td>
+</tr>
+<tr>
+<td align="center">index(3)</td>
+</tr>
+<tr>
+<td align="center">index(4)</td>
+</tr>
+<tr>
+<td align="center">index(5)</td>
+</tr>
+<tr>
+<td align="center">index(6)</td>
+</tr>
+</tbody></table>
+<p>(Initial Empty Table)</p>
+<table>
+<thead>
+<tr>
+<th align="center">&emsp;</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">50(index(1))</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+</tbody></table>
+<p>(Insert <strong>50</strong>, (50%7 = <em>1</em>))</p>
+<table>
+<thead>
+<tr>
+<th align="center">700</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">76</td>
+</tr>
+</tbody></table>
+<p>(Insert <strong>700</strong>, (700%7 = <em>0</em>) and <strong>76</strong>, (76%7 = <em>6</em>))</p>
+<table>
+<thead>
+<tr>
+<th align="center">700</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">85</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">76</td>
+</tr>
+</tbody></table>
+<p>(Insert <strong>85</strong> (85%7 = <em>1</em>) : Collision Occurs, insert <strong>85</strong> at next free slot: 85%7 = <em>1</em>, (1+1)%7 = <em>2</em>)</p>
+<table>
+<thead>
+<tr>
+<th align="center">700</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">85</td>
+</tr>
+<tr>
+<td align="center">92</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">&emsp;</td>
+</tr>
+<tr>
+<td align="center">76</td>
+</tr>
+</tbody></table>
+<p>(Insert <strong>92</strong>, (92%7 = <em>1</em>), Collision occurs as 50 is there at index <em>1</em>, insert at the next free slot : (1+1)%7 = <em>2</em>, 85 is there, next free slot: (2+1)%7 = <em>3</em>, insert <strong>92</strong> at index <em>3</em>)</p>
+<table>
+<thead>
+<tr>
+<th align="center">700</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">85</td>
+</tr>
+<tr>
+<td align="center">92</td>
+</tr>
+<tr>
+<td align="center">73</td>
+</tr>
+<tr>
+<td align="center">101</td>
+</tr>
+<tr>
+<td align="center">76</td>
+</tr>
+</tbody></table>
+<p>(Insert <strong>73</strong>, (73%7 = 3), 92 at index <em>3</em>, next free slot: (3+1)%7 = 4, insert <strong>73</strong> at index <em>4</em>.)<br>(Insert <strong>101</strong>, (101%7 = 3), 92 at index <em>3</em>, next free slot: (3+1)%7 = 4, 73 at index <em>4</em>, next free slot: (4+1)%7 = 5, insert <strong>101</strong> at index <em>5</em>)</p>
+<p><strong>Clustering</strong> : The main problem with linear probing is clustering, many consecutive elements from groups and it starts taking time to find a free slot or to search an element. </p>
+<h4 id="B-Quadratic-Probing"><a href="#B-Quadratic-Probing" class="headerlink" title="B. Quadratic Probing"></a>B. Quadratic Probing</h4><p>We look for <strong>i^2th</strong> slot in <strong>i’th</strong> iteration.</p>
+<p>Let <strong>hash(x)</strong> be the slot index computed using hash function.</p>
+<p>If slot <strong>hash(x) % S</strong> is full, then we try <strong>(hash(x) + 1*1) % S</strong><br>If <strong>(hash(x) + 1*1) % S</strong> is also full, then we try <strong>(hash(x) + 2*2) % S</strong><br>If <strong>(hash(x) + 2*2) % S</strong> is also full, then we try <strong>(hash(x) + 3*3) % S</strong><br>…..<br>…..</p>
+<h4 id="C-Double-Hashing"><a href="#C-Double-Hashing" class="headerlink" title="C. Double Hashing"></a>C. Double Hashing</h4><p>We use another hash function <strong>hash2(x)</strong> and look for <strong>i*hash2(x)</strong> slot in <strong>i’th</strong> rotation.</p>
+<p>Let <strong>hash(x)</strong> be the slot index computed using hash function.</p>
+<p>If slot <strong>hash(x) % S</strong> is full, then we try <strong>(hash(x) + 1* hash2(x)) % S</strong><br>If <strong>(hash(x) + 1* hash2(x)) % S</strong> is also full, then we try <strong>(hash(x) + 2* hash2(x)) % S</strong><br>If <strong>(hash(x) + 2* hash2(x)) % S</strong> is also full, then we try <strong>(hash(x) + 3* hash2(x)) % S</strong><br>…..<br>…..</p>
+<h3 id="Comparison-of-above-three"><a href="#Comparison-of-above-three" class="headerlink" title="Comparison of above three"></a>Comparison of above three</h3><ul>
+<li>Linear probing has the best cache performance but suffers from clustering. One more advantage of linear probing is <strong>easy to compute</strong>.</li>
+<li>Quadratic probing lies between the two in terms of cache performance and clustering. </li>
+<li>Double hashing has poor cache performance but <strong>no clustering</strong>. Double hashing requires more computation time as two hash functions need to be computed. </li>
 </ul>
-<hr>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">subdomainVisits</span><span class="params">(String[] cpdomains)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        Map&lt;String, Integer&gt; counts = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String domain : cpdomains)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// \\s+ matches sequence of one or more whitespace characters</span></span><br><span class="line">            String[] info = domain.split(<span class="string">"\\s+"</span>);</span><br><span class="line">            String[] subdomains = info[<span class="number">1</span>].split(<span class="string">"\\."</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">int</span> count = Integer.valueOf(info[<span class="number">0</span>]);</span><br><span class="line">            String current = <span class="string">""</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = subdomains.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">            &#123;</span><br><span class="line">                current = subdomains[i] + (i &lt; subdomains.length - <span class="number">1</span> ? <span class="string">"."</span> : <span class="string">""</span>) + current;</span><br><span class="line">                counts.put(current, counts.getOrDefault(current, <span class="number">0</span>) + count);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String key : counts.keySet())</span><br><span class="line">            result.add(counts.get(key) + <span class="string">" "</span> + key);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Time-Complexity"><a href="#Time-Complexity" class="headerlink" title="Time Complexity"></a>Time Complexity</h3><p><strong>O(n)</strong>, where n is the length of cpdomains, and assuming the length of cpdomains[i] is fixed</p>
-<h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><strong>O(n)</strong>, the space used in our count</p>
+<table>
+<thead>
+<tr>
+<th align="center">&emsp;</th>
+<th align="center">Separate Chaining</th>
+<th align="center">Open Addressing</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">Chaining is Simpler to implement</td>
+<td align="center">Open Addressing requires more computation</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">In chaining, hash table never fills up, we can always add more elements to chain</td>
+<td align="center">In open addressing, table may become full</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">Chaining is less sensitive to the hash function or load factors</td>
+<td align="center">Open addressing requires extra care for to avoid clustering and load factor.</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">Chaining is mostly used when it is unknown how many and how frequently keys may be inserted or deleted</td>
+<td align="center">Open addressing is used when the frequency and number of keys is known</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">Cache performance of chaining is not good as keys are stored using linked list</td>
+<td align="center">Open addressing provides better cache performance</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">Wastage of Space(Some Parts of hash table in chaining are never used)</td>
+<td align="center">In Open addressing, a slot can be used even if an input doesn’t map to it</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">Chaining uses extra space for links</td>
+<td align="center">No links in Open addressing</td>
+</tr>
+</tbody></table>
+<h4 id="Performance-of-Open-Addressing"><a href="#Performance-of-Open-Addressing" class="headerlink" title="Performance of Open Addressing"></a>Performance of Open Addressing</h4><p>Like chaining, the performance of hashing can be evaluated under the assumption that each key is equally likely to be hashed to any slot of the table(simple uniform hashing)</p>
+<p><strong>m</strong> = Number of slots in the hash table<br><strong>n</strong> = Number of slots to be inserted in the hash table</p>
+<p>Load factor <strong>α = n / m ( &lt; 1)</strong></p>
+<p>Expected time to <strong>search/insert /delete &lt; 1 / (1 - α)</strong></p>
+<p>So Search, Insert and Delete take <strong>(1 / (1 - α))</strong> time</p>
 
     </div>
 
@@ -322,25 +522,22 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/Data-Stracture/" rel="tag"><i class="fa fa-tag"></i> Data Stracture</a>
               <a href="/tags/Hashing/" rel="tag"><i class="fa fa-tag"></i> Hashing</a>
-              <a href="/tags/LeetCode-Easy/" rel="tag"><i class="fa fa-tag"></i> LeetCode(Easy)</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/category/LeetCode-1207-Unique-Number-of-Occurrences/" rel="next" title="[LeetCode] 1207. Unique Number of Occurrences">
-                  <i class="fa fa-chevron-left"></i> [LeetCode] 1207. Unique Number of Occurrences
+                <a href="/category/Hashing-Data-Structure-Part-2-Separate-Chaining/" rel="next" title="Hashing Data Structure | Part 2 (Separate Chaining)">
+                  <i class="fa fa-chevron-left"></i> Hashing Data Structure | Part 2 (Separate Chaining)
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/category/LeetCode-1160-Find-Words-That-Can-be-Formed-by-Characters/" rel="prev" title="[LeetCode] 1160. Find Words That Can be Formed by Characters">
-                  [LeetCode] 1160. Find Words That Can be Formed by Characters <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -379,7 +576,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-2"><span class="nav-text">Example 2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Notes"><span class="nav-text">Notes</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Complexity"><span class="nav-text">Time Complexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Space-Complexity"><span class="nav-text">Space Complexity</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-Addressing"><span class="nav-text">Open Addressing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Open-Addressing-is-done-following-ways"><span class="nav-text">Open Addressing is done following ways</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-Linear-Probing"><span class="nav-text">A. Linear Probing:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B-Quadratic-Probing"><span class="nav-text">B. Quadratic Probing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-Double-Hashing"><span class="nav-text">C. Double Hashing</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparison-of-above-three"><span class="nav-text">Comparison of above three</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Performance-of-Open-Addressing"><span class="nav-text">Performance of Open Addressing</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
