@@ -120,6 +120,8 @@ if (e.hash == hash && ((k = e.key) == key || (key != null && key.e
 
 从源码中，我们可以看出将一个key-value对防区HashMap中，首先根据key的hashcode()返回值决定该entry的存储位置，如果两个key的hash值相等，那么它们的存储位置相等。如果这两个key的equals比较返回true，那么新添加的entry的value会覆盖原来的entry的value，key不会被覆盖。且HashSet中add()中map.put(e, PRESENT) == null为false, HashSet添加元素失败，因此，如果像HashSet中添加一个已经存在的元素，新添加的集合元素不会覆盖原来已有的集合元素
 
+---
+
 ### Summary
 通过分析HashSet的实现原理，可以肯定的是它的去重效率是很高的，前提是去重对象需要有hashcode, equal方法的实现，除此之外，HashMap所拥有的大多数特性都适用于HashSet
 

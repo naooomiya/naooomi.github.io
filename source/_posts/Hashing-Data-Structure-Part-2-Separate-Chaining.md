@@ -14,6 +14,8 @@ Since a hash function gets us a small number for a key which is a big integer or
 
 <!-- more -->
 
+---
+
 ### What are the chances of collisions with large table?
 Collisions are very likely even if we have big table to store keys. An important observation is Birthday Paradox. With only 23 person, the probability that two people have the same birthday is 50%.
 
@@ -32,11 +34,15 @@ Let's consider a simple hash function as **"Key mod 7"** and sequence of keys as
 
 ![Key mod 7 Example](https://i.imgur.com/3shuwBp.png)
 
+---
+
 #### Advantages
 1. Simplest to implement.
 2. Hash table never fills up, we can always add more elements to the chain.
 3. Less sensitive to the hash function or load factors.
 4. It is mostly used when it is unknown how many and how frequently keys may be inserted or deleted
+
+---
 
 #### Disadvantages
 1. Cache performance of chaining is not good as keys are stored using a linked list. Open addressing provides better cache performance as everything is sorted in the same table. 
@@ -44,6 +50,8 @@ Let's consider a simple hash function as **"Key mod 7"** and sequence of keys as
 3. If the chain becomes long, then search time can become **O(n)** in the worst case.
 4. Uses extra space for links.
 	
+---
+
 #### Performance of Chaining
 Performance of hashing can be evaluated under the assumption that each key is equally likely to be hashed to any slot of table(simple uniform hashing)
 

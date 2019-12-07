@@ -20,6 +20,8 @@ Like separate chaining, open addressing is a method for handling collisions. In 
 
 Insert can insert an item in a deleted slot, but the search doesn't stop at a deleted slot. 
 
+---
+
 ### Open Addressing is done following ways
 #### A. Linear Probing: 
 In linear probing, we linearly probe for next slot. For example typical gap between two probes is 1 as taken in below example also. 
@@ -131,6 +133,8 @@ If **(hash(x) + 2* hash2(x)) % S** is also full, then we try **(hash(x) + 3* has
 .....
 	
 
+---
+
 ### Comparison of above three
 - Linear probing has the best cache performance but suffers from clustering. One more advantage of linear probing is **easy to compute**.
 - Quadratic probing lies between the two in terms of cache performance and clustering. 
@@ -146,6 +150,8 @@ If **(hash(x) + 2* hash2(x)) % S** is also full, then we try **(hash(x) + 3* has
 |   5    |	Cache performance of chaining is not good as keys are stored using linked list |	Open addressing provides better cache performance |
 |   6    |	Wastage of Space(Some Parts of hash table in chaining are never used) |	In Open addressing, a slot can be used even if an input doesn't map to it |
 |   7    |	Chaining uses extra space for links	 | No links in Open addressing |
+
+---
 
 #### Performance of Open Addressing
 Like chaining, the performance of hashing can be evaluated under the assumption that each key is equally likely to be hashed to any slot of the table(simple uniform hashing)
