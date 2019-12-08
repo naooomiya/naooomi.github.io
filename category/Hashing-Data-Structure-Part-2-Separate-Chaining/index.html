@@ -56,7 +56,7 @@
 <meta property="og:description" content="What is Collision?Since a hash function gets us a small number for a key which is a big integer or string, there is a possibility that two keys result in the same value. The situation where a newly in">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;3shuwBp.png">
-<meta property="og:updated_time" content="2019-12-04T09:31:41.733Z">
+<meta property="og:updated_time" content="2019-12-07T10:11:37.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;3shuwBp.png">
 
@@ -235,10 +235,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-04 22:24:07 / Modified: 22:31:41" itemprop="dateCreated datePublished" datetime="2019-12-04T22:24:07+13:00">2019-12-04</time>
+              <time title="Created: 2019-12-04 22:24:07" itemprop="dateCreated datePublished" datetime="2019-12-04T22:24:07+13:00">2019-12-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-07 23:11:37" itemprop="dateModified" datetime="2019-12-07T23:11:37+13:00">2019-12-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -283,6 +289,7 @@
         <h3 id="What-is-Collision"><a href="#What-is-Collision" class="headerlink" title="What is Collision?"></a>What is Collision?</h3><p>Since a hash function gets us a small number for a key which is a big integer or string, there is a possibility that two keys result in the same value. The situation where a newly inserted key maps to an already occupied slot in the hash table is called collision and must be handled using some collision handling technique. </p>
 <a id="more"></a>
 
+<hr>
 <h3 id="What-are-the-chances-of-collisions-with-large-table"><a href="#What-are-the-chances-of-collisions-with-large-table" class="headerlink" title="What are the chances of collisions with large table?"></a>What are the chances of collisions with large table?</h3><p>Collisions are very likely even if we have big table to store keys. An important observation is Birthday Paradox. With only 23 person, the probability that two people have the same birthday is 50%.</p>
 <h3 id="How-to-handle-Collisions"><a href="#How-to-handle-Collisions" class="headerlink" title="How to handle Collisions?"></a>How to handle Collisions?</h3><p>There are mainly two methods to handle collision:</p>
 <blockquote>
@@ -295,18 +302,21 @@
 <h3 id="Separate-Chaining"><a href="#Separate-Chaining" class="headerlink" title="Separate Chaining"></a>Separate Chaining</h3><p>The idea is to make each cell of hash table point to a linked list of records that have same hash function value. </p>
 <p>Let’s consider a simple hash function as <strong>“Key mod 7”</strong> and sequence of keys as 50, 700, 76, 85, 92, 73, 101.</p>
 <p><img src="https://i.imgur.com/3shuwBp.png" alt="Key mod 7 Example"></p>
+<hr>
 <h4 id="Advantages"><a href="#Advantages" class="headerlink" title="Advantages"></a>Advantages</h4><ol>
 <li>Simplest to implement.</li>
 <li>Hash table never fills up, we can always add more elements to the chain.</li>
 <li>Less sensitive to the hash function or load factors.</li>
 <li>It is mostly used when it is unknown how many and how frequently keys may be inserted or deleted</li>
 </ol>
+<hr>
 <h4 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h4><ol>
 <li>Cache performance of chaining is not good as keys are stored using a linked list. Open addressing provides better cache performance as everything is sorted in the same table. </li>
 <li>Wastage of Space(Some Parts of hash table are never used)</li>
 <li>If the chain becomes long, then search time can become <strong>O(n)</strong> in the worst case.</li>
 <li>Uses extra space for links.</li>
 </ol>
+<hr>
 <h4 id="Performance-of-Chaining"><a href="#Performance-of-Chaining" class="headerlink" title="Performance of Chaining"></a>Performance of Chaining</h4><p>Performance of hashing can be evaluated under the assumption that each key is equally likely to be hashed to any slot of table(simple uniform hashing)</p>
 <p><strong>m</strong> = Number of slots in hash table<br><strong>n</strong> = Number of keys to be inserted in hash table<br><strong>α = n / m</strong> (Load factor or average keys per slot)</p>
 <p>Expected time to search = <strong>O(1 + α)</strong></p>

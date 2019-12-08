@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="Open AddressingLike separate chaining, open addressing is a method for handling collisions. In Open Addressing, all elements are stored in the hash table itself. So at any point, size of the table mus">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-05T10:50:27.825Z">
+<meta property="og:updated_time" content="2019-12-07T10:10:42.119Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/Hashing-Data-Structure-Part-3-Open-Addressing/">
@@ -233,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-05 23:14:44 / Modified: 23:50:27" itemprop="dateCreated datePublished" datetime="2019-12-05T23:14:44+13:00">2019-12-05</time>
+              <time title="Created: 2019-12-05 23:14:44" itemprop="dateCreated datePublished" datetime="2019-12-05T23:14:44+13:00">2019-12-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-07 23:10:42" itemprop="dateModified" datetime="2019-12-07T23:10:42+13:00">2019-12-07</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -285,6 +291,7 @@
 <p><strong>Insert(k)</strong>: Keep probing until an empty slot is found. Once an empty slot is found, insert k.<br><strong>Search(k)</strong>: Keep probing until slot’s key doesn’t become equal to k or an empty slot is reached.<br><strong>Delete(k)</strong>: Delete operation is interesting. If we simply delete a key, then search may fail. So slots of deleted keys are marked specially as “deleted”.</p>
 </blockquote>
 <p>Insert can insert an item in a deleted slot, but the search doesn’t stop at a deleted slot. </p>
+<hr>
 <h3 id="Open-Addressing-is-done-following-ways"><a href="#Open-Addressing-is-done-following-ways" class="headerlink" title="Open Addressing is done following ways"></a>Open Addressing is done following ways</h3><h4 id="A-Linear-Probing"><a href="#A-Linear-Probing" class="headerlink" title="A. Linear Probing:"></a>A. Linear Probing:</h4><p>In linear probing, we linearly probe for next slot. For example typical gap between two probes is 1 as taken in below example also. </p>
 <p>Let <strong>hash(x)</strong> be the slot index computed using hash function and S be the table size. </p>
 <p>If slot <strong>hash(x) % S</strong> is full, then we try <strong>(hash(x) + 1) % S</strong><br>If slot <strong>(hash(x) + 1) % S</strong> is also full, then we try <strong>(hash(x) + 2) % S</strong><br>……<br>……</p>
@@ -449,6 +456,7 @@
 <h4 id="C-Double-Hashing"><a href="#C-Double-Hashing" class="headerlink" title="C. Double Hashing"></a>C. Double Hashing</h4><p>We use another hash function <strong>hash2(x)</strong> and look for <strong>i*hash2(x)</strong> slot in <strong>i’th</strong> rotation.</p>
 <p>Let <strong>hash(x)</strong> be the slot index computed using hash function.</p>
 <p>If slot <strong>hash(x) % S</strong> is full, then we try <strong>(hash(x) + 1* hash2(x)) % S</strong><br>If <strong>(hash(x) + 1* hash2(x)) % S</strong> is also full, then we try <strong>(hash(x) + 2* hash2(x)) % S</strong><br>If <strong>(hash(x) + 2* hash2(x)) % S</strong> is also full, then we try <strong>(hash(x) + 3* hash2(x)) % S</strong><br>…..<br>…..</p>
+<hr>
 <h3 id="Comparison-of-above-three"><a href="#Comparison-of-above-three" class="headerlink" title="Comparison of above three"></a>Comparison of above three</h3><ul>
 <li>Linear probing has the best cache performance but suffers from clustering. One more advantage of linear probing is <strong>easy to compute</strong>.</li>
 <li>Quadratic probing lies between the two in terms of cache performance and clustering. </li>
@@ -498,6 +506,7 @@
 <td align="center">No links in Open addressing</td>
 </tr>
 </tbody></table>
+<hr>
 <h4 id="Performance-of-Open-Addressing"><a href="#Performance-of-Open-Addressing" class="headerlink" title="Performance of Open Addressing"></a>Performance of Open Addressing</h4><p>Like chaining, the performance of hashing can be evaluated under the assumption that each key is equally likely to be hashed to any slot of the table(simple uniform hashing)</p>
 <p><strong>m</strong> = Number of slots in the hash table<br><strong>n</strong> = Number of slots to be inserted in the hash table</p>
 <p>Load factor <strong>α = n / m ( &lt; 1)</strong></p>
