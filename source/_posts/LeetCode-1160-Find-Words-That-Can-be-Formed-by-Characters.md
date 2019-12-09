@@ -37,9 +37,9 @@ The strings that can be formed are "hello" and "world" so the answer is 5 + 5 = 
 ---
 
 ### Note
-- 1 <= words.length <= 1000
-- 1 <= words[i].length, chars.length <= 100
-- All strings contain lowercase English letters only.
+1. 1 <= words.length <= 1000
+2. 1 <= words[i].length, chars.length <= 100
+3. All strings contain lowercase English letters only.
 
 ---
 
