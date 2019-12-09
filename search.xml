@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[LeetCode] 1002. Find Common Characters</title>
+    <url>/category/LeetCode-1002-Find-Common-Characters/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (<strong>including duplicates</strong>).<br>For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.<br>You may return the answer in any order.</p>
+<a id="more"></a>
+
+<hr>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: [“bella”,”label”,”roller”]<br>Output: [“e”,”l”,”l”]</p>
+<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: [“cool”,”lock”,”cook”]<br>Output: [“c”,”o”]</p>
+<hr>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol>
+<li>1 &lt;= A.length &lt;= 100</li>
+<li>1 &lt;= A[i].length &lt;= 100</li>
+<li>A[i][j] is a lowercase letter</li>
+</ol>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">commonChars</span><span class="params">(String[] A)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span>[] commonCharsCount = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="comment">// fill the array with the max integer, so it can be compared with </span></span><br><span class="line">        Arrays.fill(commonCharsCount, Integer.MAX_VALUE);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// iterate each string in A</span></span><br><span class="line">        <span class="keyword">for</span> (String s : A)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span>[] tempCharsCount = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// count char in this string</span></span><br><span class="line">            <span class="comment">// index will be the sequence of each letter. eg: tempCharsCount[0] : a, tempCharsCount[1] : b</span></span><br><span class="line">            <span class="keyword">for</span> (Char c : s.toCharArray())</span><br><span class="line">                tempCharsCount[c - <span class="string">'a'</span>]++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// update the commonCharsCount</span></span><br><span class="line">            <span class="comment">// after iterate the string itself, compare with the common char array, </span></span><br><span class="line">            <span class="comment">// it will get the min element from the array and reassign to the common char array</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; commonCharsCount.length; i++)</span><br><span class="line">                commonCharsCount[i] = Math.min(commonCharsCount[i], tempCharsCount[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// iterate commonCharsCount to add each char</span></span><br><span class="line">        <span class="comment">// now the commonCharsCount has our result : the common elements will be marked as the count of the element</span></span><br><span class="line">        <span class="comment">// if the elements are not common, it will be 0 in the array</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; commonCharsCount.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">while</span> (commonCharsCount[i] &gt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                result.add(<span class="string">""</span> + (<span class="keyword">char</span>)(<span class="string">'a'</span> + i));</span><br><span class="line">                commonCharsCount[i]--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode Easy</category>
+        <category>Hashing</category>
+      </categories>
+      <tags>
+        <tag>Hashing</tag>
+        <tag>LeetCode(Easy)</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>How HashSet make sure no duplicates</title>
     <url>/category/How-HashSet-make-sure-no-duplicates/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>HashSet类实现了Set接口，其底层其实是包装了一个HashMap去实现的。HashSet采用HashCode算法来存取集合中的元素，因此具有比较好的读取和查找性能</p>
@@ -342,16 +368,16 @@
 <p>Explanation<br>The strings that can be formed are “hello” and “world” so the answer is 5 + 5 = 10.</p>
 </blockquote>
 <hr>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol>
 <li>1 &lt;= words.length &lt;= 1000</li>
 <li>1 &lt;= words[i].length, chars.length &lt;= 100</li>
 <li>All strings contain lowercase English letters only.</li>
-</ul>
+</ol>
 <hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countCharacters</span><span class="params">(String[] words, String chars)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : chars.toCharArray())</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// for each word</span></span><br><span class="line">        <span class="keyword">for</span> (String word : words)</span><br><span class="line">        &#123;</span><br><span class="line">            Map&lt;Character, Integer&gt; wordMap = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray())</span><br><span class="line">                wordMap.put(c, wordMap.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">boolean</span> invalidWord = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (Character key : wordMap.keySet())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (!map.containsKey(key) || map.get(key) &lt; wordMap.get(key))</span><br><span class="line">                    invalidWord = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!invalidWord)</span><br><span class="line">            &#123;</span><br><span class="line">                count = count + word.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Easy</category>
+        <category>Hashing</category>
       </categories>
       <tags>
         <tag>Hashing</tag>
@@ -388,8 +414,8 @@
 <h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p><strong>O(n)</strong>, the space used in our count</p>
 ]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Easy</category>
+        <category>Hashing</category>
       </categories>
       <tags>
         <tag>Hashing</tag>
@@ -414,8 +440,8 @@
 <hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">uniqueOccurrences</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            map.put(arr[i], map.getOrDefault(arr[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = map.size();</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet(map.values());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> set.size() &lt; count ? <span class="keyword">false</span> : <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Easy</category>
+        <category>Hashing</category>
       </categories>
       <tags>
         <tag>Hashing</tag>
@@ -445,8 +471,8 @@
 <h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Space Complexity: <strong>O(N)</strong></p>
 ]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Easy</category>
+        <category>Hashing</category>
       </categories>
       <tags>
         <tag>Hashing</tag>
@@ -478,8 +504,8 @@
 <h3 id="Space-Complexity"><a href="#Space-Complexity" class="headerlink" title="Space Complexity"></a>Space Complexity</h3><p>Use a hash table to store the mapping from value of <strong>B</strong> to its index: <strong>O(n)</strong></p>
 ]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Easy</category>
+        <category>Hashing</category>
       </categories>
       <tags>
         <tag>Hashing</tag>
