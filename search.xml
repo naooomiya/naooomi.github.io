@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>[LeetCode] 890. Find and Replace Pattern</title>
+    <url>/category/LeetCode-890-Find-and-Replace-Pattern/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>You have a list of words and a pattern, and you want to know which words in words matches the pattern.<br>A word matches the pattern if there exists a permutation of letters p so that after replacing every letter x in the pattern with p(x), we get the desired word.<br>(Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.)<br>Return a list of the words in words that match the given pattern.<br>You may return the answer in any order.</p>
+<a id="more"></a>
+
+<hr>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><blockquote>
+<p>Input: words = [“abc”,”deq”,”mee”,”aqq”,”dkd”,”ccc”], pattern = “abb”<br>Output: [“mee”,”aqq”]</p>
+</blockquote>
+<h4 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h4><p>“mee” matches the pattern because there is a permutation {a -&gt; m, b -&gt; e, …}.<br>“ccc” does not match the pattern because {a -&gt; c, b -&gt; c, …} is not a permutation,<br>since a and b map to the same letter.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><ol>
+<li>1 &lt;= words.length &lt;= 50</li>
+<li>1 &lt;= pattern.length = words[i].length &lt;= 20</li>
+</ol>
+<hr>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findAndReplacePattern</span><span class="params">(String[] words, String pattern)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word : words)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (checkPattern(word, pattern))</span><br><span class="line">                res.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">checkPattern</span><span class="params">(String word, String pattern)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (pattern.length() != word.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> w = word.charAt(i);</span><br><span class="line">            <span class="keyword">char</span> p = pattern.charAt(i);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (map.keySet().contains(w))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.get(w) != p) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.values().contains(p)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                map.put(w, p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Hashing</category>
+        <category>LeetCode Medium</category>
+        <category>String</category>
+      </categories>
+      <tags>
+        <tag>Hashing</tag>
+        <tag>String</tag>
+        <tag>LeetCode(Medium)</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[LeetCode] class Solution {</title>
+    <url>/category/LeetCode-class-Solution/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>[LeetCode] 383. Ransom Note</title>
     <url>/category/LeetCode-383-Ransom-Note/</url>
     <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given an arbitrary ransom note string and another string containing letters from all the magazines, write a function that will return true if the ransom note can be constructed from the magazines ; otherwise, it will return false. Each letter in the magazine string can only be used once in your ransom note.</p>
