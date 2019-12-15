@@ -2,7 +2,7 @@
 title: Hashing Data Structure | Part 2 (Separate Chaining)
 date: 2019-12-04 22:24:07
 tags:
-    - [Data Stracture]
+    - [Data Structure]
     - [Hashing]
 categories:
     - [Data Structure]

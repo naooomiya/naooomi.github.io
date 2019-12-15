@@ -2,7 +2,7 @@
 title: Hashing Data Structure | Part 1 (Introduction)
 date: 2019-11-29 16:50:01
 tags:
-    - [Data Stracture]
+    - [Data Structure]
     - [Hashing]
 categories:
     - [Data Structure]

@@ -2,7 +2,7 @@
 title: Hashing Data Structure | Part 3 (Open Addressing)
 date: 2019-12-05 23:14:44
 tags:
-    - [Data Stracture]
+    - [Data Structure]
     - [Hashing]
 categories:
     - [Data Structure]
