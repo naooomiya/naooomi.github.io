@@ -9,7 +9,7 @@ categories:
     - [Queue]
 ---
 
-### Introduction:
+### Introduction
 The Queue interface is available in java.util package and extends the Collection interface. The queue collection is used to hold the elements about to be processed and provides various operations like the insertion, removal etc. It is an **ordered list of objects** with its use limited to insert elements at the end of the list and deleting elements from the start of list. i.e. It follows the *FIFO* or the *First In-First-Out* principle. Being an interface the queue needs a concrete class for the declaration and the most common classes are the **PriorityQueue** and LinkedList in Java. It is to be noted that both the implementations are not thread safe. **PriorityBlockingQueue** is one alternate implementation if thread safe implementation is needed. Few important characteristics of Queue are:
 
 <!-- more -->
