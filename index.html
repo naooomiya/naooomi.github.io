@@ -207,6 +207,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Queue-in-Java-Part-2-AbstractQueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/category/Queue-in-Java-Part-2-AbstractQueue/" class="post-title-link" itemprop="url">Queue in Java | Part 2 AbstractQueue</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2019-12-16 22:34:04 / Modified: 23:00:18" itemprop="dateCreated datePublished" datetime="2019-12-16T22:34:04+13:00">2019-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Queue/" itemprop="url" rel="index">
+                    <span itemprop="name">Queue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>The <strong>AbstractQueue</strong> class in Java is a part of the Java Collection Framework and implements the Collection Interface and the AbstractCollection class. It provides skeletal implementations of some <strong>Queue</strong> operations. The implementations in this class are appropriate when the base implementation does not allow null elements.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/category/Queue-in-Java-Part-2-AbstractQueue/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+<div>
+  
+</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Queue-in-Java-Part-1-Queue-Interface/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -230,10 +329,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2019-12-15 23:29:19 / Modified: 23:42:23" itemprop="dateCreated datePublished" datetime="2019-12-15T23:29:19+13:00">2019-12-15</time>
+              <time title="Created: 2019-12-15 23:29:19" itemprop="dateCreated datePublished" datetime="2019-12-15T23:29:19+13:00">2019-12-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-16 22:59:52" itemprop="dateModified" datetime="2019-12-16T22:59:52+13:00">2019-12-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -275,7 +380,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction:"></a>Introduction:</h3><p>The Queue interface is available in java.util package and extends the Collection interface. The queue collection is used to hold the elements about to be processed and provides various operations like the insertion, removal etc. It is an <strong>ordered list of objects</strong> with its use limited to insert elements at the end of the list and deleting elements from the start of list. i.e. It follows the <em>FIFO</em> or the <em>First In-First-Out</em> principle. Being an interface the queue needs a concrete class for the declaration and the most common classes are the <strong>PriorityQueue</strong> and LinkedList in Java. It is to be noted that both the implementations are not thread safe. <strong>PriorityBlockingQueue</strong> is one alternate implementation if thread safe implementation is needed. Few important characteristics of Queue are:</p>
+          <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>The Queue interface is available in java.util package and extends the Collection interface. The queue collection is used to hold the elements about to be processed and provides various operations like the insertion, removal etc. It is an <strong>ordered list of objects</strong> with its use limited to insert elements at the end of the list and deleting elements from the start of list. i.e. It follows the <em>FIFO</em> or the <em>First In-First-Out</em> principle. Being an interface the queue needs a concrete class for the declaration and the most common classes are the <strong>PriorityQueue</strong> and LinkedList in Java. It is to be noted that both the implementations are not thread safe. <strong>PriorityBlockingQueue</strong> is one alternate implementation if thread safe implementation is needed. Few important characteristics of Queue are:</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/category/Queue-in-Java-Part-1-Queue-Interface/#more" rel="contents">
@@ -1142,116 +1247,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/LeetCode-1207-Unique-Number-of-Occurrences/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Naomi_W">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="This is Naomi_W.">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/category/LeetCode-1207-Unique-Number-of-Occurrences/" class="post-title-link" itemprop="url">[LeetCode] 1207. Unique Number of Occurrences</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2019-12-01 22:58:54" itemprop="dateCreated datePublished" datetime="2019-12-01T22:58:54+13:00">2019-12-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-02 22:54:16" itemprop="dateModified" datetime="2019-12-02T22:54:16+13:00">2019-12-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode-Easy/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode Easy</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hashing/" itemprop="url" rel="index">
-                    <span itemprop="name">Hashing</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>778</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Given an array of integers <strong>arr</strong>, write a function that returns true if and only if the number of occurrences of each value in the array is unique.</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/category/LeetCode-1207-Unique-Number-of-Occurrences/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1297,7 +1297,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1373,7 +1373,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 9.2k</span>
+  <span class="post-count">Total Words : 9.5k</span>
 </div>
 
 <!--
@@ -1381,12 +1381,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">43k</span>
+    <span title="Symbols count total">45k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">39 mins.</span>
+    <span title="Reading time total">41 mins.</span>
 -->
 </div>
 
