@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS Service | IAM101</title>
+    <url>/category/AWS-Service-IAM101/</url>
+    <content><![CDATA[<h3 id="What-is-IAM"><a href="#What-is-IAM" class="headerlink" title="What is IAM"></a>What is IAM</h3><p>Essentially, IAM allows you to manage users and their level of access to the AWS Console. It is important to understand IAM and how it woks, both for the exam and for administrating a company’s AWS account in real life. </p>
+<a id="more"></a>
+
+<h3 id="What-does-IAM-give-you"><a href="#What-does-IAM-give-you" class="headerlink" title="What does IAM give you"></a>What does IAM give you</h3><ul>
+<li><strong>Centralized control of your AWS account</strong></li>
+<li><strong>Shared Access to your AWS account</strong></li>
+<li><strong>Granular Permissions</strong><ul>
+<li>It means you can enable different levels of access to different users within your organization</li>
+</ul>
+</li>
+<li><strong>Identity Federation</strong> (including Active Directory, Facebook, LinkedIn, etc) <ul>
+<li>This means it can enable users to log in using credentials stored in an Active Directory, Facebook or LinkedIn</li>
+</ul>
+</li>
+<li><strong>Multifactor Authentication</strong><ul>
+<li>This is where a user is granted access only after successfully completing multiple independent authentication mechanisms. For example, providing a username and password as one authentication mechanism and then providing a software token site that could be via a token generator like Google Authenticator as the second authentication mechanism</li>
+</ul>
+</li>
+<li><strong>Provides temporary access for users/devices and services, as necessary</strong><ul>
+<li>For example, if you developed a web or mobile phone application you can configure identity access management to enable users to have temporary access to AWS resources within your account. For example, to enable access to store or retrieve data located in an S3 bucket or within a Dynamo DB database.</li>
+</ul>
+</li>
+<li><strong>Allows you to set up your own password rotation policy</strong></li>
+<li><strong>Integrates with many different AWS services</strong></li>
+<li><strong>Supports PCI DSS Compliance</strong><ul>
+<li>for applications associated with the payment card industry</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Critical-Terms"><a href="#Critical-Terms" class="headerlink" title="Critical Terms"></a>Critical Terms</h3><ul>
+<li><strong>Users</strong> - End Users (think people)<ul>
+<li>So these are the people logging into the AWS console and also interacting with AWS by running API commands.  </li>
+</ul>
+</li>
+<li><strong>Groups</strong> - A collection of users under one set of permissions<ul>
+<li>For example, your marketing team might need access to read and write certain files stored in S3 bucket and that might be logos or images etc. And they’re going to need a specific set of permissions to allow them to do this. So it makes sense to create a group with the required permissions and then all you need to do is add the relevant users into that group and they will all have permissions to read the S3 bucket.</li>
+</ul>
+</li>
+<li><strong>Roles</strong> - Your create roles and can then assign them to AWS resources<ul>
+<li>A role is used to define a set of permissions for example S3 bucket access and then that role could be assumed by either uses or AWS services such as EC2. So you might have an EC2 instance which needs to query a database or access files in S3 you can configure that using a role. </li>
+</ul>
+</li>
+<li><strong>Policies</strong> - A document that defines one (or more) permissions<ul>
+<li>A policy can be attached to either a user , group or role. </li>
+<li>When we attach a policy the user, group or the role will then have the permissions defined within that policy. </li>
+<li>It’s possible for a user, a group and a role to all share the same policy. </li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AWS Services</category>
+        <category>IAM</category>
+        <category>AWS Certified Developer - Associate</category>
+      </categories>
+      <tags>
+        <tag>AWS Services</tag>
+        <tag>IAM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Queue in Java | Part 2 AbstractQueue</title>
     <url>/category/Queue-in-Java-Part-2-AbstractQueue/</url>
     <content><![CDATA[<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>The <strong>AbstractQueue</strong> class in Java is a part of the Java Collection Framework and implements the Collection Interface and the AbstractCollection class. It provides skeletal implementations of some <strong>Queue</strong> operations. The implementations in this class are appropriate when the base implementation does not allow null elements.</p>
