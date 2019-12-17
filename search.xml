@@ -53,6 +53,15 @@
 </ul>
 </li>
 </ul>
+<hr>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li><strong>IAM is universal</strong>. It does not apply to regions at this time.</li>
+<li>The “root account” is simply the account created when first setup your AWS account. It has complete Admin access.</li>
+<li>New Users have <strong>NO permissions</strong> when first created.</li>
+<li>New Users are assigned <strong>Access Key ID &amp; Secret Access Keys</strong> when first created.</li>
+<li>These are not the same as a password, and you cannot use the Access key ID &amp; Secret Access Key to login in to the AWS Management Console. </li>
+<li>You can use this to access AWS via the <strong>APIs and Command Line</strong>, however. </li>
+</ul>
 ]]></content>
       <categories>
         <category>AWS Services</category>
