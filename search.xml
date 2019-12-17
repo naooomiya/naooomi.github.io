@@ -61,6 +61,9 @@
 <li>New Users are assigned <strong>Access Key ID &amp; Secret Access Keys</strong> when first created.</li>
 <li>These are not the same as a password, and you cannot use the Access key ID &amp; Secret Access Key to login in to the AWS Management Console. </li>
 <li>You can use this to access AWS via the <strong>APIs and Command Line</strong>, however. </li>
+<li>You only get to view Access Key ID &amp; Secret Access Key once. If you lose them, you have to regenerate them. So, save them  in a secure location.</li>
+<li>Always setup Multifactor Authentication (MFA) on your root account</li>
+<li>You can create and customise your own password rotation policies.</li>
 </ul>
 ]]></content>
       <categories>
