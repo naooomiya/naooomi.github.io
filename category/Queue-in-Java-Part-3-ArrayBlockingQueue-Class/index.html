@@ -47,18 +47,18 @@
   };
 </script>
 
-  <meta name="description" content="DescriptionYou are given an array of strings words and a string chars.A string is good if it can be formed by characters from chars (each character can only be used once).Return the sum of lengths of">
-<meta name="keywords" content="Hashing,LeetCode(Easy)">
+  <meta name="description" content="Introduction - ArrayBlockingQueueArrayBlockingQueue class is a bounded blocking queue backed by an array. By bounded it means that the size of the Queue is fixed. Once created, the capacity cannot be">
+<meta name="keywords" content="Data Structure,Queue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[LeetCode] 1160. Find Words That Can be Formed by Characters">
-<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;LeetCode-1160-Find-Words-That-Can-be-Formed-by-Characters&#x2F;index.html">
+<meta property="og:title" content="Queue in Java | Part 3 - ArrayBlockingQueue Class">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Queue-in-Java-Part-3-ArrayBlockingQueue-Class&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
-<meta property="og:description" content="DescriptionYou are given an array of strings words and a string chars.A string is good if it can be formed by characters from chars (each character can only be used once).Return the sum of lengths of">
+<meta property="og:description" content="Introduction - ArrayBlockingQueueArrayBlockingQueue class is a bounded blocking queue backed by an array. By bounded it means that the size of the Queue is fixed. Once created, the capacity cannot be">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-09T10:57:58.444Z">
+<meta property="og:updated_time" content="2019-12-19T09:55:58.556Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://naooomi.github.io/category/LeetCode-1160-Find-Words-That-Can-be-Formed-by-Characters/">
+<link rel="canonical" href="https://naooomi.github.io/category/Queue-in-Java-Part-3-ArrayBlockingQueue-Class/">
 
 
 <script id="page-configurations">
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title>[LeetCode] 1160. Find Words That Can be Formed by Characters | This is Naomi_W.</title>
+  <title>Queue in Java | Part 3 - ArrayBlockingQueue Class | This is Naomi_W.</title>
   
 
 
@@ -211,7 +211,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/LeetCode-1160-Find-Words-That-Can-be-Formed-by-Characters/">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Queue-in-Java-Part-3-ArrayBlockingQueue-Class/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -224,7 +224,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          [LeetCode] 1160. Find Words That Can be Formed by Characters
+          Queue in Java | Part 3 - ArrayBlockingQueue Class
         </h1>
 
         <div class="post-meta">
@@ -233,30 +233,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2019-12-03 22:36:48" itemprop="dateCreated datePublished" datetime="2019-12-03T22:36:48+13:00">2019-12-03</time>
+              <time title="Created: 2019-12-19 22:44:02 / Modified: 22:55:58" itemprop="dateCreated datePublished" datetime="2019-12-19T22:44:02+13:00">2019-12-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-09 23:57:58" itemprop="dateModified" datetime="2019-12-09T23:57:58+13:00">2019-12-09</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode-Easy/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode Easy</span>
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
                   </a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hashing/" itemprop="url" rel="index">
-                    <span itemprop="name">Hashing</span>
+                  <a href="/categories/Queue/" itemprop="url" rel="index">
+                    <span itemprop="name">Queue</span>
                   </a>
                 </span>
             </span>
@@ -266,13 +260,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.3k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 mins.</span>
+              <span>4 mins.</span>
             </span>
 
         </div>
@@ -284,27 +278,121 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>You are given an array of strings words and a string chars.<br>A string is good if it can be formed by characters from chars (each character can only be used once).<br>Return the sum of lengths of all good strings in words.</p>
-<a id="more"></a>
+        <h3 id="Introduction-ArrayBlockingQueue"><a href="#Introduction-ArrayBlockingQueue" class="headerlink" title="Introduction - ArrayBlockingQueue"></a>Introduction - ArrayBlockingQueue</h3><p><em>ArrayBlockingQueue</em> class is a bounded blocking queue backed by an array. By bounded it means that the size of the Queue is fixed. Once created, the capacity cannot be changed. Attempts to put an element into a full queue will result in the operation blocking. Similarly attempts to take an element from an empty queue will also be blocked. Boundness of the <em>ArrayBlockingQueue</em> can be achieved initially by passing capacity as the parameter in the constructor of <em>ArrayBlockingQueue</em>.<a id="more"></a> This queue orders elements <strong>FIFO(first-in-first-out)</strong>. It means that the head of this queue is the oldest element of the elements present in this queue. The tail of this queue is the newest element of the elements of this queue. The newly inserted elements are always inserted at the tail of the queue, and the queue retrieval operations obtain elements at the head of the queue. </p>
+<p>This class and its iterator implement all of the optional methods of the Collection and Iterator interfaces. This class is a member of the Java Collections Framework. </p>
+<h4 id="Class-Heirarchy"><a href="#Class-Heirarchy" class="headerlink" title="Class Heirarchy"></a>Class Heirarchy</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object </span><br><span class="line">    ↳ java.util.AbstractCollection </span><br><span class="line">        ↳ java.util.AbstractQueue </span><br><span class="line">            ↳ java.util.concurrent.ArrayBlockingQueue</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h4><p>Input: words = [“cat”,”bt”,”hat”,”tree”], chars = “atach”<br>Output: 6</p>
 <blockquote>
-<p>Explanation<br>The strings that can be formed are “cat” and “hat” so the answer is 3 + 3 = 6.</p>
+<p><strong>Type Parameters</strong>: The type parameter of ArrayBlockingQueue E is the type of elements held in this collection</p>
 </blockquote>
-<h4 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h4><p>Input: words = [“hello”,”world”,”leetcode”], chars = “welldonehoneyr”</p>
-<p>Output: 10</p>
-<blockquote>
-<p>Explanation<br>The strings that can be formed are “hello” and “world” so the answer is 5 + 5 = 10.</p>
-</blockquote>
+<h5 id="Implemented-Interfaces"><a href="#Implemented-Interfaces" class="headerlink" title="Implemented Interfaces"></a>Implemented Interfaces</h5><p>Following are the interfaces implemented by the ArrayBlockingQueue Class</p>
+<ul>
+<li>Serializable</li>
+<li>Iterable</li>
+<li>Collection</li>
+<li>BlockingQueue</li>
+<li>Queue</li>
+</ul>
+<h4 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayBlockingQueue</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractQueue</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">BlockingQueue</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Constructor-Summary"><a href="#Constructor-Summary" class="headerlink" title="Constructor Summary"></a>Constructor Summary</h4><ul>
+<li>ArrayBlockingQueue(int capacity)<ul>
+<li>Creates an ArrayBlockingQueue with the given(fixed) capacity and default access policy</li>
+</ul>
+</li>
+<li>ArrayBlockingQueue(int capacity, boolean fair)<ul>
+<li>Creates an ArrayBlockingQueue with ths given(fixed) capacity and the specified access policy. If the fair value is true then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; if false the access order in unspecified. </li>
+</ul>
+</li>
+<li>ArrayBlockingQueue(int capacity, boolean fair, Collection c)<ul>
+<li>Creates an ArrayBlockingQueue with the given(fixed) capacity, the specified access policy and initially containing the elements of the given collection, added in traversal order of the collection’s iterator. If the fair value is true then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; if false the access order is unspecified. </li>
+</ul>
+</li>
+</ul>
 <hr>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ol>
-<li>1 &lt;= words.length &lt;= 1000</li>
-<li>1 &lt;= words[i].length, chars.length &lt;= 100</li>
-<li>All strings contain lowercase English letters only.</li>
-</ol>
-<hr>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countCharacters</span><span class="params">(String[] words, String chars)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : chars.toCharArray())</span><br><span class="line">            map.put(c, map.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// for each word</span></span><br><span class="line">        <span class="keyword">for</span> (String word : words)</span><br><span class="line">        &#123;</span><br><span class="line">            Map&lt;Character, Integer&gt; wordMap = <span class="keyword">new</span> HashMap&lt;Character, Integer&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray())</span><br><span class="line">                wordMap.put(c, wordMap.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">boolean</span> invalidWord = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (Character key : wordMap.keySet())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (!map.containsKey(key) || map.get(key) &lt; wordMap.get(key))</span><br><span class="line">                    invalidWord = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!invalidWord)</span><br><span class="line">            &#123;</span><br><span class="line">                count = count + word.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Method-Summary"><a href="#Method-Summary" class="headerlink" title="Method Summary"></a>Method Summary</h3><ul>
+<li><strong>boolean add(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue if it is possible to do so immediately without exceeding the queue’s capacity, returning true upon success and thrwoing an IllegalStateException if this queue is full.</li>
+</ul>
+</li>
+<li><strong>void clear()</strong><ul>
+<li>Atomically removes all of the elements from this queue.</li>
+</ul>
+</li>
+<li><strong>boolean contains(Object o)</strong><ul>
+<li>Returns true if this queue contains the specified element.</li>
+</ul>
+</li>
+<li><strong>int drainTo(Collection c)</strong><ul>
+<li>Removes all available elements from this queue and adds them to the given collection</li>
+</ul>
+</li>
+<li><strong>int drainTo(Collection c, int maxElements)</strong><ul>
+<li>Removes at most the given number of available elements from this queue and adds them to the given collection.</li>
+</ul>
+</li>
+<li><strong>Iterator iterator()</strong><ul>
+<li>Returns an iterator over the elements in this queue in proper sequence.</li>
+</ul>
+</li>
+<li><strong>boolean offer(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue if it is possible to do so immediately without exceeding the queue’s capacity, returning true upon success and false if this queue is full.</li>
+</ul>
+</li>
+<li><strong>Boolean offer(E e, long timeout, TimeUnit unit)</strong><ul>
+<li>Inserts the specified element at the tail of this queue, waiting up to the specified wait time for space to become available if the queue is full. </li>
+</ul>
+</li>
+<li><strong>E peek()</strong><ul>
+<li>Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>E poll()</strong><ul>
+<li>Retrieves and removes the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>E poll(long timeout, TimeUnit unit)</strong><ul>
+<li>Retrieves and removes the head of this queue, waiting up to the specified wait time if necessary for an element to become available.</li>
+</ul>
+</li>
+<li><strong>void put(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue, waiting for space to become available if the queue is full</li>
+</ul>
+</li>
+<li><strong>int remainingCapacity()</strong><ul>
+<li>Returns the number of additional elements that this queue can ideally (in the absence of memory or resource constraints) accept without blocking</li>
+</ul>
+</li>
+<li><strong>boolean remove(Object o)</strong><ul>
+<li>Removes a single instance of the specified element from this queue, if it is present.</li>
+</ul>
+</li>
+<li><strong>int size()</strong><ul>
+<li>Returns the number of elements in this queue</li>
+</ul>
+</li>
+<li><strong>Spliterator spliterator()</strong><ul>
+<li>Returns a Spliterator over the elements in this queue</li>
+</ul>
+</li>
+<li><strong>E take()</strong><ul>
+<li>Retrieves and removes the head of this queue, waiting if necessary until an element becomes available.</li>
+</ul>
+</li>
+<li><strong>Object[] toArray()</strong><ul>
+<li>Returns an array containing all of the elements in this queue, in proper sequence; the runtime type of the returned array is that of the specified array.</li>
+</ul>
+</li>
+<li><strong>T[] toArray(T[] a)</strong><ul>
+<li>Returns an array containing all of the elements in this queue, in 0proper sequence; the runtime type of the returned array is that of the specified array.</li>
+</ul>
+</li>
+<li><strong>String toString()</strong><ul>
+<li>Returns a string representation of this collection.</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     
@@ -323,25 +411,22 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Hashing/" rel="tag"><i class="fa fa-tag"></i> Hashing</a>
-              <a href="/tags/LeetCode-Easy/" rel="tag"><i class="fa fa-tag"></i> LeetCode(Easy)</a>
+              <a href="/tags/Data-Structure/" rel="tag"><i class="fa fa-tag"></i> Data Structure</a>
+              <a href="/tags/Queue/" rel="tag"><i class="fa fa-tag"></i> Queue</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/category/LeetCode-811-Subdomain-Visit-Count/" rel="next" title="[LeetCode] 811. Subdomain Visit Count">
-                  <i class="fa fa-chevron-left"></i> [LeetCode] 811. Subdomain Visit Count
+                <a href="/category/LeetCode-739-Daily-Temperatures/" rel="next" title="[LeetCode] 739. Daily Temperatures">
+                  <i class="fa fa-chevron-left"></i> [LeetCode] 739. Daily Temperatures
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/category/Hashing-Data-Structure-Part-2-Separate-Chaining/" rel="prev" title="Hashing Data Structure | Part 2 (Separate Chaining)">
-                  Hashing Data Structure | Part 2 (Separate Chaining) <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -380,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-text">Description</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-2"><span class="nav-text">Example 2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-text">Solution</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-ArrayBlockingQueue"><span class="nav-text">Introduction - ArrayBlockingQueue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Class-Heirarchy"><span class="nav-text">Class Heirarchy</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Implemented-Interfaces"><span class="nav-text">Implemented Interfaces</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Syntax"><span class="nav-text">Syntax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructor-Summary"><span class="nav-text">Constructor Summary</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Method-Summary"><span class="nav-text">Method Summary</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

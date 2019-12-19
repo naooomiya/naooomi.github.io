@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Queue in Java | Part 3 - ArrayBlockingQueue Class</title>
+    <url>/category/Queue-in-Java-Part-3-ArrayBlockingQueue-Class/</url>
+    <content><![CDATA[<h3 id="Introduction-ArrayBlockingQueue"><a href="#Introduction-ArrayBlockingQueue" class="headerlink" title="Introduction - ArrayBlockingQueue"></a>Introduction - ArrayBlockingQueue</h3><p><em>ArrayBlockingQueue</em> class is a bounded blocking queue backed by an array. By bounded it means that the size of the Queue is fixed. Once created, the capacity cannot be changed. Attempts to put an element into a full queue will result in the operation blocking. Similarly attempts to take an element from an empty queue will also be blocked. Boundness of the <em>ArrayBlockingQueue</em> can be achieved initially by passing capacity as the parameter in the constructor of <em>ArrayBlockingQueue</em>.<a id="more"></a> This queue orders elements <strong>FIFO(first-in-first-out)</strong>. It means that the head of this queue is the oldest element of the elements present in this queue. The tail of this queue is the newest element of the elements of this queue. The newly inserted elements are always inserted at the tail of the queue, and the queue retrieval operations obtain elements at the head of the queue. </p>
+<p>This class and its iterator implement all of the optional methods of the Collection and Iterator interfaces. This class is a member of the Java Collections Framework. </p>
+<h4 id="Class-Heirarchy"><a href="#Class-Heirarchy" class="headerlink" title="Class Heirarchy"></a>Class Heirarchy</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.lang.Object </span><br><span class="line">    ↳ java.util.AbstractCollection </span><br><span class="line">        ↳ java.util.AbstractQueue </span><br><span class="line">            ↳ java.util.concurrent.ArrayBlockingQueue</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Type Parameters</strong>: The type parameter of ArrayBlockingQueue E is the type of elements held in this collection</p>
+</blockquote>
+<h5 id="Implemented-Interfaces"><a href="#Implemented-Interfaces" class="headerlink" title="Implemented Interfaces"></a>Implemented Interfaces</h5><p>Following are the interfaces implemented by the ArrayBlockingQueue Class</p>
+<ul>
+<li>Serializable</li>
+<li>Iterable</li>
+<li>Collection</li>
+<li>BlockingQueue</li>
+<li>Queue</li>
+</ul>
+<h4 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayBlockingQueue</span></span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractQueue</span></span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">BlockingQueue</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Constructor-Summary"><a href="#Constructor-Summary" class="headerlink" title="Constructor Summary"></a>Constructor Summary</h4><ul>
+<li>ArrayBlockingQueue(int capacity)<ul>
+<li>Creates an ArrayBlockingQueue with the given(fixed) capacity and default access policy</li>
+</ul>
+</li>
+<li>ArrayBlockingQueue(int capacity, boolean fair)<ul>
+<li>Creates an ArrayBlockingQueue with ths given(fixed) capacity and the specified access policy. If the fair value is true then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; if false the access order in unspecified. </li>
+</ul>
+</li>
+<li>ArrayBlockingQueue(int capacity, boolean fair, Collection c)<ul>
+<li>Creates an ArrayBlockingQueue with the given(fixed) capacity, the specified access policy and initially containing the elements of the given collection, added in traversal order of the collection’s iterator. If the fair value is true then queue accesses for threads blocked on insertion or removal, are processed in FIFO order; if false the access order is unspecified. </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Method-Summary"><a href="#Method-Summary" class="headerlink" title="Method Summary"></a>Method Summary</h3><ul>
+<li><strong>boolean add(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue if it is possible to do so immediately without exceeding the queue’s capacity, returning true upon success and thrwoing an IllegalStateException if this queue is full.</li>
+</ul>
+</li>
+<li><strong>void clear()</strong><ul>
+<li>Atomically removes all of the elements from this queue.</li>
+</ul>
+</li>
+<li><strong>boolean contains(Object o)</strong><ul>
+<li>Returns true if this queue contains the specified element.</li>
+</ul>
+</li>
+<li><strong>int drainTo(Collection c)</strong><ul>
+<li>Removes all available elements from this queue and adds them to the given collection</li>
+</ul>
+</li>
+<li><strong>int drainTo(Collection c, int maxElements)</strong><ul>
+<li>Removes at most the given number of available elements from this queue and adds them to the given collection.</li>
+</ul>
+</li>
+<li><strong>Iterator iterator()</strong><ul>
+<li>Returns an iterator over the elements in this queue in proper sequence.</li>
+</ul>
+</li>
+<li><strong>boolean offer(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue if it is possible to do so immediately without exceeding the queue’s capacity, returning true upon success and false if this queue is full.</li>
+</ul>
+</li>
+<li><strong>Boolean offer(E e, long timeout, TimeUnit unit)</strong><ul>
+<li>Inserts the specified element at the tail of this queue, waiting up to the specified wait time for space to become available if the queue is full. </li>
+</ul>
+</li>
+<li><strong>E peek()</strong><ul>
+<li>Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>E poll()</strong><ul>
+<li>Retrieves and removes the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>E poll(long timeout, TimeUnit unit)</strong><ul>
+<li>Retrieves and removes the head of this queue, waiting up to the specified wait time if necessary for an element to become available.</li>
+</ul>
+</li>
+<li><strong>void put(E e)</strong><ul>
+<li>Inserts the specified element at the tail of this queue, waiting for space to become available if the queue is full</li>
+</ul>
+</li>
+<li><strong>int remainingCapacity()</strong><ul>
+<li>Returns the number of additional elements that this queue can ideally (in the absence of memory or resource constraints) accept without blocking</li>
+</ul>
+</li>
+<li><strong>boolean remove(Object o)</strong><ul>
+<li>Removes a single instance of the specified element from this queue, if it is present.</li>
+</ul>
+</li>
+<li><strong>int size()</strong><ul>
+<li>Returns the number of elements in this queue</li>
+</ul>
+</li>
+<li><strong>Spliterator spliterator()</strong><ul>
+<li>Returns a Spliterator over the elements in this queue</li>
+</ul>
+</li>
+<li><strong>E take()</strong><ul>
+<li>Retrieves and removes the head of this queue, waiting if necessary until an element becomes available.</li>
+</ul>
+</li>
+<li><strong>Object[] toArray()</strong><ul>
+<li>Returns an array containing all of the elements in this queue, in proper sequence; the runtime type of the returned array is that of the specified array.</li>
+</ul>
+</li>
+<li><strong>T[] toArray(T[] a)</strong><ul>
+<li>Returns an array containing all of the elements in this queue, in 0proper sequence; the runtime type of the returned array is that of the specified array.</li>
+</ul>
+</li>
+<li><strong>String toString()</strong><ul>
+<li>Returns a string representation of this collection.</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+        <category>Queue</category>
+      </categories>
+      <tags>
+        <tag>Data Structure</tag>
+        <tag>Queue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[LeetCode] 739. Daily Temperatures</title>
+    <url>/category/LeetCode-739-Daily-Temperatures/</url>
+    <content><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description:"></a>Description:</h3><p>Given a list of daily temperatures T, return a list such that, for each day in the input, tells you how many days you would have to wait until a warmer temperature. If there is no future day for which this is possible, put 0 instead.For example, given the list of temperatures T = [73, 74, 75, 71, 69, 72, 76, 73], your output should be [1, 1, 4, 2, 1, 1, 0, 0].</p>
+<a id="more"></a>
+
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
+<li>The length of temperatures will be in the range [1, 30000]. </li>
+<li>Each temperature will be an integer in the range [30, 100].</li>
+</ul>
+<hr>
+<h3 id="Solution-One-Stack"><a href="#Solution-One-Stack" class="headerlink" title="Solution One : Stack"></a>Solution One : Stack</h3><h4 id="Explaination"><a href="#Explaination" class="headerlink" title="Explaination"></a>Explaination</h4><ol>
+<li>Process indices i in descending order. We’ll keep a stack of indices such that T[stack[-1]] &lt; T[stack[-2]] &lt; …, where stack[-1] is the top of the stack, stack[-2] is second from the top, and so on.</li>
+<li>We will maintain this invariant as we process each temperature. </li>
+<li>After, it is easy to know the next occurrence of a warmer temperature: it’s simply the top index in the stack.</li>
+<li>Here is an example of the contents of the stack as work through T = [73, 74, 75, 71, 69, 72, 76, 73] in reverse order, at the end of the loop (after adding T[i]). For clarity, stack only contains indices i, but we’ll write the value of T[i] beside it in brackets, such as o (73).</li>
+</ol>
+<blockquote>
+<p>When i = 7, stack = [7 (73)]. ans[i] = 0.<br>When i = 6, stack = [6 (76)]. ans[i] = 0.<br>When i = 5, stack = [5 (72), 6 (76)]. ans[i] = 1.<br>When i = 4, stack = [4 (69), 5 (72), 6 (76)]. ans[i] = 1.<br>When i = 3, stack = [3 (71), 5 (72), 6 (76)]. ans[i] = 2.<br>When i = 2, stack = [2 (75), 6 (76)]. ans[i] = 4.<br>When i = 1, stack = [1 (74), 2 (75), 6 (76)]. ans[i] = 1.<br>When i = 0, stack = [0 (73), 1 (74), 2 (75), 6 (76)]. ans[i] = 1.</p>
+</blockquote>
+<p>Run the below code, you can get some explaination output. </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">dailyTemperatures</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] daily_Temperatures(<span class="keyword">int</span>[] T) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[T.length];</span><br><span class="line">        System.out.println(<span class="string">"Initial result array : "</span> + Arrays.toString(result));</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        System.out.println(<span class="string">"Initial stack : "</span> + Arrays.toString(stack.toArray()) + <span class="string">'\n'</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = T.length - <span class="number">1</span>; i &gt;= <span class="number">0</span> ; --i)</span><br><span class="line">        &#123;</span><br><span class="line">        	System.out.println(<span class="string">"When i is "</span> + i + <span class="string">" | Now stack is : "</span> + Arrays.toString(stack.toArray()) + <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">        	<span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; T[i] &gt;= T[stack.peek()]) </span><br><span class="line">        	&#123;</span><br><span class="line">            	System.out.println(<span class="string">"Now T["</span> + i + <span class="string">"] = "</span> + T[i] + <span class="string">". The top of the stack is : "</span> + stack.peek());</span><br><span class="line">            	System.out.println(<span class="string">"T["</span> + stack.peek() + <span class="string">"] = "</span> + T[stack.peek()]);</span><br><span class="line">            	System.out.println(<span class="string">"Because T["</span> + i + <span class="string">"]("</span> + T[i] + <span class="string">") &gt;= T["</span> + stack.peek() + <span class="string">"]("</span> + T[stack.peek()]+ <span class="string">"), so "</span> + stack.peek() + <span class="string">" will be removed from stack."</span>);</span><br><span class="line">            	System.out.print(<span class="string">"Now the new stack after removing "</span> + stack.peek() + <span class="string">" is : "</span>);</span><br><span class="line">            	stack.pop();</span><br><span class="line">            	System.out.print(Arrays.toString(stack.toArray()) + <span class="string">'\n'</span>);</span><br><span class="line">        	&#125;</span><br><span class="line">        	result[i] = stack.isEmpty() ? <span class="number">0</span> : stack.peek() - i;</span><br><span class="line">            <span class="keyword">if</span> (result[i] == <span class="number">0</span>)</span><br><span class="line">                System.out.print(<span class="string">"Because the stack is empty, so "</span>);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            	System.out.print(<span class="string">"The stack is not empty, result["</span> + i + <span class="string">"] will be (the top element from the stack - 1), so "</span>);</span><br><span class="line">            System.out.println(<span class="string">"result["</span> + i + <span class="string">"] = "</span> + result[i]);</span><br><span class="line">            stack.push(i);</span><br><span class="line">            System.out.println(i + <span class="string">" will be pushed to the stack, now the stack is : "</span> + Arrays.toString(stack.toArray()));</span><br><span class="line">            System.out.println(<span class="string">"The result for this loop is : "</span> + Arrays.toString(result));</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    	<span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	dailyTemperatures temp = <span class="keyword">new</span> dailyTemperatures();</span><br><span class="line">    	<span class="keyword">int</span>[] T = &#123;<span class="number">73</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">71</span>, <span class="number">69</span>, <span class="number">72</span>, <span class="number">76</span>, <span class="number">73</span>&#125;;</span><br><span class="line">    	</span><br><span class="line">    	<span class="keyword">int</span> [] result = temp.daily_Temperatures(T);</span><br><span class="line">    	System.out.println(<span class="string">"result is : "</span> + Arrays.toString(result));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The output of above code</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Initial result array : [0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line">Initial stack : []</span><br><span class="line"></span><br><span class="line">When i is 7 | Now stack is : [] </span><br><span class="line">Because the stack is empty, so result[7] = 0</span><br><span class="line">7 will be pushed to the stack, now the stack is : [7]</span><br><span class="line">The result for this loop is : [0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 6 | Now stack is : [7] </span><br><span class="line">Now T[6] = 76. The top of the stack is : 7</span><br><span class="line">T[7] = 73</span><br><span class="line">Because T[6](76) &gt;= T[7](73), so 7 will be removed from stack.</span><br><span class="line">Now the new stack after removing 7 is : []</span><br><span class="line">Because the stack is empty, so result[6] = 0</span><br><span class="line">6 will be pushed to the stack, now the stack is : [6]</span><br><span class="line">The result for this loop is : [0, 0, 0, 0, 0, 0, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 5 | Now stack is : [6] </span><br><span class="line">The stack is not empty, result[5] will be (the top element from the stack - 1), so result[5] = 1</span><br><span class="line">5 will be pushed to the stack, now the stack is : [6, 5]</span><br><span class="line">The result for this loop is : [0, 0, 0, 0, 0, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 4 | Now stack is : [6, 5] </span><br><span class="line">The stack is not empty, result[4] will be (the top element from the stack - 1), so result[4] = 1</span><br><span class="line">4 will be pushed to the stack, now the stack is : [6, 5, 4]</span><br><span class="line">The result for this loop is : [0, 0, 0, 0, 1, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 3 | Now stack is : [6, 5, 4] </span><br><span class="line">Now T[3] = 71. The top of the stack is : 4</span><br><span class="line">T[4] = 69</span><br><span class="line">Because T[3](71) &gt;= T[4](69), so 4 will be removed from stack.</span><br><span class="line">Now the new stack after removing 4 is : [6, 5]</span><br><span class="line">The stack is not empty, result[3] will be (the top element from the stack - 1), so result[3] = 2</span><br><span class="line">3 will be pushed to the stack, now the stack is : [6, 5, 3]</span><br><span class="line">The result for this loop is : [0, 0, 0, 2, 1, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 2 | Now stack is : [6, 5, 3] </span><br><span class="line">Now T[2] = 75. The top of the stack is : 3</span><br><span class="line">T[3] = 71</span><br><span class="line">Because T[2](75) &gt;= T[3](71), so 3 will be removed from stack.</span><br><span class="line">Now the new stack after removing 3 is : [6, 5]</span><br><span class="line">Now T[2] = 75. The top of the stack is : 5</span><br><span class="line">T[5] = 72</span><br><span class="line">Because T[2](75) &gt;= T[5](72), so 5 will be removed from stack.</span><br><span class="line">Now the new stack after removing 5 is : [6]</span><br><span class="line">The stack is not empty, result[2] will be (the top element from the stack - 1), so result[2] = 4</span><br><span class="line">2 will be pushed to the stack, now the stack is : [6, 2]</span><br><span class="line">The result for this loop is : [0, 0, 4, 2, 1, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 1 | Now stack is : [6, 2] </span><br><span class="line">The stack is not empty, result[1] will be (the top element from the stack - 1), so result[1] = 1</span><br><span class="line">1 will be pushed to the stack, now the stack is : [6, 2, 1]</span><br><span class="line">The result for this loop is : [0, 1, 4, 2, 1, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">When i is 0 | Now stack is : [6, 2, 1] </span><br><span class="line">The stack is not empty, result[0] will be (the top element from the stack - 1), so result[0] = 1</span><br><span class="line">0 will be pushed to the stack, now the stack is : [6, 2, 1, 0]</span><br><span class="line">The result for this loop is : [1, 1, 4, 2, 1, 1, 0, 0]</span><br><span class="line"></span><br><span class="line">result is : [1, 1, 4, 2, 1, 1, 0, 0]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LeetCode(Medium)</category>
+        <category>Stack</category>
+      </categories>
+      <tags>
+        <tag>LeetCode(Medium)</tag>
+        <tag>Stack</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS Service | IAM101</title>
     <url>/category/AWS-Service-IAM101/</url>
     <content><![CDATA[<h3 id="What-is-IAM"><a href="#What-is-IAM" class="headerlink" title="What is IAM"></a>What is IAM</h3><p>Essentially, IAM allows you to manage users and their level of access to the AWS Console. It is important to understand IAM and how it woks, both for the exam and for administrating a company’s AWS account in real life. </p>
@@ -191,7 +354,9 @@
 <li>canConstruct(“aa”, “aab”) -&gt; true</li>
 </ul>
 <hr>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h3><p>You may assume that both strings contain only lowercase letters.</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note:"></a>Note:</h4><ul>
+<li>You may assume that both strings contain only lowercase letters.</li>
+</ul>
 <hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><h4 id="One"><a href="#One" class="headerlink" title="One"></a>One</h4><h5 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis :"></a>Complexity Analysis :</h5><ul>
 <li>Time Complexity: <strong>O(Math.max(m,n))</strong></li>
