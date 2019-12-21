@@ -1,6 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Queue in Java | Part 4 ConcurrentLinkedQueue Class</title>
+    <url>/category/Queue-in-Java-Part-4-ConcurrentLinkedQueue-Class/</url>
+    <content><![CDATA[<h3 id="Intriduction-ConcurrentLinkedQueue"><a href="#Intriduction-ConcurrentLinkedQueue" class="headerlink" title="Intriduction - ConcurrentLinkedQueue"></a>Intriduction - ConcurrentLinkedQueue</h3><p>The <em>ConcurrentLinkedQueue</em> class in Java is part of the Java Collection Framework and implements the Collection Interface and the AbstractCollection class. It is used to implement Queue with the help of LinkedList concurrently. </p>
+<a id="more"></a>
+
+<h4 id="Class-Hierarchy"><a href="#Class-Hierarchy" class="headerlink" title="Class Hierarchy"></a>Class Hierarchy</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.lang.Object</span><br><span class="line">  ↳ java.util.AbstractCollection&lt;E&gt;</span><br><span class="line">     ↳ java.util.AbstractQueue&lt;E&gt;</span><br><span class="line">        ↳ Class ConcurrentLinkedQueue&lt;E&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcurrentLinkedQueue</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt;, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<p>where E is the type of elements maintained<br>by this collection</p>
+<h4 id="Constructors-in-Java-ConcurrentLinkedQueue"><a href="#Constructors-in-Java-ConcurrentLinkedQueue" class="headerlink" title="Constructors in Java ConcurrentLinkedQueue"></a>Constructors in Java ConcurrentLinkedQueue</h4><ul>
+<li><strong>ConcurrentLinkedQueue()</strong>: This constructor is used to construct an empty queue.</li>
+<li><strong>ConcurrentLinkedQueue(Collection<E> c)</strong>: This constructor is used to construct a queue with the elements of the Collection passed as the parameter.</li>
+</ul>
+<hr>
+<h3 id="Methods-in-Java-ConcurrentLinkedQueue"><a href="#Methods-in-Java-ConcurrentLinkedQueue" class="headerlink" title="Methods in Java ConcurrentLinkedQueue"></a>Methods in Java ConcurrentLinkedQueue</h3><ul>
+<li><strong>add(E e)</strong><ul>
+<li>This method inserts the specified element at the tail of this queue.</li>
+</ul>
+</li>
+<li><strong>addAll(Collection c)</strong><ul>
+<li>This method appends all the elements in the specified collection to the end of this queue, in the order that they are returned by the specified collections’s iterator.</li>
+</ul>
+</li>
+<li><strong>contains(Object o)</strong><ul>
+<li>This method returns true if this queue contains the specified element.</li>
+</ul>
+</li>
+<li><strong>isEmpty()</strong><ul>
+<li>This method returns true if this queue contains no elements</li>
+</ul>
+</li>
+<li><strong>iterator()</strong><ul>
+<li>This method returns an iterator over the elements in this queue in proper sequence.</li>
+</ul>
+</li>
+<li><strong>offer(E e)</strong><ul>
+<li>This method inserts the specified element at the tail of this queue.</li>
+</ul>
+</li>
+<li><strong>peek()</strong><ul>
+<li>This method retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>poll()</strong><ul>
+<li>This method retrieves and removes the head of this queue, or returns null if this queue is empty.</li>
+</ul>
+</li>
+<li><strong>remove(Object o)</strong><ul>
+<li>This method removes a single instance of the specified element from this queue, if it is present.</li>
+</ul>
+</li>
+<li><strong>size()</strong><ul>
+<li>This method returns the number of elements in this queue</li>
+</ul>
+</li>
+<li><strong>spliterator?()</strong><ul>
+<li>This method returns an array containing all of the elements in this queue, in proper sequence.</li>
+</ul>
+</li>
+<li><strong>toArray()</strong><ul>
+<li>This method returns an array containing all of the elements in this queue, in proper sequence.</li>
+</ul>
+</li>
+<li><strong>toArray(T[] a)</strong><ul>
+<li>This method returns an array containing all of the elements in this queue, in proper sequence; the runtimet type of the returned array is that of the specified array.</li>
+</ul>
+</li>
+</ul>
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ConcurrentLinkedQueue;</span><br><span class="line"><span class="comment">// Small Java Program to demonstrate ConcurrentLinkedQueue</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcurrentLinkedQueueDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// Create a ConcurrentLinkedQueue</span></span><br><span class="line">        <span class="comment">// Using ConcurrentLinkedQueue() constructor</span></span><br><span class="line">        ConcurrentLinkedQueue&lt;Integer&gt; clq1 = <span class="keyword">new</span> ConcurrentLinkedQueue&lt;Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        clq1.add(<span class="number">11</span>);</span><br><span class="line">        clq1.add(<span class="number">22</span>);</span><br><span class="line">        clq1.add(<span class="number">33</span>);</span><br><span class="line">        clq1.add(<span class="number">44</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Displaying the existing LinkedQueue</span></span><br><span class="line">        System.out.println(<span class="string">"ConcurrentLinkedQueue : "</span> + clq1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Create a ConcurrentLinkedQueue</span></span><br><span class="line">        <span class="comment">// Using ConcurrentLinkedQueue(Collection c) constructor</span></span><br><span class="line">        ConcurrentLinkedQueue&lt;Integer&gt; clq2 = <span class="keyword">new</span> ConcurrentLinkedQueue&lt;Integer&gt;(clq1);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Displaying the existing LinkedQueue</span></span><br><span class="line">        System.out.println(<span class="string">"ConcurrentLinkedQueue : "</span> + clq2);</span><br><span class="line">                </span><br><span class="line">        <span class="comment">// Displaying the first element</span></span><br><span class="line">        <span class="comment">// using peek() method</span></span><br><span class="line">        System.out.println(<span class="string">"First element is : "</span> + clq2.peek());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Remove and display the first element</span></span><br><span class="line">        <span class="comment">// using poll() method</span></span><br><span class="line">        System.out.println(<span class="string">"Head element is : "</span> + clq2.poll());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Displaying the existing LinkedQueue</span></span><br><span class="line">        System.out.println(<span class="string">"ConcurrentLinkedQueue : "</span> + clq2);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Get the size using size() method</span></span><br><span class="line">        System.out.println(<span class="string">"Size : "</span> + clq2.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Example-output"><a href="#Example-output" class="headerlink" title="Example output"></a>Example output</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">ConcurrentLinkedQueue : [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>]</span><br><span class="line">ConcurrentLinkedQueue : [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>]</span><br><span class="line">First element is : <span class="number">11</span></span><br><span class="line">Head element is : <span class="number">11</span></span><br><span class="line">ConcurrentLinkedQueue : [<span class="number">22</span>, <span class="number">33</span>, <span class="number">44</span>]</span><br><span class="line">Size : <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+        <category>Queue</category>
+      </categories>
+      <tags>
+        <tag>Data Structure</tag>
+        <tag>Queue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Queue in Java | Part 3 - ArrayBlockingQueue Class</title>
     <url>/category/Queue-in-Java-Part-3-ArrayBlockingQueue-Class/</url>
     <content><![CDATA[<h3 id="Introduction-ArrayBlockingQueue"><a href="#Introduction-ArrayBlockingQueue" class="headerlink" title="Introduction - ArrayBlockingQueue"></a>Introduction - ArrayBlockingQueue</h3><p><em>ArrayBlockingQueue</em> class is a bounded blocking queue backed by an array. By bounded it means that the size of the Queue is fixed. Once created, the capacity cannot be changed. Attempts to put an element into a full queue will result in the operation blocking. Similarly attempts to take an element from an empty queue will also be blocked. Boundness of the <em>ArrayBlockingQueue</em> can be achieved initially by passing capacity as the parameter in the constructor of <em>ArrayBlockingQueue</em>.<a id="more"></a> This queue orders elements <strong>FIFO(first-in-first-out)</strong>. It means that the head of this queue is the oldest element of the elements present in this queue. The tail of this queue is the newest element of the elements of this queue. The newly inserted elements are always inserted at the tail of the queue, and the queue retrieval operations obtain elements at the head of the queue. </p>
