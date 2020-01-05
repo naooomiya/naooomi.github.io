@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Introduction - Dynamic ProgrammingDynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid comp">
+<meta name="keywords" content="Data Structure,Dynamic Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic Programming | Part 1 Overlapping Subproblems Property in DP">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Dynamic-Programming-Part-1-Overlapping-Subproblems-Property-in-DP&#x2F;index.html">
+<meta property="og:site_name" content="This is Naomi_W.">
+<meta property="og:description" content="Introduction - Dynamic ProgrammingDynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid comp">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;hOFtfJ4.png">
+<meta property="og:updated_time" content="2020-01-05T04:47:47.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;hOFtfJ4.png">
+
+<link rel="canonical" href="https://naooomi.github.io/category/Dynamic-Programming-Part-1-Overlapping-Subproblems-Property-in-DP/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Dynamic Programming | Part 1 Overlapping Subproblems Property in DP | This is Naomi_W.</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+<a href="https://github.com/Naooomi" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">This is Naomi_W.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-laugh-wink"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Dynamic-Programming-Part-1-Overlapping-Subproblems-Property-in-DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dynamic Programming | Part 1 Overlapping Subproblems Property in DP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-01-05 17:33:47 / Modified: 17:47:47" itemprop="dateCreated datePublished" datetime="2020-01-05T17:33:47+13:00">2020-01-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Structure/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Structure</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dynamic-Programming/" itemprop="url" rel="index">
+                    <span itemprop="name">Dynamic Programming</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="Introduction-Dynamic-Programming"><a href="#Introduction-Dynamic-Programming" class="headerlink" title="Introduction - Dynamic Programming"></a>Introduction - Dynamic Programming</h3><p><em>Dynamic Programming</em> is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again. Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic Programming.</p>
+<a id="more"></a>
+
+<ul>
+<li>Overlapping Subproblems(This part)</li>
+<li>Optimal Substructure(Next part)</li>
+</ul>
+<h3 id="Overlapping-Subproblems"><a href="#Overlapping-Subproblems" class="headerlink" title="Overlapping Subproblems"></a>Overlapping Subproblems</h3><p>Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems. DP is mainly used when solutions of same subproblems are needed again and again. In DP, computed solutions to subproblems are stored in a table so that these don’t have to be recomputed. So DP is not useful when there are no common(overlapping) subproblems because there is no point storing the solutions if they are not needed again. For example, Binary Search doesn’t have common subproblems. If we take an example of following recursive program for Fibonacci Numbers, there are many subproblems which are solved again and again. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* simple recursive program for Fibonacci numbers */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">   <span class="keyword">if</span> ( n &lt;= <span class="number">1</span> ) </span><br><span class="line">      <span class="keyword">return</span> n; </span><br><span class="line">   <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Recursion-tree-for-execution-of-fib-5"><a href="#Recursion-tree-for-execution-of-fib-5" class="headerlink" title="Recursion tree for execution of fib(5)"></a>Recursion tree for execution of fib(5)</h4><p><img src="https://i.imgur.com/hOFtfJ4.png" alt="Recursion tree for execution of fib(5)"></p>
+<p>We can see that the function fib(3) is being called 2 times. If we would have stored the value of fib(3), then instead of computing it again, we could have reused the old stored value. There are following two different ways to store the values so that these values can be reused: </p>
+<h5 id="a-Memoization-Top-Down"><a href="#a-Memoization-Top-Down" class="headerlink" title="a) Memoization (Top Down)"></a>a) Memoization (Top Down)</h5><p>The memoized program for a problem is similar to the recursive version with a small modification that it look into a lookup table before computing solutions. We initialize a lookup array with all initial values as NIL. Whenever we need the solution to a subproblem, we first look into the lookup table. If the precomputed value is there then we return that value, otherwise, we calculate the value and put the result in the lookup table so that it can be reused later. </p>
+<h6 id="The-Algorithm"><a href="#The-Algorithm" class="headerlink" title="The Algorithm:"></a>The Algorithm:</h6><ul>
+<li>Initialize a lookup array/table with all its elements as NIL<ul>
+<li>NIL is simply a constant value, e.g. -1, that signifies absence of a solution</li>
+</ul>
+</li>
+<li>Call the recursive function f(n) to solve for ‘n’ using memoization<ul>
+<li>At every step i, f(i) performs the following steps:</li>
+<li>Checks whether table[i] is NIL or not</li>
+<li>If it’s not NIL, f(i)returns the value ‘table[i]’</li>
+<li>If it’s NIL; and ‘i’ satisfies the base condition, we update the lookup table with the base value and return the same. </li>
+<li>If it’s NIL and ‘i’ does not satisfy the base condition, then f(i) splits the problem ‘i’ into subproblems and recursively calls itself to solve them.</li>
+<li>After the recursive calls return, f(i) combines the solutions to subproblems, updates the lookup table and returns the solution for problem ‘i’</li>
+</ul>
+</li>
+</ul>
+<h6 id="Memoized-example-for-nth-Fibonacci-Number"><a href="#Memoized-example-for-nth-Fibonacci-Number" class="headerlink" title="Memoized example for nth Fibonacci Number:"></a>Memoized example for nth Fibonacci Number:</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> MAX = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> NIL = -<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> lookup[] = <span class="keyword">new</span> <span class="keyword">int</span>[MAX];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*Function to initialize NIL values in lookup table*/</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">_initialize</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">            lookup[i] = NIL;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*Function for nth Fibonacci number*/</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lookup[n] == NIL)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)</span><br><span class="line">                lookup[n] = n;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                lookup[n] = fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lookup[n];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Fibonacci f = <span class="keyword">new</span> Fibonacci();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">40</span>;</span><br><span class="line">        f._initialize();</span><br><span class="line">        System.out.println(<span class="string">"Fibonacci number is : "</span> + f.fib(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Output:<br>Fibonacci number is : 102334155</p>
+</blockquote>
+<h5 id="b-Tabulation-Bottom-Up"><a href="#b-Tabulation-Bottom-Up" class="headerlink" title="b) Tabulation (Bottom Up)"></a>b) Tabulation (Bottom Up)</h5><p>The tabulated program for a given problem build a table in bottom up fashion and returns the last entry from table. For example, for the same Fibonacci number, we first calculate fib(0) then fib(1) then fib(2) then fib(3) and so on. So literally, we are building the solutions of subproblems bottom-up. </p>
+<h6 id="The-algorithm"><a href="#The-algorithm" class="headerlink" title="The algorithm:"></a>The algorithm:</h6><ul>
+<li>Build the lookup table in bottom up fashion</li>
+<li>After the table is built, simply return table[n]</li>
+</ul>
+<h6 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h6><ol>
+<li>We begin with initializing the base values of ‘i’</li>
+<li>Next, we run a loop that iterates over the remaining values of ‘i’</li>
+<li>At every iteration i, f(n) updates the ith entry in the lookup table by combining the solutions to the previously solved subproblems</li>
+<li>Finally, f(n) returns table[n]</li>
+</ol>
+<p>Tabulated Example for nth Fibonacci Number:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*Java program for Tabulated version*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> f[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">            f[i] = f[i-<span class="number">1</span>] + f[i-<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">return</span> f[n];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Fibonacci f = <span class="keyword">new</span> Fibonacci();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">        System.out.println(<span class="string">"Fibonacci number is : "</span> + f.fib(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Output:<br>Fibonacci number is : 34</p>
+</blockquote>
+<p>Both Tabulated and Memoized store the solutions of subproblems. In Memoized version, table is filled on demand while in Tabulated version, starting from the first entry, all entries are filled one by one. Unlike the Tabulated version, all entries of the lookup table are not necessarily filled in Memoized version. For example, Memorized solution of the LCS problem doesn’t necessarily fill all entries. </p>
+<h3 id="Comparation"><a href="#Comparation" class="headerlink" title="Comparation"></a>Comparation</h3><h4 id="Tabulation"><a href="#Tabulation" class="headerlink" title="Tabulation"></a>Tabulation</h4><ul>
+<li>Works in bottom up fashion</li>
+<li>Avoids multiple lookups, thus, saves function call overhead time</li>
+</ul>
+<h4 id="Memoization"><a href="#Memoization" class="headerlink" title="Memoization"></a>Memoization</h4><ul>
+<li>Works in top down fashion</li>
+<li>Sometimes, avoids computing solutions to subproblems that are not needed, e.g., Longest Common Subsequence</li>
+<li>Sometimes, more intuitive to write, e.g., Matrix Chain Multiplication</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End <i class="fas fa-coffee"></i> Thanks for your time-------------</div>
+    
+</div>
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Data-Structure/" rel="tag"><i class="fa fa-tag"></i> Data Structure</a>
+              <a href="/tags/Dynamic-Programming/" rel="tag"><i class="fa fa-tag"></i> Dynamic Programming</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/category/Queue-in-Java-Part-4-ConcurrentLinkedQueue-Class/" rel="next" title="Queue in Java | Part 4 ConcurrentLinkedQueue Class">
+                  <i class="fa fa-chevron-left"></i> Queue in Java | Part 4 ConcurrentLinkedQueue Class
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-Dynamic-Programming"><span class="nav-text">Introduction - Dynamic Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overlapping-Subproblems"><span class="nav-text">Overlapping Subproblems</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recursion-tree-for-execution-of-fib-5"><span class="nav-text">Recursion tree for execution of fib(5)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-Memoization-Top-Down"><span class="nav-text">a) Memoization (Top Down)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#The-Algorithm"><span class="nav-text">The Algorithm:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Memoized-example-for-nth-Fibonacci-Number"><span class="nav-text">Memoized example for nth Fibonacci Number:</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-Tabulation-Bottom-Up"><span class="nav-text">b) Tabulation (Bottom Up)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#The-algorithm"><span class="nav-text">The algorithm:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Steps"><span class="nav-text">Steps:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Comparation"><span class="nav-text">Comparation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tabulation"><span class="nav-text">Tabulation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Memoization"><span class="nav-text">Memoization</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Naomi_W"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Naomi_W</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Naooomi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Naooomi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-square"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/naomi-hanwu/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;naomi-hanwu&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006848162626" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id=100006848162626" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/__naoooomi__/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;__naoooomi__&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.snapchat.com/add/naooomi.wuuu" title="Snapchat → https:&#x2F;&#x2F;www.snapchat.com&#x2F;add&#x2F;naooomi.wuuu" rel="noopener" target="_blank"><i class="fa fa-fw fa-snapchat"></i>Snapchat</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+
+<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Naomi_W</span>
+
+<div class="powered-by">
+<span class="post-meta-divider"> | </span>
+<i class="fas fa-paw"></i></i>
+<span id="busuanzi_container_site_uv">Visitors : <span id="busuanzi_value_site_uv"></span></span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-meta-divider"> | </span>
+  <span class="post-count">Total Words : 13.6k</span>
+</div>
+
+<!--
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">65k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:01</span>
+-->
+</div>
+
+<!--
+-->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

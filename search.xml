@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Dynamic Programming | Part 1 Overlapping Subproblems Property in DP</title>
+    <url>/category/Dynamic-Programming-Part-1-Overlapping-Subproblems-Property-in-DP/</url>
+    <content><![CDATA[<h3 id="Introduction-Dynamic-Programming"><a href="#Introduction-Dynamic-Programming" class="headerlink" title="Introduction - Dynamic Programming"></a>Introduction - Dynamic Programming</h3><p><em>Dynamic Programming</em> is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again. Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic Programming.</p>
+<a id="more"></a>
+
+<ul>
+<li>Overlapping Subproblems(This part)</li>
+<li>Optimal Substructure(Next part)</li>
+</ul>
+<h3 id="Overlapping-Subproblems"><a href="#Overlapping-Subproblems" class="headerlink" title="Overlapping Subproblems"></a>Overlapping Subproblems</h3><p>Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems. DP is mainly used when solutions of same subproblems are needed again and again. In DP, computed solutions to subproblems are stored in a table so that these don’t have to be recomputed. So DP is not useful when there are no common(overlapping) subproblems because there is no point storing the solutions if they are not needed again. For example, Binary Search doesn’t have common subproblems. If we take an example of following recursive program for Fibonacci Numbers, there are many subproblems which are solved again and again. </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* simple recursive program for Fibonacci numbers */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">   <span class="keyword">if</span> ( n &lt;= <span class="number">1</span> ) </span><br><span class="line">      <span class="keyword">return</span> n; </span><br><span class="line">   <span class="keyword">return</span> fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Recursion-tree-for-execution-of-fib-5"><a href="#Recursion-tree-for-execution-of-fib-5" class="headerlink" title="Recursion tree for execution of fib(5)"></a>Recursion tree for execution of fib(5)</h4><p><img src="https://i.imgur.com/hOFtfJ4.png" alt="Recursion tree for execution of fib(5)"></p>
+<p>We can see that the function fib(3) is being called 2 times. If we would have stored the value of fib(3), then instead of computing it again, we could have reused the old stored value. There are following two different ways to store the values so that these values can be reused: </p>
+<h5 id="a-Memoization-Top-Down"><a href="#a-Memoization-Top-Down" class="headerlink" title="a) Memoization (Top Down)"></a>a) Memoization (Top Down)</h5><p>The memoized program for a problem is similar to the recursive version with a small modification that it look into a lookup table before computing solutions. We initialize a lookup array with all initial values as NIL. Whenever we need the solution to a subproblem, we first look into the lookup table. If the precomputed value is there then we return that value, otherwise, we calculate the value and put the result in the lookup table so that it can be reused later. </p>
+<h6 id="The-Algorithm"><a href="#The-Algorithm" class="headerlink" title="The Algorithm:"></a>The Algorithm:</h6><ul>
+<li>Initialize a lookup array/table with all its elements as NIL<ul>
+<li>NIL is simply a constant value, e.g. -1, that signifies absence of a solution</li>
+</ul>
+</li>
+<li>Call the recursive function f(n) to solve for ‘n’ using memoization<ul>
+<li>At every step i, f(i) performs the following steps:</li>
+<li>Checks whether table[i] is NIL or not</li>
+<li>If it’s not NIL, f(i)returns the value ‘table[i]’</li>
+<li>If it’s NIL; and ‘i’ satisfies the base condition, we update the lookup table with the base value and return the same. </li>
+<li>If it’s NIL and ‘i’ does not satisfy the base condition, then f(i) splits the problem ‘i’ into subproblems and recursively calls itself to solve them.</li>
+<li>After the recursive calls return, f(i) combines the solutions to subproblems, updates the lookup table and returns the solution for problem ‘i’</li>
+</ul>
+</li>
+</ul>
+<h6 id="Memoized-example-for-nth-Fibonacci-Number"><a href="#Memoized-example-for-nth-Fibonacci-Number" class="headerlink" title="Memoized example for nth Fibonacci Number:"></a>Memoized example for nth Fibonacci Number:</h6><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> MAX = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> NIL = -<span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> lookup[] = <span class="keyword">new</span> <span class="keyword">int</span>[MAX];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*Function to initialize NIL values in lookup table*/</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">_initialize</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAX; i++)</span><br><span class="line">            lookup[i] = NIL;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*Function for nth Fibonacci number*/</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lookup[n] == NIL)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &lt;= <span class="number">1</span>)</span><br><span class="line">                lookup[n] = n;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                lookup[n] = fib(n-<span class="number">1</span>) + fib(n-<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lookup[n];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Fibonacci f = <span class="keyword">new</span> Fibonacci();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">40</span>;</span><br><span class="line">        f._initialize();</span><br><span class="line">        System.out.println(<span class="string">"Fibonacci number is : "</span> + f.fib(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Output:<br>Fibonacci number is : 102334155</p>
+</blockquote>
+<h5 id="b-Tabulation-Bottom-Up"><a href="#b-Tabulation-Bottom-Up" class="headerlink" title="b) Tabulation (Bottom Up)"></a>b) Tabulation (Bottom Up)</h5><p>The tabulated program for a given problem build a table in bottom up fashion and returns the last entry from table. For example, for the same Fibonacci number, we first calculate fib(0) then fib(1) then fib(2) then fib(3) and so on. So literally, we are building the solutions of subproblems bottom-up. </p>
+<h6 id="The-algorithm"><a href="#The-algorithm" class="headerlink" title="The algorithm:"></a>The algorithm:</h6><ul>
+<li>Build the lookup table in bottom up fashion</li>
+<li>After the table is built, simply return table[n]</li>
+</ul>
+<h6 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h6><ol>
+<li>We begin with initializing the base values of ‘i’</li>
+<li>Next, we run a loop that iterates over the remaining values of ‘i’</li>
+<li>At every iteration i, f(n) updates the ith entry in the lookup table by combining the solutions to the previously solved subproblems</li>
+<li>Finally, f(n) returns table[n]</li>
+</ol>
+<p>Tabulated Example for nth Fibonacci Number:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*Java program for Tabulated version*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Fibonacci</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> f[] = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        f[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</span><br><span class="line">            f[i] = f[i-<span class="number">1</span>] + f[i-<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">return</span> f[n];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Fibonacci f = <span class="keyword">new</span> Fibonacci();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">9</span>;</span><br><span class="line">        System.out.println(<span class="string">"Fibonacci number is : "</span> + f.fib(n));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Output:<br>Fibonacci number is : 34</p>
+</blockquote>
+<p>Both Tabulated and Memoized store the solutions of subproblems. In Memoized version, table is filled on demand while in Tabulated version, starting from the first entry, all entries are filled one by one. Unlike the Tabulated version, all entries of the lookup table are not necessarily filled in Memoized version. For example, Memorized solution of the LCS problem doesn’t necessarily fill all entries. </p>
+<h3 id="Comparation"><a href="#Comparation" class="headerlink" title="Comparation"></a>Comparation</h3><h4 id="Tabulation"><a href="#Tabulation" class="headerlink" title="Tabulation"></a>Tabulation</h4><ul>
+<li>Works in bottom up fashion</li>
+<li>Avoids multiple lookups, thus, saves function call overhead time</li>
+</ul>
+<h4 id="Memoization"><a href="#Memoization" class="headerlink" title="Memoization"></a>Memoization</h4><ul>
+<li>Works in top down fashion</li>
+<li>Sometimes, avoids computing solutions to subproblems that are not needed, e.g., Longest Common Subsequence</li>
+<li>Sometimes, more intuitive to write, e.g., Matrix Chain Multiplication</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Structure</category>
+        <category>Dynamic Programming</category>
+      </categories>
+      <tags>
+        <tag>Data Structure</tag>
+        <tag>Dynamic Programming</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Queue in Java | Part 4 ConcurrentLinkedQueue Class</title>
     <url>/category/Queue-in-Java-Part-4-ConcurrentLinkedQueue-Class/</url>
     <content><![CDATA[<h3 id="Intriduction-ConcurrentLinkedQueue"><a href="#Intriduction-ConcurrentLinkedQueue" class="headerlink" title="Intriduction - ConcurrentLinkedQueue"></a>Intriduction - ConcurrentLinkedQueue</h3><p>The <em>ConcurrentLinkedQueue</em> class in Java is part of the Java Collection Framework and implements the Collection Interface and the AbstractCollection class. It is used to implement Queue with the help of LinkedList concurrently. </p>
