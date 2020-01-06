@@ -1,9 +1,10 @@
 ---
-title: AWS Service | IAM101
+title: AWS Service | IAM1 01
 date: 2019-12-17 22:55:56
 tags:
     - [AWS Services]
     - [IAM]
+    - [AWS Certified Developer - Associate]
 categories:
     - [AWS Services]
     - [IAM]

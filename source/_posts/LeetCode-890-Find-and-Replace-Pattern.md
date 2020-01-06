@@ -2,7 +2,7 @@
 title: '[LeetCode] 890. Find and Replace Pattern'
 date: 2019-12-11 23:29:11
 tags:
-    - [LeetCode(Medium)]
+    - [LeetCode (Medium)]
     - [Hashing]
     - [String]
 

@@ -2,11 +2,11 @@
 title: '[LeetCode] 739. Daily Temperatures'
 date: 2019-12-18 13:10:49
 tags:
-    - [LeetCode(Medium)]
+    - [LeetCode (Medium)]
     - [Stack]
 
 categories:
-    - [LeetCode(Medium)]
+    - [LeetCode Medium]
     - [Stack]
 ---
 
