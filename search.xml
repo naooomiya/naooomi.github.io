@@ -1,6 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS Service | EC2 101</title>
+    <url>/category/AWS-Service-EC2-101/</url>
+    <content><![CDATA[<h3 id="1-What-is-EC2-Virtual-Server"><a href="#1-What-is-EC2-Virtual-Server" class="headerlink" title="1. What is EC2(Virtual Server)?"></a>1. What is EC2(Virtual Server)?</h3><ul>
+<li>Amazon Elastic Compute Cloud(Amazon EC2) is a web service that provides resizable compute capacity in the cloud. Amazon EC2 reduces the time required to obtain and boot new server instances to minutes, allowing you to quickly scale capacity, both up and down, as your computing requirements change. <a id="more"></a><ul>
+<li>(It’s just virtual machines in the cloud and it reduces the time required to obtain and boot new server)</li>
+</ul>
+</li>
+<li>Amazon EC2 changes the economics of computing by allowing you to pay only for capacity that you actually use. Amazon EC2 provides developers the tools to build failure resilient applications and isolate themselves from common failure scenarios. </li>
+</ul>
+<hr>
+<h3 id="2-EC2-Options"><a href="#2-EC2-Options" class="headerlink" title="2. EC2 Options"></a>2. EC2 Options</h3><ul>
+<li><strong>On Demand</strong> <ul>
+<li>allows you to pay a fixed rate by the hour (or by the second) with no commitment.</li>
+</ul>
+</li>
+<li><strong>Reserved</strong> <ul>
+<li>provides you with a capacity reservation, and offer a significant discount on the hourly charge for an instance. 1 Year or 3 Year Terms.</li>
+</ul>
+</li>
+<li><strong>Spot</strong> <ul>
+<li>enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times.</li>
+</ul>
+</li>
+<li><strong>Dedicated Hosts</strong> <ul>
+<li>Physical EC2 server dedicated for your use. Dedicated Hosts can help you reduce costs by allowing you to use your existing server-bound software licenses. </li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-On-Demand"><a href="#2-1-On-Demand" class="headerlink" title="2.1. On Demand"></a>2.1. On Demand</h4><ul>
+<li>Perfect for users that want the low cost and flexibility of Amazon EC2 without any up-front payment or long-term commitment.</li>
+<li>Applications with short term, spiky, or unpredictable workloads that cannot be interrupted.</li>
+<li>Applications being developed or tested on Amazon EC2 for the first time. </li>
+</ul>
+<h4 id="2-2-Reserved-Instances"><a href="#2-2-Reserved-Instances" class="headerlink" title="2.2. Reserved Instances"></a>2.2. Reserved Instances</h4><ul>
+<li>Applications with steady state or predictable usage</li>
+<li>Applications that require reserved capacity</li>
+<li>Users can make up-front payments to reduce their total computing costs even further<ul>
+<li>Standard RIs(Reserved Instances)(Up to 75% off on-demand)</li>
+<li>Convertible RIs(Up to 54% off on-demand) feature the capability to change the attributes of the RI as long as the exchange results in the creation of Reserved Instances of equal or greater value.</li>
+<li>Scheduled RIs are available to launch within the time window you reserve. This option allows you to match your capacity reservation to a predictable recurring schedule that only requires a fraction(一小部分) of a day, a week, or a month. </li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-Spot-Instances"><a href="#2-3-Spot-Instances" class="headerlink" title="2.3. Spot Instances"></a>2.3. Spot Instances</h4><ul>
+<li>Applications that have flexible start and end times</li>
+<li>Applications that are only feasible at very low compute prices<ul>
+<li>Some chemical companies or big pharmaceutical companies use this spot instances to do huge amounts of computing at like 4 am on Sunday morning and this can save a lot of money compared to using the same compute capacity from like 9-5 during the week. </li>
+</ul>
+</li>
+<li>Users with an urgent need for large amounts of additional computing capacity</li>
+</ul>
+<h4 id="2-4-Dedicated-Hosts"><a href="#2-4-Dedicated-Hosts" class="headerlink" title="2.4. Dedicated Hosts"></a>2.4. Dedicated Hosts</h4><ul>
+<li>Useful for regulatory requirements that may not support multi-tenant virtualization.</li>
+<li>Great for licensing which does not support multi-tenancy or cloud deployments</li>
+<li>Can be purchased On-Demand(hourly)</li>
+<li>Can be purchased as a Reservation for up to 70% off the On-Demand price. </li>
+</ul>
+<hr>
+<h3 id="3-EC2-Instance-Type"><a href="#3-EC2-Instance-Type" class="headerlink" title="3. EC2 Instance Type"></a>3. EC2 Instance Type</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Family</th>
+<th align="center">Speciality</th>
+<th align="center">Use Case</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center"><strong>F1</strong></td>
+<td align="center"><strong>Field Programmable Gate Array</strong></td>
+<td align="center">Genomics Research, Financial Analytics, Real-time video processing, Big Data, etc</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center"><strong>I3</strong></td>
+<td align="center"><strong>High Speed Storage</strong></td>
+<td align="center">NoSQL DBs, Data Warehousing, etc</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center"><strong>G3</strong></td>
+<td align="center"><strong>Graphics Intensive</strong></td>
+<td align="center">Video Encoding/3D Application Streaming</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center"><strong>H1</strong></td>
+<td align="center"><strong>High Disk Throughput</strong></td>
+<td align="center">MapReduce-based workloads, Distributed file system such as HDFS and MapR-FS</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center"><strong>T2</strong></td>
+<td align="center"><strong>Lowest Cost, General Purpose</strong></td>
+<td align="center">Web Servers/Small DBs</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center"><strong>D2</strong></td>
+<td align="center"><strong>Dense Storage</strong></td>
+<td align="center">Fileservers/Data Warehousing/Hadoop</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center"><strong>R4</strong></td>
+<td align="center"><strong>Memory Optimized</strong></td>
+<td align="center">Memory Intensive Apps/DBs</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="center"><strong>M5</strong></td>
+<td align="center"><strong>General Purpose</strong></td>
+<td align="center">Application Servers</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="center"><strong>C5</strong></td>
+<td align="center"><strong>Compute Optimized</strong></td>
+<td align="center">CPU Intensive Apps/DBs</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="center"><strong>P3</strong></td>
+<td align="center"><strong>Graphics/General Purpose GPU</strong></td>
+<td align="center">Machine Learning, Bit Coin Mining, etc</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="center"><strong>X1</strong></td>
+<td align="center"><strong>Memory Optimized</strong></td>
+<td align="center">SAP HANA/Apache Spark, etc</td>
+</tr>
+</tbody></table>
+<h4 id="How-to-remember"><a href="#How-to-remember" class="headerlink" title="How to remember:"></a>How to remember:</h4><p><strong>F</strong> - <strong>FPGA</strong> (Field Programmable Gate Array)<br><strong>I</strong> - <strong>IOPS</strong> (High Speed Storage)<br><strong>G</strong> - <strong>Graphics</strong> (Graphics Intensive)<br><strong>H</strong> - <strong>High Disk Throughput</strong><br><strong>T</strong> - <strong>Cheap general purpose</strong> (Lowest Cost, General Purpose)<br><strong>D</strong> for <strong>Density</strong> (Dense Storage)<br><strong>R</strong> for <strong>RAM</strong> (Memory Optimized)<br><strong>M</strong> - main choice for <strong>general purpose</strong> apps (General Purpose)<br><strong>C</strong> for <strong>Compute</strong> (Compute Optimized)<br><strong>P</strong> - <strong>Graphics/General Purpose GPU</strong> (Pics)<br><strong>X</strong> - <strong>Extreme Memory</strong> (Memory Optimized)</p>
+<hr>
+<h3 id="4-What-is-EBS-Virtual-Disk"><a href="#4-What-is-EBS-Virtual-Disk" class="headerlink" title="4. What is EBS(Virtual Disk)?"></a>4. What is EBS(Virtual Disk)?</h3><p><strong>Amazon EBS(Elastic Block Storage)</strong> allows you to create storage volumes and attach them to Amazon EC2 instances. Once attached, you can create a file system on top of these volumes, run a database, or use them in any other way you would use a block device. Amazon EBS volumes are placed in a specific Availability Zone, where they are automatically replicated to protect you from the failure of a single component. </p>
+<hr>
+<h3 id="5-EBS-Volume-Types"><a href="#5-EBS-Volume-Types" class="headerlink" title="5. EBS Volume Types"></a>5. EBS Volume Types</h3><ul>
+<li><strong>General Purpose SSD(GP2)</strong><ul>
+<li>General purpose, balances both price and performance.</li>
+<li>Ratio of 3 IOPS(Input/Output Operation Per Seconds) and the ability to burst up to 3000 IOPS for extended periods of time for volumes at 334 GB and above.</li>
+</ul>
+</li>
+<li><strong>Provisioned IOPS SSD(IO1)</strong><ul>
+<li>Designed for I/O intensive applications such as large relational or NoSQL databases</li>
+<li>Use if you need more than 10, 000 IOPS</li>
+<li>Can provision up to 20, 000 IOPS per volume</li>
+</ul>
+</li>
+<li><strong>Throughput Optimized HHD(ST1)</strong><ul>
+<li>Big  data</li>
+<li>Data Warehouses</li>
+<li>Log processing</li>
+<li>Cannot be a boot volume have to be additional volume</li>
+</ul>
+</li>
+<li><strong>Cold HDD(SC1)</strong><ul>
+<li>Lowest Cost Storage for infrequently accessed workloads</li>
+<li>File Server</li>
+<li>Cannot be a boot volume</li>
+</ul>
+</li>
+<li><strong>Magnetic(Standard)</strong><ul>
+<li>Lowest cost per gigabyte of all EBS volume types that is bootable. Magnetic volumes are ideal for workloads where data is accessed infrequently, and applications where the lowest storage cost is important. </li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="EC2-Exam-Tips"><a href="#EC2-Exam-Tips" class="headerlink" title="EC2 Exam Tips"></a>EC2 Exam Tips</h3><h4 id="1-EC2-Options"><a href="#1-EC2-Options" class="headerlink" title="1. EC2 Options"></a>1. EC2 Options</h4><ul>
+<li>On Demand - allows you to pay a fixed rate by the hour (or by the second) with no commitment</li>
+<li>Reserved - provides you with a capacity reservation, and offer a significant discount on the hourly charge for an instance. 1 Year or 3 Year Terms</li>
+<li>Spot - enables you to bid whatever price you want for instance capacity, providing for even greater savings if your applications have flexible start and end times. </li>
+<li>Dedicated Hosts - Physical EC2 server dedicated for your use. Dedicated Hosts can help you reduce costs by allowing you to use your existing server-bound software licenses. </li>
+</ul>
+<h4 id="2-If-a-Sport-instance-is-terminated-by-Amazon-EC2-you-will-not-be-charged-for-a-partial-hour-of-usage-However-if-you-terminate-the-instance-yourself-you-will-be-charged-for-the-complete-hour-in-which-the-instance-ran"><a href="#2-If-a-Sport-instance-is-terminated-by-Amazon-EC2-you-will-not-be-charged-for-a-partial-hour-of-usage-However-if-you-terminate-the-instance-yourself-you-will-be-charged-for-the-complete-hour-in-which-the-instance-ran" class="headerlink" title="2. If a Sport instance is terminated by Amazon EC2, you will not be charged for a partial hour of usage. However, if you terminate the instance yourself, you will be charged for the complete hour in which the instance ran."></a>2. If a Sport instance is terminated by Amazon EC2, you will not be charged for a partial hour of usage. However, if you terminate the instance yourself, you will be charged for the complete hour in which the instance ran.</h4><h4 id="3-SSD"><a href="#3-SSD" class="headerlink" title="3. SSD"></a>3. SSD</h4><p>a. <em>General Purpose SSD</em> - balances price and performance for a wide variety of workloads<br>b. <em>Provisioned IOPS SSD</em> - Highest - performance SSD volume for mission-critical low-latency or high-throughput workloads</p>
+<h4 id="4-Magnetic"><a href="#4-Magnetic" class="headerlink" title="4. Magnetic"></a>4. Magnetic</h4><p>a. <em>Throughput Optimized HDD</em> - Low cost HDD volume designed for frequently accessed, throughput-intensive workloads<br>b. <em>Cold HDD</em> - Lowest cost HDD volume designed for less frequently accessed workloads<br>c. <em>Magnetic</em> - Previous Generation. Can be a boot volume. </p>
+]]></content>
+      <categories>
+        <category>AWS Services</category>
+        <category>EC2</category>
+        <category>AWS Certified Developer - Associate</category>
+      </categories>
+      <tags>
+        <tag>AWS Services</tag>
+        <tag>EC2</tag>
+        <tag>AWS Certified Developer - Associate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dynamic Programming | Part 1 Overlapping Subproblems Property in DP</title>
     <url>/category/Dynamic-Programming-Part-1-Overlapping-Subproblems-Property-in-DP/</url>
     <content><![CDATA[<h3 id="Introduction-Dynamic-Programming"><a href="#Introduction-Dynamic-Programming" class="headerlink" title="Introduction - Dynamic Programming"></a>Introduction - Dynamic Programming</h3><p><em>Dynamic Programming</em> is an algorithmic paradigm that solves a given complex problem by breaking it into subproblems and stores the results of subproblems to avoid computing the same results again. Following are the two main properties of a problem that suggests that the given problem can be solved using Dynamic Programming.</p>
@@ -328,17 +518,17 @@
 
 ]]></content>
       <categories>
-        <category>LeetCode(Medium)</category>
+        <category>LeetCode Medium</category>
         <category>Stack</category>
       </categories>
       <tags>
-        <tag>LeetCode(Medium)</tag>
+        <tag>LeetCode (Medium)</tag>
         <tag>Stack</tag>
       </tags>
   </entry>
   <entry>
-    <title>AWS Service | IAM101</title>
-    <url>/category/AWS-Service-IAM101/</url>
+    <title>AWS Service | IAM1 01</title>
+    <url>/category/AWS-Service-IAM-101/</url>
     <content><![CDATA[<h3 id="What-is-IAM"><a href="#What-is-IAM" class="headerlink" title="What is IAM"></a>What is IAM</h3><p>Essentially, IAM allows you to manage users and their level of access to the AWS Console. It is important to understand IAM and how it woks, both for the exam and for administrating a company’s AWS account in real life. </p>
 <a id="more"></a>
 
@@ -409,6 +599,7 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
+        <tag>AWS Certified Developer - Associate</tag>
         <tag>IAM</tag>
       </tags>
   </entry>
@@ -511,7 +702,7 @@
       <tags>
         <tag>Hashing</tag>
         <tag>String</tag>
-        <tag>LeetCode(Medium)</tag>
+        <tag>LeetCode (Medium)</tag>
       </tags>
   </entry>
   <entry>
