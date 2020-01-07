@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS Service | Elastic Load Balancer</title>
+    <url>/category/AWS-Service-Elastic-Load-Balancer/</url>
+    <content><![CDATA[<h3 id="1-What-is-Elastic-Load-Balancer"><a href="#1-What-is-Elastic-Load-Balancer" class="headerlink" title="1. What is Elastic Load Balancer"></a>1. What is Elastic Load Balancer</h3><p>Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP address, and Lambda functions. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zone. Elastic Load Balancing offers three types of load balancers that all feature the high availability, automatic scaling, and robust security necessary to make your applications fault tolerant. </p>
+<a id="more"></a>
+
+<h3 id="2-Types-Of-Load-Balancers"><a href="#2-Types-Of-Load-Balancers" class="headerlink" title="2. Types Of Load Balancers"></a>2. Types Of Load Balancers</h3><ol>
+<li>Application Load Balancer</li>
+<li>Network Load Balancer</li>
+<li>Classic Load Balancer</li>
+</ol>
+<h4 id="1-1-Application-Load-Balancer-ALB"><a href="#1-1-Application-Load-Balancer-ALB" class="headerlink" title="1.1. Application Load Balancer(ALB)"></a>1.1. Application Load Balancer(ALB)</h4><ul>
+<li>This load balancer is specially designed for web applications with HTTP and HTTPS traffic.</li>
+<li>AWS Application Load Balancer(ALB) operates at Layer 7 of the OSI Model. At Layer 7, the ELB has the ability to inspect application-level content, not just IP and port. This lets it route based on more complex rules than with the Classic Load Balancer.<br>For example, an ELB at a given IP will receive a request from the client on port 443(HTTPS). The Application Load Balancer will process the request, not only by receiving port, but also by looking at the destination URL. <ul>
+<li>Application Load Balancer will be aware of each of these URLs based on patterns set up when configuring the load balancer, and can route to different clusters of servers depending on application need. Rules can also be added at a later time as you add new functionality to your stack. </li>
+<li>The Application Load Balancer also integrates with EC2 Container Service(ECS) using Service Load Balancing. This allows for dynamic mapping of services to ports as specified in the ECS task definition. Multiple containers can be targeted on the same EC2 instance, each running different services on different ports. The ECS task scheduler will automatically add these tasks to the ALB. </li>
+</ul>
+</li>
+<li>It also provides advanced routing features such as host-based and path-based routing and also works with containers and microservices.<h5 id="Key-ALB-Concepts"><a href="#Key-ALB-Concepts" class="headerlink" title="Key ALB Concepts"></a>Key ALB Concepts</h5>There are some key concepts that you will need to know when configuring your ALB. The first is rules. Each rule specifies a condition, target group, and a priority.</li>
+<li>Rules determine what action is taken when a rule matches a client request. Up to 10 URL-based rules can be defined in the ALB.<ul>
+<li>The condition is the path pattern you want the ALB to evaluate in order for it to route requests. </li>
+</ul>
+</li>
+<li>The target group is used to route requests to registered targets as part of an action for a rule. Target groups specify a protocol and target port. Health checks can be configured per target group. An ALB can route to multiple target groups.<ul>
+<li>Targets specify the endpoints and are registered with the ALB as part of a target group.</li>
+</ul>
+</li>
+<li>Priority tells the ALB in which order to evaluate the rules. Rules are numerically evaluated in order from lowest to highest value. When a rule matches a request, traffic will be routes to the specified target group.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AWS Services</category>
+        <category>Elastic Load Balancer</category>
+        <category>AWS Certified Developer - Associate</category>
+      </categories>
+      <tags>
+        <tag>AWS Services</tag>
+        <tag>Elastic Load Balancer</tag>
+        <tag>ELB</tag>
+        <tag>AWS Certified Developer - Associate</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS Service | EC2 101</title>
     <url>/category/AWS-Service-EC2-101/</url>
     <content><![CDATA[<h3 id="1-What-is-EC2-Virtual-Server"><a href="#1-What-is-EC2-Virtual-Server" class="headerlink" title="1. What is EC2(Virtual Server)?"></a>1. What is EC2(Virtual Server)?</h3><ul>
@@ -186,8 +228,8 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
-        <tag>EC2</tag>
         <tag>AWS Certified Developer - Associate</tag>
+        <tag>EC2</tag>
       </tags>
   </entry>
   <entry>
@@ -701,8 +743,8 @@
       </categories>
       <tags>
         <tag>Hashing</tag>
-        <tag>String</tag>
         <tag>LeetCode (Medium)</tag>
+        <tag>String</tag>
       </tags>
   </entry>
   <entry>
