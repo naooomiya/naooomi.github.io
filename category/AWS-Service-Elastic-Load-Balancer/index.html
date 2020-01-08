@@ -48,14 +48,14 @@
 </script>
 
   <meta name="description" content="1. What is Elastic Load BalancerElastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP address, and Lambda">
-<meta name="keywords" content="AWS Services,Elastic Load Balancer,ELB,AWS Certified Developer - Associate">
+<meta name="keywords" content="AWS Services,AWS Certified Developer - Associate,Elastic Load Balancer,ELB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS Service | Elastic Load Balancer">
 <meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;AWS-Service-Elastic-Load-Balancer&#x2F;index.html">
 <meta property="og:site_name" content="This is Naomi_W.">
 <meta property="og:description" content="1. What is Elastic Load BalancerElastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP address, and Lambda">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-07T10:54:53.942Z">
+<meta property="og:updated_time" content="2020-01-08T10:50:11.122Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://naooomi.github.io/category/AWS-Service-Elastic-Load-Balancer/">
@@ -233,10 +233,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-01-07 23:51:16 / Modified: 23:54:53" itemprop="dateCreated datePublished" datetime="2020-01-07T23:51:16+13:00">2020-01-07</time>
+              <time title="Created: 2020-01-07 23:51:16" itemprop="dateCreated datePublished" datetime="2020-01-07T23:51:16+13:00">2020-01-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-01-08 23:50:11" itemprop="dateModified" datetime="2020-01-08T23:50:11+13:00">2020-01-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -266,13 +272,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>2.5k</span>
+              <span>5.8k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>2 mins.</span>
+              <span>5 mins.</span>
             </span>
 
         </div>
@@ -287,28 +293,67 @@
         <h3 id="1-What-is-Elastic-Load-Balancer"><a href="#1-What-is-Elastic-Load-Balancer" class="headerlink" title="1. What is Elastic Load Balancer"></a>1. What is Elastic Load Balancer</h3><p>Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP address, and Lambda functions. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zone. Elastic Load Balancing offers three types of load balancers that all feature the high availability, automatic scaling, and robust security necessary to make your applications fault tolerant. </p>
 <a id="more"></a>
 
+<hr>
 <h3 id="2-Types-Of-Load-Balancers"><a href="#2-Types-Of-Load-Balancers" class="headerlink" title="2. Types Of Load Balancers"></a>2. Types Of Load Balancers</h3><ol>
 <li>Application Load Balancer</li>
 <li>Network Load Balancer</li>
 <li>Classic Load Balancer</li>
 </ol>
 <h4 id="1-1-Application-Load-Balancer-ALB"><a href="#1-1-Application-Load-Balancer-ALB" class="headerlink" title="1.1. Application Load Balancer(ALB)"></a>1.1. Application Load Balancer(ALB)</h4><ul>
-<li>This load balancer is specially designed for web applications with HTTP and HTTPS traffic.</li>
-<li>AWS Application Load Balancer(ALB) operates at Layer 7 of the OSI Model. At Layer 7, the ELB has the ability to inspect application-level content, not just IP and port. This lets it route based on more complex rules than with the Classic Load Balancer.<br>For example, an ELB at a given IP will receive a request from the client on port 443(HTTPS). The Application Load Balancer will process the request, not only by receiving port, but also by looking at the destination URL. <ul>
+<li>Application Load Balancer is specially designed for load balancing of <strong>HTTP</strong> and <strong>HTTPS</strong> traffic.</li>
+<li>They operate at Layer 7 and are application-aware.</li>
+<li>They are intelligent, and you can create advanced request routing, sending specified requests to specific web servers. </li>
+<li>It also provides advanced routing features such as host-based and path-based routing and also works with containers and microservices.</li>
+</ul>
+<h5 id="Understanding-the-Application-Load-Balancer"><a href="#Understanding-the-Application-Load-Balancer" class="headerlink" title="Understanding the Application Load Balancer"></a>Understanding the Application Load Balancer</h5><p>AWS Application Load Balancer(ALB) operates at <strong>Layer 7</strong> of the OSI Model. At Layer 7, the ELB has the ability to inspect application-level content, not just IP and port. This lets it route based on more complex rules than with the Classic Load Balancer.<br>For example, an ELB at a given IP will receive a request from the client on port <strong>443(HTTPS)</strong>. The Application Load Balancer will process the request, not only by receiving port, but also by looking at the destination URL. </p>
+<ul>
 <li>Application Load Balancer will be aware of each of these URLs based on patterns set up when configuring the load balancer, and can route to different clusters of servers depending on application need. Rules can also be added at a later time as you add new functionality to your stack. </li>
 <li>The Application Load Balancer also integrates with EC2 Container Service(ECS) using Service Load Balancing. This allows for dynamic mapping of services to ports as specified in the ECS task definition. Multiple containers can be targeted on the same EC2 instance, each running different services on different ports. The ECS task scheduler will automatically add these tasks to the ALB. </li>
 </ul>
-</li>
-<li>It also provides advanced routing features such as host-based and path-based routing and also works with containers and microservices.<h5 id="Key-ALB-Concepts"><a href="#Key-ALB-Concepts" class="headerlink" title="Key ALB Concepts"></a>Key ALB Concepts</h5>There are some key concepts that you will need to know when configuring your ALB. The first is rules. Each rule specifies a condition, target group, and a priority.</li>
-<li>Rules determine what action is taken when a rule matches a client request. Up to 10 URL-based rules can be defined in the ALB.<ul>
-<li>The condition is the path pattern you want the ALB to evaluate in order for it to route requests. </li>
+<h5 id="Key-ALB-Concepts"><a href="#Key-ALB-Concepts" class="headerlink" title="Key ALB Concepts"></a>Key ALB Concepts</h5><p>There are some key concepts that you will need to know when configuring your ALB. The first is <strong>rules</strong>. Each rule specifies a <strong>condition</strong>, <strong>target group</strong>, and a <strong>priority</strong>.</p>
+<ul>
+<li><strong>Rules</strong> determine what action is taken when a rule matches a client request. Up to 10 URL-based rules can be defined in the ALB.<ul>
+<li>The <strong>condition</strong> is the path pattern you want the ALB to evaluate in order for it to route requests. </li>
 </ul>
 </li>
-<li>The target group is used to route requests to registered targets as part of an action for a rule. Target groups specify a protocol and target port. Health checks can be configured per target group. An ALB can route to multiple target groups.<ul>
-<li>Targets specify the endpoints and are registered with the ALB as part of a target group.</li>
+<li>The <strong>target group</strong> is used to route requests to <strong>registered targets</strong> as part of an action for a rule. Target groups specify a protocol and target port. Health checks can be configured per target group. An ALB can route to multiple target groups.<ul>
+<li><strong>Targets</strong> specify the endpoints and are registered with the ALB as part of a target group.</li>
 </ul>
 </li>
 <li>Priority tells the ALB in which order to evaluate the rules. Rules are numerically evaluated in order from lowest to highest value. When a rule matches a request, traffic will be routes to the specified target group.</li>
+</ul>
+<hr>
+<h4 id="1-2-Network-Load-Balancer"><a href="#1-2-Network-Load-Balancer" class="headerlink" title="1.2. Network Load Balancer"></a>1.2. Network Load Balancer</h4><ul>
+<li>Network Load Balancers are best suited for load balancing of <strong>TCP traffic</strong> where extreme performance is required.</li>
+<li>Operating at the connection <strong>level(Layer 4)</strong></li>
+<li>Network Load Balancer are capable of handling millions of requests per second, while maintaining <strong>ultra-low latencies</strong>. </li>
+<li>Use for <strong>extreme performance</strong>. The most costly load balancer of the three load balancers. </li>
+</ul>
+<h5 id="Understanding-the-Classic-Load-Balancer"><a href="#Understanding-the-Classic-Load-Balancer" class="headerlink" title="Understanding the Classic Load Balancer"></a>Understanding the Classic Load Balancer</h5><p>This load balancer operates at the <strong>Network layer</strong> of the OSI model.<br>Suppose your company’s website is running on four m4-xlarge instances and you’re using an ALB to distribute the traffic among them.<br>Now your company launched a new product today which got viral and your website starts to get millions of requests per second.<br>In this case, the ALB may not be able to handle the sudden spike in traffic.<br>This is where the NLB really shines. It has the capability to handle a sudden spike in traffic since it works at the connection level. It also provides support for <strong>static IPs</strong>.</p>
+<hr>
+<h4 id="1-3-Classic-Load-Balancer"><a href="#1-3-Classic-Load-Balancer" class="headerlink" title="1.3. Classic Load Balancer"></a>1.3. Classic Load Balancer</h4><ul>
+<li>Classic Load Balancers are the <em>legacy</em> Elastic Load Balancers.</li>
+<li>You can load balance <strong>HTTP/HTTPS</strong> applications and use <strong>Layer 7-specific</strong> features, such as <strong>X-Forwarded</strong> and <strong>sticky sessions</strong>.</li>
+<li>You can also use strict Layer 4 load balancing for applications that rely purely on the TCP protocol. </li>
+<li>If your application stops responding, the ELB(Classic Load Balancer) responds with a <strong>504 error</strong>. This  means that the application is having issues. This could be either at the <strong>Web Server Layer</strong> or at the <strong>Database Layer</strong>. Identify where the application is failing, and scale it up or out where possible. </li>
+</ul>
+<h5 id="Understanding-the-Classic-Load-Balancer-1"><a href="#Understanding-the-Classic-Load-Balancer-1" class="headerlink" title="Understanding the Classic Load Balancer"></a>Understanding the Classic Load Balancer</h5><p>The Classic EBL has a number of features available to help provide <em>high availability, monitoring, and better security</em> for your application stack.<br>The AWS Classic Load Balancer(CLB) operates at <strong>Layer 4</strong> of the OSI model. What this means is that the load balancer routes traffic between clients and backend servers based on IP address and TCP port.<br>For example, an ELB at a given IP address receives a request from a client on <strong>TCP port 80(HTTP)</strong>. It will then route that request based on the rules previously configured when setting up the load balancer to a specified port on one of a pool of backend servers. In this example, the port on which the load balancer routes to the target server will often be <strong>port 80(HTTP) or 443(HTTPS)</strong>.</p>
+<p>The backend destination server will then fulfil the client request, and send the requested data back to the ELB, which will then forward the backend server reply to the client. From the client’s perspective, this request will appear to have been entirely fulfilled by the ELB. The client will have no knowledge of the backend server or servers fulfilling client requests.</p>
+<h5 id="X-Forwarded-For-Header"><a href="#X-Forwarded-For-Header" class="headerlink" title="X-Forwarded-For Header"></a>X-Forwarded-For Header</h5><p><strong>Request</strong>(124.12.3.231) —&gt; <strong>Load Balancer</strong>(10.0.0.23) —&gt; <strong>EC2 Instance</strong>(10.0.0.23)(X-Forwarded-For: 124.12.3.231)</p>
+<p>The request comes from a public IP address(124.12.3.231) then it hits the load balance. The load balance take the request and use private IP address(10.0.0.23) to send to EC2 instance. Now EC2 instance will only see the private IP address(10.0.0.23). Now you probably want to know where in the world it comes from. So how to get the public IP address when the Elastic Load Balancer sending a private address? The answer will be <strong>X-Forwarded-For</strong>.</p>
+<hr>
+<h3 id="3-ELB-Exam-Tips"><a href="#3-ELB-Exam-Tips" class="headerlink" title="3. ELB Exam Tips"></a>3. ELB Exam Tips</h3><ul>
+<li>3 Types of Load Balancers:<ul>
+<li>Application Load Balancers</li>
+<li>Network Load Balancers</li>
+<li>Classic Load Balancers</li>
+</ul>
+</li>
+<li>504 Error means the gateway has timed out. This means that the application not responding within the idle timeout period.<ul>
+<li>Trouble shoot the application. Is it from the Web Server or Database Server?</li>
+</ul>
+</li>
+<li>If you need the <strong>IPv4 address</strong> of your end user, look for the <strong>X-Forwarded-For</strong> header. </li>
 </ul>
 
     </div>
@@ -330,9 +375,9 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/AWS-Services/" rel="tag"><i class="fa fa-tag"></i> AWS Services</a>
+              <a href="/tags/AWS-Certified-Developer-Associate/" rel="tag"><i class="fa fa-tag"></i> AWS Certified Developer - Associate</a>
               <a href="/tags/Elastic-Load-Balancer/" rel="tag"><i class="fa fa-tag"></i> Elastic Load Balancer</a>
               <a href="/tags/ELB/" rel="tag"><i class="fa fa-tag"></i> ELB</a>
-              <a href="/tags/AWS-Certified-Developer-Associate/" rel="tag"><i class="fa fa-tag"></i> AWS Certified Developer - Associate</a>
           </div>
 
         
@@ -385,7 +430,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-What-is-Elastic-Load-Balancer"><span class="nav-text">1. What is Elastic Load Balancer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Types-Of-Load-Balancers"><span class="nav-text">2. Types Of Load Balancers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Application-Load-Balancer-ALB"><span class="nav-text">1.1. Application Load Balancer(ALB)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Key-ALB-Concepts"><span class="nav-text">Key ALB Concepts</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-What-is-Elastic-Load-Balancer"><span class="nav-text">1. What is Elastic Load Balancer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Types-Of-Load-Balancers"><span class="nav-text">2. Types Of Load Balancers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Application-Load-Balancer-ALB"><span class="nav-text">1.1. Application Load Balancer(ALB)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Understanding-the-Application-Load-Balancer"><span class="nav-text">Understanding the Application Load Balancer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Key-ALB-Concepts"><span class="nav-text">Key ALB Concepts</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Network-Load-Balancer"><span class="nav-text">1.2. Network Load Balancer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Understanding-the-Classic-Load-Balancer"><span class="nav-text">Understanding the Classic Load Balancer</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Classic-Load-Balancer"><span class="nav-text">1.3. Classic Load Balancer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Understanding-the-Classic-Load-Balancer-1"><span class="nav-text">Understanding the Classic Load Balancer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#X-Forwarded-For-Header"><span class="nav-text">X-Forwarded-For Header</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-ELB-Exam-Tips"><span class="nav-text">3. ELB Exam Tips</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -477,7 +522,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <span class="post-meta-divider"> | </span>
-  <span class="post-count">Total Words : 15.2k</span>
+  <span class="post-count">Total Words : 15.9k</span>
 </div>
 
 <!--
@@ -485,12 +530,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">74k</span>
+    <span title="Symbols count total">77k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:07</span>
+    <span title="Reading time total">1:10</span>
 -->
 </div>
 
