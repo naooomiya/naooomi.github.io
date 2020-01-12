@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS Service | RDS(Relational Database Service) 101</title>
+    <url>/category/AWS-Service-RDS-Relational-Database-Service-101/</url>
+    <content><![CDATA[<h3 id="1-What-is-a-relational-Database"><a href="#1-What-is-a-relational-Database" class="headerlink" title="1. What is a relational Database?"></a>1. What is a relational Database?</h3><p>Relational Databases are what most of us are all used to. They have been around since the 70s. Think of a traditional spreadsheet:</p>
+<ul>
+<li>Database</li>
+<li>Tables</li>
+<li>Row</li>
+<li>Fields(Columns)</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="2-Relational-Database-Types"><a href="#2-Relational-Database-Types" class="headerlink" title="2. Relational Database Types"></a>2. Relational Database Types</h3><ul>
+<li>SQL Server</li>
+<li>Oracle</li>
+<li>MySQL Server</li>
+<li>PostgreSQL</li>
+<li>Aurora</li>
+<li>MariaDB</li>
+</ul>
+<h3 id="3-Non-Relational-Database"><a href="#3-Non-Relational-Database" class="headerlink" title="3. Non Relational Database"></a>3. Non Relational Database</h3><ul>
+<li>Database<ul>
+<li>Collection (= Table)</li>
+<li>Document (= Row)</li>
+<li>Key Value Pairs (= Fields)</li>
+</ul>
+</li>
+<li>No pre-define table structure</li>
+</ul>
+<h3 id="4-What-is-Data-Warehousing"><a href="#4-What-is-Data-Warehousing" class="headerlink" title="4. What is Data Warehousing?"></a>4. What is Data Warehousing?</h3><p>A <strong>Data Warehousing (DW)</strong> is process for collecting and managing data from varied sources to provide meaningful business insights. A Data Warehouse is typically used to connect and analyse business data from heterogeneous sources. </p>
+<h3 id="5-OLTP-vs-OLAP"><a href="#5-OLTP-vs-OLAP" class="headerlink" title="5. OLTP vs OLAP"></a>5. OLTP vs OLAP</h3><p><strong>Online Transaction Processing (OLTP)</strong> differs from OLAP <strong>Online Analytics Processing (OLAP)</strong> in terms of the types of queries you will run. OLTP is an online data modification system while OLAP is an online historical multidimensional data retrieval system, which retrieves the data for analysis that can help in decision making. Which one to use depend upon the users requirement for both works for different purpose. </p>
+<h4 id="Definition-of-OLTP"><a href="#Definition-of-OLTP" class="headerlink" title="Definition of OLTP"></a>Definition of OLTP</h4><p>OLTP is an <strong>Online Transaction Processing System</strong>. The main focus of OLTP system is to record the current <strong>Update</strong>, <strong>Insertion</strong> and <strong>Deletion</strong> while transaction. The OLTP queries are <strong>simpler</strong> and <strong>short</strong> and hence require <strong>less time in processing</strong>, and also requires <strong>less space</strong>. </p>
+<p>OLTP database gets <strong>updated frequently</strong>. It may happen that a transaction in OLTP fails in middle, which may effect data integrity. So, it has to take special care of <strong>data integrity</strong>. OLTP database has <strong>normalized tables (3NF)</strong>.</p>
+<p>The best example for OLTP system is an <strong>ATM</strong>, in which using short transactions we modify the status of our account. OLTP system becomes the source of data for OLAP. </p>
+<h4 id="Definition-of-OLAP"><a href="#Definition-of-OLAP" class="headerlink" title="Definition of OLAP"></a>Definition of OLAP</h4><p>OLAP is an <strong>Online Analytical Processing system</strong>. OLAP database stores historical data that has been inputted by OLTP. It allows a user to view different summaries of multi-dimensional data. Using OLAP, you can extract information from a large database and analyse it for decision making. </p>
+<p>OLAP also allow a user to execute <strong>complex queries</strong> to extract multidimensional data. In OLTP system to retrieve data from a large database to analyse. Simply the user can fire the query again and extract the data for analysis. </p>
+<p>The transaction in OLAP are <strong>long</strong> and hence take comparatively <strong>more time</strong> for processing and requires large space. The transactions in OLAP are <strong>less frequent</strong> as compared to OLTP. Even the tables in OLAP database may not be normalized. The example for OLAP is to view a financial report, or budgeting, marketing management, sales report, etc. </p>
+<table>
+<thead>
+<tr>
+<th align="center">Comparison</th>
+<th align="center">OLTP</th>
+<th align="center">OLAP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Basic</td>
+<td align="center">It is an online transactional system and manages database modification</td>
+<td align="center">It is and online data retrieving and data analysis system.</td>
+</tr>
+<tr>
+<td align="center">Focus</td>
+<td align="center">Insert, Update, Delete information from the database</td>
+<td align="center">Extract data for analysing that helps in decision making</td>
+</tr>
+<tr>
+<td align="center">Data</td>
+<td align="center">OLTP and its transactions are the original source of data</td>
+<td align="center">Different OLTPs database becomes the source of data for OLAP</td>
+</tr>
+<tr>
+<td align="center">Transaction</td>
+<td align="center">OLTP has short transactions</td>
+<td align="center">OLAP has long transactions</td>
+</tr>
+<tr>
+<td align="center">Time</td>
+<td align="center">The processing time of a transaction is comparatively less in OLTP</td>
+<td align="center">The processing time of a transaction is comparatively more in OLAP</td>
+</tr>
+<tr>
+<td align="center">Queries</td>
+<td align="center">Simpler queries</td>
+<td align="center">Complex queries</td>
+</tr>
+<tr>
+<td align="center">Normalization</td>
+<td align="center">Tables in OLTP database are normalized(3NF)</td>
+<td align="center">Tables in OLAP database are not normalized</td>
+</tr>
+<tr>
+<td align="center">Integrity</td>
+<td align="center">OLTP database must maintain data integrity constraint</td>
+<td align="center">OLAP database does not get frequently modified. Hence, data integrity is not affected.</td>
+</tr>
+</tbody></table>
+<h3 id="6-What-is-Elasticache"><a href="#6-What-is-Elasticache" class="headerlink" title="6. What is Elasticache?"></a>6. What is Elasticache?</h3><p>ElasticCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud. The service improves the performance of web applications by allowing you to retrieve information from fast, managed, in-memory caches, instead of replying entirely on slower disk-based databases.</p>
+<p>ElasticCache supports two open-source in-memory caching engines:</p>
+<ul>
+<li>Memcached</li>
+<li>Redis</li>
+</ul>
+<h3 id="7-Summary"><a href="#7-Summary" class="headerlink" title="7. Summary"></a>7. Summary</h3><ul>
+<li>RDS - OLTP<ul>
+<li>SQL</li>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>Oracle</li>
+<li>Aurora</li>
+<li>MariaDB</li>
+</ul>
+</li>
+<li>DynamoDB - No SQL</li>
+<li>RedShift - OLAP</li>
+<li>Elasticache - In Memory Caching:</li>
+<li>Memcached</li>
+<li>Redis</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AWS Services</category>
+        <category>Relational Database Service</category>
+        <category>AWS Certified Developer - Associate</category>
+      </categories>
+      <tags>
+        <tag>AWS Services</tag>
+        <tag>AWS Certified Developer - Associate</tag>
+        <tag>Relational Database Service</tag>
+        <tag>RDS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AWS Service | Elastic Load Balancer</title>
     <url>/category/AWS-Service-Elastic-Load-Balancer/</url>
     <content><![CDATA[<h3 id="1-What-is-Elastic-Load-Balancer"><a href="#1-What-is-Elastic-Load-Balancer" class="headerlink" title="1. What is Elastic Load Balancer"></a>1. What is Elastic Load Balancer</h3><p>Elastic Load Balancing automatically distributes incoming application traffic across multiple targets, such as Amazon EC2 instances, containers, IP address, and Lambda functions. It can handle the varying load of your application traffic in a single Availability Zone or across multiple Availability Zone. Elastic Load Balancing offers three types of load balancers that all feature the high availability, automatic scaling, and robust security necessary to make your applications fault tolerant. </p>
