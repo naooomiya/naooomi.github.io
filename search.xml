@@ -1,6 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Data Warehouse | Part 1 What is Dimensional Model in Data Warehouse</title>
+    <url>/category/Data-Warehouse-Part-1-What-is-Dimensional-Model-in-Data-Warehouse/</url>
+    <content><![CDATA[<h3 id="What-is-Dimensional-Model"><a href="#What-is-Dimensional-Model" class="headerlink" title="What is Dimensional Model?"></a>What is Dimensional Model?</h3><p>A dimensional model is a data structure technique optimized for Data Warehousing tools. The concept of Dimensional Modelling is comprised of “fact” and “dimension” tables.</p>
+<a id="more"></a>
+
+<p>A dimensional model is designed to read, summarize, analyze numeric information like values, balances, counts, weights, etc. in a data warehouse. IN contrast, relation models are optimized for addition, updating and deleting of data in a real-time Online Transaction System. </p>
+<p>These dimensional and relational models have their unique way of data storage that has specific advantages.</p>
+<p>For instance, in the relational mode, normalization and ER models reduce redundancy in data. On the contrary, dimensional model arranges data in such a way that it is easier too retrieve information and generate reports. </p>
+<p>Hence, Dimensional models are used in data warehouse systems and not a good fit for relational systems. </p>
+<h3 id="Elements-of-Dimensional-Data-Model"><a href="#Elements-of-Dimensional-Data-Model" class="headerlink" title="Elements of Dimensional Data Model"></a>Elements of Dimensional Data Model</h3><h4 id="Fact"><a href="#Fact" class="headerlink" title="Fact"></a>Fact</h4><p>Facts are the measurements/metrics or facts from your business process. For a Sales business process, a measurement would be quarterly sales number</p>
+<h4 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h4><p>Dimension provides the context surrounding a business process event. In simple terms, they give who, what, where of a fact. In the Sales business process, for the fact quarterly sales number, dimensions would be </p>
+<ul>
+<li>Who - Customer Names</li>
+<li>Where - Location</li>
+<li>What - Product Name</li>
+</ul>
+<p>In other words, a dimension is a window to view information in the facts.</p>
+<h4 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h4><p>The Attributes are the various characteristics of the dimension.</p>
+<p>In the Location dimension, the attributes can be</p>
+<ul>
+<li>State</li>
+<li>Country</li>
+<li>Zip code etc.</li>
+</ul>
+<p>Attributes are used to search, filter, or classify facts. Dimension Tables contain Attributes</p>
+<h4 id="Fact-Table"><a href="#Fact-Table" class="headerlink" title="Fact Table"></a>Fact Table</h4><p>A fact table is a primary table in a dimensional model</p>
+<p>A Fact Table contains</p>
+<ul>
+<li>Measurements/facts</li>
+<li>Foreign key to dimension table</li>
+</ul>
+<h4 id="Dimension-Table"><a href="#Dimension-Table" class="headerlink" title="Dimension Table"></a>Dimension Table</h4><ul>
+<li>A dimension table contains dimensions of a fact</li>
+<li>They are joined to fact table via a foreign key</li>
+<li>Dimension tables are de-normalized tables</li>
+<li>The dimension Attributes are the various columns in a dimension table</li>
+<li>Dimensions offers descriptive characteristics of the facts with the help of their attributes</li>
+<li>No set limit set for given for number of dimensions</li>
+<li>The dimension can also contain one or more hierarchical relationships</li>
+</ul>
+<h3 id="Steps-of-Dimensional-Modelling"><a href="#Steps-of-Dimensional-Modelling" class="headerlink" title="Steps of Dimensional Modelling"></a>Steps of Dimensional Modelling</h3><p>The accuracy in creating the Dimensional Modeling determines the success of the data warehouse implementation. Here are the steps to create Dimension Model</p>
+<ol>
+<li>Identify Business Process</li>
+<li>Identify Grain(level of detail)</li>
+<li>Identify Dimensions</li>
+<li>Identify Facts</li>
+<li>Build Star</li>
+</ol>
+<p>The model should describe the Why, How Much, When/Where/Who and What of the business process</p>
+<p><img src="https://i.imgur.com/bi9t6UH.png" alt="Dimensional Modelling Steps"></p>
+<h4 id="Step-1-Identify-the-business-process"><a href="#Step-1-Identify-the-business-process" class="headerlink" title="Step 1) Identify the business process"></a>Step 1) Identify the business process</h4><p>Identifying the actual business process a data warehouse should cover. This could be Marketing, Sales, HR, etc. As per the data analysis needs of the organization. The selection of the Business process also depends on the quality of data available for the process. It is the most important step of the Data Modelling process, and a failure here would have cascading and irreparable defects.</p>
+<p>To describe the business process, you can use plain text or use basic <strong>Business Process Modelling Notation(BPMN)</strong> or <strong>Unified Modelling Language(UML)</strong>.</p>
+<h4 id="Step-2-Identify-the-grain"><a href="#Step-2-Identify-the-grain" class="headerlink" title="Step 2) Identify the grain"></a>Step 2) Identify the grain</h4><p>The Grain describes the level of detail for the business problem/solution. It is the process of identifying the lowest level of information for any table in your data warehouse. If a table contains sales data for every day, then it should be daily granularity. If a table contains total sales data for each month, then it has monthly granularity.</p>
+<p>During this stage, you answer questions like</p>
+<ol>
+<li>Do we need to store all the available products or just a few types of products? This decision is based on the business processes selected for Data Warehouse. </li>
+<li>Do we store the product sale information on a monthly, weekly, daily or hourly basis? This decision depends on the nature of reports requested by executives</li>
+<li>How do the above two choices affect the database size?</li>
+</ol>
+<h5 id="Example-of-Grain"><a href="#Example-of-Grain" class="headerlink" title="Example of Grain:"></a>Example of Grain:</h5><p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis. </p>
+<p>So the grain is “product sale information by location by the day”</p>
+<h4 id="Step-3-Identify-the-dimensions"><a href="#Step-3-Identify-the-dimensions" class="headerlink" title="Step 3) Identify the dimensions"></a>Step 3) Identify the dimensions</h4><p>Dimensions are nouns like data, store, inventory, etc. These dimensions are where all the data should be stored. For example, the data dimension may contain data like a year, month and weekday. </p>
+<h5 id="Example-of-Dimensions"><a href="#Example-of-Dimensions" class="headerlink" title="Example of Dimensions:"></a>Example of Dimensions:</h5><p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis.</p>
+<h5 id="Dimensions"><a href="#Dimensions" class="headerlink" title="Dimensions:"></a>Dimensions:</h5><p>Product, Location and Time</p>
+<h5 id="Attributes-1"><a href="#Attributes-1" class="headerlink" title="Attributes:"></a>Attributes:</h5><p>For Product: Product, Key(Foreign Key), Name, Type, Specifications</p>
+<h5 id="Hierarchies"><a href="#Hierarchies" class="headerlink" title="Hierarchies:"></a>Hierarchies:</h5><p>For Location: County, State, City, Street Address, Name</p>
+<h4 id="Step-4-Identify-the-Fact"><a href="#Step-4-Identify-the-Fact" class="headerlink" title="Step 4) Identify the Fact"></a>Step 4) Identify the Fact</h4><p>This step is co-associated with the business users of the system because this is where they get access to data stored in the data warehouse. Most of the fact table rows are numerical values like price or cost per unit, etc.</p>
+<p>Example of Facts:<br>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis.</p>
+<p>The fact here is Sum of Sales by product by location by time. </p>
+<h4 id="Step-5-Build-Schema"><a href="#Step-5-Build-Schema" class="headerlink" title="Step 5) Build Schema"></a>Step 5) Build Schema</h4><p>In this step, you implement the Dimension Model. A schema is nothing but the database structure(arrangement of tables). There are two popular schemas</p>
+<ol>
+<li>Star Schema<br>The star schema architecture is easy to design. It is called a star schema because diagram resembles a star, with points radiating from a center. The center of the star consists of the fact table, and the points of the star is dimension tables.</li>
+</ol>
+<p>The fact tables in a star schema which is third normal form whereas dimensional tables are de-normalized.</p>
+<ol start="2">
+<li>Snowflake Schema<br>The snowflake schema is an extension of the star schema. In a snowflake schema, each dimension are normalized and connected to more dimension tables. </li>
+</ol>
+<h3 id="Rules-for-Dimensional-Modelling"><a href="#Rules-for-Dimensional-Modelling" class="headerlink" title="Rules for Dimensional Modelling"></a>Rules for Dimensional Modelling</h3><ul>
+<li>Load atomic data into dimensional structures.</li>
+<li>Build dimensional models around business processes.</li>
+<li>Need to ensure that every fact table has an associated date dimension table.</li>
+<li>Ensure that all facts in a single fact table are at the same grain or level of detail</li>
+<li>It’s essential to store report labels and filter domain values in dimension tables</li>
+<li>Need to ensure that dimension tables use a surrogate key</li>
+<li>Continuously balance requirements and realities to deliver business solution to support their decision-making</li>
+</ul>
+<h3 id="Benefits-of-dimensional-modeling"><a href="#Benefits-of-dimensional-modeling" class="headerlink" title="Benefits of dimensional modeling"></a>Benefits of dimensional modeling</h3><ul>
+<li><strong>Standardization</strong> of dimensions allows easy reporting across areas of the business</li>
+<li>Dimension tables store the <strong>history</strong> of the dimensional information</li>
+<li>It allows to introduced entirely new dimension without major disruptions to the fact table.</li>
+<li>Dimensional also to store data in such a fashion that it is <strong>easier to retrieve the information</strong> from the data once the data is stored in the database.</li>
+<li>Compared to the normalized model dimensional table are <strong>easier to understand</strong>.</li>
+<li>Information is grouped into <strong>clear and simple business categories</strong>.</li>
+<li>The dimensional model is very understandable by the business. This model is based on business terms, so that the business knows what each fact, dimension, or attribute means. </li>
+<li>Dimensional models are deformalized and optimized for <strong>fast data querying</strong>. Many relational database platforms recognize this model and optimize query execution plans to aid in performance. </li>
+<li>Dimensional modeling creates a schema which is optimized for <strong>high performance</strong>. It means fewer joins and helps with <strong>minimized data redundancy</strong>.</li>
+<li>The dimensional model also helps to <strong>boost query performance</strong>. It is <strong>more de-normalized</strong> therefore it is <strong>optimized for querying</strong>.</li>
+<li>Dimensional models can comfortably accommodate change. Dimension tables can have more columns added to them without affecting existing business intelligence applications using these tables.</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li>A dimensional model is a data structure technique optimized for Data Warehousing tools. </li>
+<li>Facts are the <strong>measurements/metrics or facts</strong> from your business process.</li>
+<li>Dimension provides the context surrounding a business process event.</li>
+<li>The Attributes are the <strong>various characteristics</strong> of the dimension.</li>
+<li>A fact table is a primary table in a dimension model.</li>
+<li>A dimension table contains dimensions of a fact.</li>
+<li>There are three types of facts: <strong>Additive/Non-Additive/Semi-Additive</strong>.</li>
+<li>Types of Dimensions are <strong>Conformed, Outrigger, Shrunken, Role-playing, Dimension to Dimension Table, Junk, Degenerate, Swappable and Step Dimension</strong>.</li>
+<li>Five steps of Dimensional modeling are <strong>1. Identify Business Process. 2. Identify Grain(level of detail). 3. Identify Dimensions. 4. Identify Facts. 5. Build Star</strong>.</li>
+<li>In Dimensional modeling, there is need to ensure that every fact table has an associated date dimension table.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Data Warehouse</category>
+      </categories>
+      <tags>
+        <tag>Data Warehouse</tag>
+        <tag>Dimensional Model</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Binary Tree | Part 2 Binary Search Tree</title>
     <url>/category/Binary-Tree-Part-2-Binary-Search-Tree/</url>
     <content><![CDATA[<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>We consider a particular kind of a binary tree called a <strong>Binary Search Tree(BST)</strong>.The basic idea behind this data structure is to have such a storing repository that provides the efficient way of <strong>data sorting, searching and retrieving</strong>.</p>
@@ -415,9 +536,9 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
-        <tag>AWS Certified Developer - Associate</tag>
         <tag>Elastic Load Balancer</tag>
         <tag>ELB</tag>
+        <tag>AWS Certified Developer - Associate</tag>
       </tags>
   </entry>
   <entry>
@@ -606,8 +727,8 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
-        <tag>EC2</tag>
         <tag>AWS Certified Developer - Associate</tag>
+        <tag>EC2</tag>
       </tags>
   </entry>
   <entry>
@@ -1115,8 +1236,8 @@
 <hr>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findAndReplacePattern</span><span class="params">(String[] words, String pattern)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(String word : words)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (checkPattern(word, pattern))</span><br><span class="line">                res.add(word);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">checkPattern</span><span class="params">(String word, String pattern)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (pattern.length() != word.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Character, Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; word.length(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> w = word.charAt(i);</span><br><span class="line">            <span class="keyword">char</span> p = pattern.charAt(i);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (map.keySet().contains(w))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.get(w) != p) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.values().contains(p)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                map.put(w, p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Hashing</category>
         <category>LeetCode Medium</category>
+        <category>Hashing</category>
         <category>String</category>
       </categories>
       <tags>
@@ -2234,8 +2355,8 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>Database Normalization</tag>
         <tag>SQL</tag>
+        <tag>Database Normalization</tag>
         <tag>1NF</tag>
         <tag>2NF</tag>
         <tag>3NF</tag>

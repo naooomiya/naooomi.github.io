@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="What is Dimensional Model?A dimensional model is a data structure technique optimized for Data Warehousing tools. The concept of Dimensional Modelling is comprised of “fact” and “dimension” tables.">
+<meta name="keywords" content="Data Warehouse,Dimensional Model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Data Warehouse | Part 1 What is Dimensional Model in Data Warehouse">
+<meta property="og:url" content="https:&#x2F;&#x2F;naooomi.github.io&#x2F;category&#x2F;Data-Warehouse-Part-1-What-is-Dimensional-Model-in-Data-Warehouse&#x2F;index.html">
+<meta property="og:site_name" content="This is Naomi_W.">
+<meta property="og:description" content="What is Dimensional Model?A dimensional model is a data structure technique optimized for Data Warehousing tools. The concept of Dimensional Modelling is comprised of “fact” and “dimension” tables.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;bi9t6UH.png">
+<meta property="og:updated_time" content="2020-02-06T09:26:45.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.imgur.com&#x2F;bi9t6UH.png">
+
+<link rel="canonical" href="https://naooomi.github.io/category/Data-Warehouse-Part-1-What-is-Dimensional-Model-in-Data-Warehouse/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Data Warehouse | Part 1 What is Dimensional Model in Data Warehouse | This is Naomi_W.</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+<a href="https://github.com/Naooomi" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">This is Naomi_W.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-laugh-wink"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://naooomi.github.io/category/Data-Warehouse-Part-1-What-is-Dimensional-Model-in-Data-Warehouse/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Naomi_W">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="This is Naomi_W.">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Data Warehouse | Part 1 What is Dimensional Model in Data Warehouse
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-06 21:15:53 / Modified: 22:26:45" itemprop="dateCreated datePublished" datetime="2020-02-06T21:15:53+13:00">2020-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Warehouse/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Warehouse</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>7.3k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>7 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="What-is-Dimensional-Model"><a href="#What-is-Dimensional-Model" class="headerlink" title="What is Dimensional Model?"></a>What is Dimensional Model?</h3><p>A dimensional model is a data structure technique optimized for Data Warehousing tools. The concept of Dimensional Modelling is comprised of “fact” and “dimension” tables.</p>
+<a id="more"></a>
+
+<p>A dimensional model is designed to read, summarize, analyze numeric information like values, balances, counts, weights, etc. in a data warehouse. IN contrast, relation models are optimized for addition, updating and deleting of data in a real-time Online Transaction System. </p>
+<p>These dimensional and relational models have their unique way of data storage that has specific advantages.</p>
+<p>For instance, in the relational mode, normalization and ER models reduce redundancy in data. On the contrary, dimensional model arranges data in such a way that it is easier too retrieve information and generate reports. </p>
+<p>Hence, Dimensional models are used in data warehouse systems and not a good fit for relational systems. </p>
+<h3 id="Elements-of-Dimensional-Data-Model"><a href="#Elements-of-Dimensional-Data-Model" class="headerlink" title="Elements of Dimensional Data Model"></a>Elements of Dimensional Data Model</h3><h4 id="Fact"><a href="#Fact" class="headerlink" title="Fact"></a>Fact</h4><p>Facts are the measurements/metrics or facts from your business process. For a Sales business process, a measurement would be quarterly sales number</p>
+<h4 id="Dimension"><a href="#Dimension" class="headerlink" title="Dimension"></a>Dimension</h4><p>Dimension provides the context surrounding a business process event. In simple terms, they give who, what, where of a fact. In the Sales business process, for the fact quarterly sales number, dimensions would be </p>
+<ul>
+<li>Who - Customer Names</li>
+<li>Where - Location</li>
+<li>What - Product Name</li>
+</ul>
+<p>In other words, a dimension is a window to view information in the facts.</p>
+<h4 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h4><p>The Attributes are the various characteristics of the dimension.</p>
+<p>In the Location dimension, the attributes can be</p>
+<ul>
+<li>State</li>
+<li>Country</li>
+<li>Zip code etc.</li>
+</ul>
+<p>Attributes are used to search, filter, or classify facts. Dimension Tables contain Attributes</p>
+<h4 id="Fact-Table"><a href="#Fact-Table" class="headerlink" title="Fact Table"></a>Fact Table</h4><p>A fact table is a primary table in a dimensional model</p>
+<p>A Fact Table contains</p>
+<ul>
+<li>Measurements/facts</li>
+<li>Foreign key to dimension table</li>
+</ul>
+<h4 id="Dimension-Table"><a href="#Dimension-Table" class="headerlink" title="Dimension Table"></a>Dimension Table</h4><ul>
+<li>A dimension table contains dimensions of a fact</li>
+<li>They are joined to fact table via a foreign key</li>
+<li>Dimension tables are de-normalized tables</li>
+<li>The dimension Attributes are the various columns in a dimension table</li>
+<li>Dimensions offers descriptive characteristics of the facts with the help of their attributes</li>
+<li>No set limit set for given for number of dimensions</li>
+<li>The dimension can also contain one or more hierarchical relationships</li>
+</ul>
+<h3 id="Steps-of-Dimensional-Modelling"><a href="#Steps-of-Dimensional-Modelling" class="headerlink" title="Steps of Dimensional Modelling"></a>Steps of Dimensional Modelling</h3><p>The accuracy in creating the Dimensional Modeling determines the success of the data warehouse implementation. Here are the steps to create Dimension Model</p>
+<ol>
+<li>Identify Business Process</li>
+<li>Identify Grain(level of detail)</li>
+<li>Identify Dimensions</li>
+<li>Identify Facts</li>
+<li>Build Star</li>
+</ol>
+<p>The model should describe the Why, How Much, When/Where/Who and What of the business process</p>
+<p><img src="https://i.imgur.com/bi9t6UH.png" alt="Dimensional Modelling Steps"></p>
+<h4 id="Step-1-Identify-the-business-process"><a href="#Step-1-Identify-the-business-process" class="headerlink" title="Step 1) Identify the business process"></a>Step 1) Identify the business process</h4><p>Identifying the actual business process a data warehouse should cover. This could be Marketing, Sales, HR, etc. As per the data analysis needs of the organization. The selection of the Business process also depends on the quality of data available for the process. It is the most important step of the Data Modelling process, and a failure here would have cascading and irreparable defects.</p>
+<p>To describe the business process, you can use plain text or use basic <strong>Business Process Modelling Notation(BPMN)</strong> or <strong>Unified Modelling Language(UML)</strong>.</p>
+<h4 id="Step-2-Identify-the-grain"><a href="#Step-2-Identify-the-grain" class="headerlink" title="Step 2) Identify the grain"></a>Step 2) Identify the grain</h4><p>The Grain describes the level of detail for the business problem/solution. It is the process of identifying the lowest level of information for any table in your data warehouse. If a table contains sales data for every day, then it should be daily granularity. If a table contains total sales data for each month, then it has monthly granularity.</p>
+<p>During this stage, you answer questions like</p>
+<ol>
+<li>Do we need to store all the available products or just a few types of products? This decision is based on the business processes selected for Data Warehouse. </li>
+<li>Do we store the product sale information on a monthly, weekly, daily or hourly basis? This decision depends on the nature of reports requested by executives</li>
+<li>How do the above two choices affect the database size?</li>
+</ol>
+<h5 id="Example-of-Grain"><a href="#Example-of-Grain" class="headerlink" title="Example of Grain:"></a>Example of Grain:</h5><p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis. </p>
+<p>So the grain is “product sale information by location by the day”</p>
+<h4 id="Step-3-Identify-the-dimensions"><a href="#Step-3-Identify-the-dimensions" class="headerlink" title="Step 3) Identify the dimensions"></a>Step 3) Identify the dimensions</h4><p>Dimensions are nouns like data, store, inventory, etc. These dimensions are where all the data should be stored. For example, the data dimension may contain data like a year, month and weekday. </p>
+<h5 id="Example-of-Dimensions"><a href="#Example-of-Dimensions" class="headerlink" title="Example of Dimensions:"></a>Example of Dimensions:</h5><p>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis.</p>
+<h5 id="Dimensions"><a href="#Dimensions" class="headerlink" title="Dimensions:"></a>Dimensions:</h5><p>Product, Location and Time</p>
+<h5 id="Attributes-1"><a href="#Attributes-1" class="headerlink" title="Attributes:"></a>Attributes:</h5><p>For Product: Product, Key(Foreign Key), Name, Type, Specifications</p>
+<h5 id="Hierarchies"><a href="#Hierarchies" class="headerlink" title="Hierarchies:"></a>Hierarchies:</h5><p>For Location: County, State, City, Street Address, Name</p>
+<h4 id="Step-4-Identify-the-Fact"><a href="#Step-4-Identify-the-Fact" class="headerlink" title="Step 4) Identify the Fact"></a>Step 4) Identify the Fact</h4><p>This step is co-associated with the business users of the system because this is where they get access to data stored in the data warehouse. Most of the fact table rows are numerical values like price or cost per unit, etc.</p>
+<p>Example of Facts:<br>The CEO at an MNC wants to find the sales for specific products in different locations on a daily basis.</p>
+<p>The fact here is Sum of Sales by product by location by time. </p>
+<h4 id="Step-5-Build-Schema"><a href="#Step-5-Build-Schema" class="headerlink" title="Step 5) Build Schema"></a>Step 5) Build Schema</h4><p>In this step, you implement the Dimension Model. A schema is nothing but the database structure(arrangement of tables). There are two popular schemas</p>
+<ol>
+<li>Star Schema<br>The star schema architecture is easy to design. It is called a star schema because diagram resembles a star, with points radiating from a center. The center of the star consists of the fact table, and the points of the star is dimension tables.</li>
+</ol>
+<p>The fact tables in a star schema which is third normal form whereas dimensional tables are de-normalized.</p>
+<ol start="2">
+<li>Snowflake Schema<br>The snowflake schema is an extension of the star schema. In a snowflake schema, each dimension are normalized and connected to more dimension tables. </li>
+</ol>
+<h3 id="Rules-for-Dimensional-Modelling"><a href="#Rules-for-Dimensional-Modelling" class="headerlink" title="Rules for Dimensional Modelling"></a>Rules for Dimensional Modelling</h3><ul>
+<li>Load atomic data into dimensional structures.</li>
+<li>Build dimensional models around business processes.</li>
+<li>Need to ensure that every fact table has an associated date dimension table.</li>
+<li>Ensure that all facts in a single fact table are at the same grain or level of detail</li>
+<li>It’s essential to store report labels and filter domain values in dimension tables</li>
+<li>Need to ensure that dimension tables use a surrogate key</li>
+<li>Continuously balance requirements and realities to deliver business solution to support their decision-making</li>
+</ul>
+<h3 id="Benefits-of-dimensional-modeling"><a href="#Benefits-of-dimensional-modeling" class="headerlink" title="Benefits of dimensional modeling"></a>Benefits of dimensional modeling</h3><ul>
+<li><strong>Standardization</strong> of dimensions allows easy reporting across areas of the business</li>
+<li>Dimension tables store the <strong>history</strong> of the dimensional information</li>
+<li>It allows to introduced entirely new dimension without major disruptions to the fact table.</li>
+<li>Dimensional also to store data in such a fashion that it is <strong>easier to retrieve the information</strong> from the data once the data is stored in the database.</li>
+<li>Compared to the normalized model dimensional table are <strong>easier to understand</strong>.</li>
+<li>Information is grouped into <strong>clear and simple business categories</strong>.</li>
+<li>The dimensional model is very understandable by the business. This model is based on business terms, so that the business knows what each fact, dimension, or attribute means. </li>
+<li>Dimensional models are deformalized and optimized for <strong>fast data querying</strong>. Many relational database platforms recognize this model and optimize query execution plans to aid in performance. </li>
+<li>Dimensional modeling creates a schema which is optimized for <strong>high performance</strong>. It means fewer joins and helps with <strong>minimized data redundancy</strong>.</li>
+<li>The dimensional model also helps to <strong>boost query performance</strong>. It is <strong>more de-normalized</strong> therefore it is <strong>optimized for querying</strong>.</li>
+<li>Dimensional models can comfortably accommodate change. Dimension tables can have more columns added to them without affecting existing business intelligence applications using these tables.</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li>A dimensional model is a data structure technique optimized for Data Warehousing tools. </li>
+<li>Facts are the <strong>measurements/metrics or facts</strong> from your business process.</li>
+<li>Dimension provides the context surrounding a business process event.</li>
+<li>The Attributes are the <strong>various characteristics</strong> of the dimension.</li>
+<li>A fact table is a primary table in a dimension model.</li>
+<li>A dimension table contains dimensions of a fact.</li>
+<li>There are three types of facts: <strong>Additive/Non-Additive/Semi-Additive</strong>.</li>
+<li>Types of Dimensions are <strong>Conformed, Outrigger, Shrunken, Role-playing, Dimension to Dimension Table, Junk, Degenerate, Swappable and Step Dimension</strong>.</li>
+<li>Five steps of Dimensional modeling are <strong>1. Identify Business Process. 2. Identify Grain(level of detail). 3. Identify Dimensions. 4. Identify Facts. 5. Build Star</strong>.</li>
+<li>In Dimensional modeling, there is need to ensure that every fact table has an associated date dimension table.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End <i class="fas fa-coffee"></i> Thanks for your time-------------</div>
+    
+</div>
+  
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Data-Warehouse/" rel="tag"><i class="fa fa-tag"></i> Data Warehouse</a>
+              <a href="/tags/Dimensional-Model/" rel="tag"><i class="fa fa-tag"></i> Dimensional Model</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/category/Binary-Tree-Part-2-Binary-Search-Tree/" rel="next" title="Binary Tree | Part 2 Binary Search Tree">
+                  <i class="fa fa-chevron-left"></i> Binary Tree | Part 2 Binary Search Tree
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-Dimensional-Model"><span class="nav-text">What is Dimensional Model?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements-of-Dimensional-Data-Model"><span class="nav-text">Elements of Dimensional Data Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Fact"><span class="nav-text">Fact</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dimension"><span class="nav-text">Dimension</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Attributes"><span class="nav-text">Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fact-Table"><span class="nav-text">Fact Table</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dimension-Table"><span class="nav-text">Dimension Table</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps-of-Dimensional-Modelling"><span class="nav-text">Steps of Dimensional Modelling</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-1-Identify-the-business-process"><span class="nav-text">Step 1) Identify the business process</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-2-Identify-the-grain"><span class="nav-text">Step 2) Identify the grain</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-of-Grain"><span class="nav-text">Example of Grain:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-3-Identify-the-dimensions"><span class="nav-text">Step 3) Identify the dimensions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-of-Dimensions"><span class="nav-text">Example of Dimensions:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dimensions"><span class="nav-text">Dimensions:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Attributes-1"><span class="nav-text">Attributes:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hierarchies"><span class="nav-text">Hierarchies:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-4-Identify-the-Fact"><span class="nav-text">Step 4) Identify the Fact</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Step-5-Build-Schema"><span class="nav-text">Step 5) Build Schema</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rules-for-Dimensional-Modelling"><span class="nav-text">Rules for Dimensional Modelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Benefits-of-dimensional-modeling"><span class="nav-text">Benefits of dimensional modeling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Naomi_W"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Naomi_W</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Naooomi" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Naooomi" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-square"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.linkedin.com/in/naomi-hanwu/" title="LinkedIn → https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;naomi-hanwu&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-linkedin"></i>LinkedIn</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/profile.php?id=100006848162626" title="Facebook → https:&#x2F;&#x2F;www.facebook.com&#x2F;profile.php?id=100006848162626" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook-square"></i>Facebook</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/__naoooomi__/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;__naoooomi__&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.snapchat.com/add/naooomi.wuuu" title="Snapchat → https:&#x2F;&#x2F;www.snapchat.com&#x2F;add&#x2F;naooomi.wuuu" rel="noopener" target="_blank"><i class="fa fa-fw fa-snapchat"></i>Snapchat</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css">
+
+<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Naomi_W</span>
+
+<div class="powered-by">
+<span class="post-meta-divider"> | </span>
+<i class="fas fa-paw"></i></i>
+<span id="busuanzi_container_site_uv">Visitors : <span id="busuanzi_value_site_uv"></span></span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-meta-divider"> | </span>
+  <span class="post-count">Total Words : 20.4k</span>
+</div>
+
+<!--
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">100k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:31</span>
+-->
+</div>
+
+<!--
+-->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
