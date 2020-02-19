@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>AWS Service | Elasticache 101</title>
+    <url>/category/AWS-Service-Elasticache-101/</url>
+    <content><![CDATA[<h3 id="1-What-is-Elasticache"><a href="#1-What-is-Elasticache" class="headerlink" title="1. What is Elasticache"></a>1. What is Elasticache</h3><p>ElastiCache is a web service that makes it easy to deploy, operate, and scale an in-memory cache in the cloud. The service improves the performance of web applications by allowing you to retrieve information from fast, managed, in-memory caches, instead of relying entirely on slower disk-based databases. </p>
+<a id="more"></a>
+
+<p>Amazon ElastiCache can be used to significantly improve latency and throughput for many read-heavy application workloads(such as social networking, gaming, media sharing and Q&amp;A portals) or compute-intensive workloads(such as a recommendation engine)</p>
+<p>Caching improved application performance by storing critical pieces of data in memory for low-latency access. Cached information may include the results of I/O-intensive database queries or the results of computationally-intensive calculations. </p>
+<h3 id="2-Types-of-Elasticache"><a href="#2-Types-of-Elasticache" class="headerlink" title="2. Types of Elasticache"></a>2. Types of Elasticache</h3><h4 id="Memcached"><a href="#Memcached" class="headerlink" title="Memcached"></a>Memcached</h4><ul>
+<li>A widely adopted memory object caching system. ElastiCache is protocol compliant with Memcached, so popular tools that you use today with existing Memcached environments will work seamlessly with the service. </li>
+<li>Because Memcached is designed as a pure caching solution with no persistence, ElastiCache manages Memcached nodes as a pool that can grow and shrink, similar to an Amazon EC2 Auto Scaling Group. Individual nodes are expendable, and ElastiCache provides additional capabilities here, such as automatic node replacement and Auto Discovery. <h4 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h4></li>
+<li>A popular open-source in-memory key-value store that supports data structures such as sorted sets and lists. ElastiCache supports Master/Slave replication and Multi-AZ which can be used to achieve cross AZ redundancy. </li>
+<li>Although both Memcached and Redis appear similar on the surface(in that they are both in-memory key stores), they are actually quite different in practice. Because of the replication and persistence features of Redis, ElastiCache manages Redis more as a relational database. Redis ElastiCache clusters are managed as stateful entities that include failover, similar to how Amazon RDS manages database failover. </li>
+</ul>
+<h3 id="3-Memcached-Use-Cases"><a href="#3-Memcached-Use-Cases" class="headerlink" title="3. Memcached - Use Cases"></a>3. Memcached - Use Cases</h3><ul>
+<li>Is object caching your primary goal, for example to offload your database? If so, use Memcached.</li>
+<li>Are you interested in as simple a caching model as possible? If so, use Memcached.</li>
+<li>Are you planning on running large cache nodes, and require multithreaded performance with utilization of multiple cores? If so, use Memcached. </li>
+<li>Do you want the ability to scale your cache horizontally as you grow? If so, use Memcached. </li>
+</ul>
+<h3 id="4-Redis-Use-Cases"><a href="#4-Redis-Use-Cases" class="headerlink" title="4. Redis - Use Cases"></a>4. Redis - Use Cases</h3><ul>
+<li>Are you looking for more advanced data types, such as lists, hashes, and sets? If so, use Redis.</li>
+<li>Does sorting and ranking datasets in memory help you, such as with leaderboards? If so, use Redis.</li>
+<li>Is persistence of your key store important? If so, use Redis.</li>
+<li>Do you want to run in multiple AWS Availability Zones(Multi-AZ) with failover? If so, use Redis.</li>
+</ul>
+<h3 id="5-ElasticCache-Exam-Tips"><a href="#5-ElasticCache-Exam-Tips" class="headerlink" title="5. ElasticCache Exam Tips"></a>5. ElasticCache Exam Tips</h3><ul>
+<li>Typically, you will be given a scenario where a particular database is under a lot of stree/load. You may be asked which service you should use to alleviate this. </li>
+<li>ElasticCache is a good choice if your database is particularly read-heavy and not prone to frequent changing.</li>
+<li>Redshift is a good answer if the reason your database is felling stress is because management keep running OLAP transaction on it etc. </li>
+<li>Use Memcached if <ul>
+<li>Object caching is your primary goal</li>
+<li>You want to keep things as simple as possible</li>
+<li>You want to scale your cache horizontally(scale out)</li>
+</ul>
+</li>
+<li>Use Redis if<ul>
+<li>You have advanced data types, such as lists, hashes, and sets</li>
+<li>You are doing data sorting and ranking(such as leaderboards)</li>
+<li>Data Persistence</li>
+<li>Multi-AZ</li>
+<li>Pub/Sub capabilities are needed</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>AWS Services</category>
+        <category>Elasticache</category>
+        <category>AWS Certified Developer - Associate</category>
+      </categories>
+      <tags>
+        <tag>AWS Services</tag>
+        <tag>AWS Certified Developer - Associate</tag>
+        <tag>Elasticache</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Data Warehouse | Part 1 What is Dimensional Model in Data Warehouse</title>
     <url>/category/Data-Warehouse-Part-1-What-is-Dimensional-Model-in-Data-Warehouse/</url>
     <content><![CDATA[<h3 id="What-is-Dimensional-Model"><a href="#What-is-Dimensional-Model" class="headerlink" title="What is Dimensional Model?"></a>What is Dimensional Model?</h3><p>A dimensional model is a data structure technique optimized for Data Warehousing tools. The concept of Dimensional Modelling is comprised of “fact” and “dimension” tables.</p>
@@ -536,9 +593,9 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
+        <tag>AWS Certified Developer - Associate</tag>
         <tag>Elastic Load Balancer</tag>
         <tag>ELB</tag>
-        <tag>AWS Certified Developer - Associate</tag>
       </tags>
   </entry>
   <entry>
@@ -727,8 +784,8 @@
       </categories>
       <tags>
         <tag>AWS Services</tag>
-        <tag>AWS Certified Developer - Associate</tag>
         <tag>EC2</tag>
+        <tag>AWS Certified Developer - Associate</tag>
       </tags>
   </entry>
   <entry>
@@ -2355,8 +2412,8 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>SQL</tag>
         <tag>Database Normalization</tag>
+        <tag>SQL</tag>
         <tag>1NF</tag>
         <tag>2NF</tag>
         <tag>3NF</tag>
